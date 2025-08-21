@@ -77,12 +77,12 @@ def read_csv_data(filename: str) -> Dict[str, Any]:
         # Convertir a formato JSON-friendly
         data = df.to_dict(orient="records")
         
-        # Información del dataset
+        # Información del dataset - Convertir tipos numpy a Python nativos
         info = {
             "filename": filename,
-            "rows": len(df),
+            "rows": int(len(df)),
             "columns": list(df.columns),
-            "data_types": df.dtypes.to_dict(),
+            "data_types": {col: str(dtype) for col, dtype in df.dtypes.items()},
             "sample_data": data[:5] if len(data) > 5 else data
         }
         
@@ -152,7 +152,7 @@ async def upload_csv(file: UploadFile = File(...)):
         return {
             "message": f"Archivo {file.filename} subido exitosamente",
             "filename": file.filename,
-            "rows": len(df),
+            "rows": int(len(df)),
             "columns": list(df.columns)
         }
         

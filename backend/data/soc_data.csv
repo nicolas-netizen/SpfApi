@@ -1,0 +1,1001 @@
+fecha,device,evento,valor
+2025-01-01 00:00:00,Endpoint02,Policy Violation,476
+2025-01-01 01:00:00,Server01,Policy Violation,455
+2025-01-01 02:00:00,Endpoint01,Policy Violation,160
+2025-01-01 03:00:00,Server01,Policy Violation,11
+2025-01-01 04:00:00,Server01,Port Scan,138
+2025-01-01 05:00:00,Firewall02,Port Scan,457
+2025-01-01 06:00:00,Endpoint01,Malware Detected,78
+2025-01-01 07:00:00,Endpoint01,Login,77
+2025-01-01 08:00:00,Endpoint01,Policy Violation,441
+2025-01-01 09:00:00,Server01,Malware Detected,254
+2025-01-01 10:00:00,Endpoint02,Login,409
+2025-01-01 11:00:00,Endpoint01,File Copied,258
+2025-01-01 12:00:00,Server01,Port Scan,320
+2025-01-01 13:00:00,Firewall02,Login,291
+2025-01-01 14:00:00,Endpoint02,File Copied,263
+2025-01-01 15:00:00,Firewall02,Login,85
+2025-01-01 16:00:00,Endpoint02,Port Scan,146
+2025-01-01 17:00:00,Server01,Port Scan,323
+2025-01-01 18:00:00,Firewall01,Malware Detected,42
+2025-01-01 19:00:00,Endpoint02,Policy Violation,374
+2025-01-01 20:00:00,Firewall02,Login,125
+2025-01-01 21:00:00,Server01,Login,167
+2025-01-01 22:00:00,Endpoint02,File Copied,425
+2025-01-01 23:00:00,Firewall01,Port Scan,241
+2025-01-02 00:00:00,Firewall01,Login,459
+2025-01-02 01:00:00,Endpoint01,Port Scan,487
+2025-01-02 02:00:00,Endpoint01,Login,280
+2025-01-02 03:00:00,Firewall02,Malware Detected,188
+2025-01-02 04:00:00,Endpoint02,Policy Violation,302
+2025-01-02 05:00:00,Endpoint02,Login,19
+2025-01-02 06:00:00,Endpoint01,Port Scan,68
+2025-01-02 07:00:00,Endpoint02,Malware Detected,218
+2025-01-02 08:00:00,Endpoint02,Login,102
+2025-01-02 09:00:00,Firewall01,File Copied,42
+2025-01-02 10:00:00,Endpoint01,Policy Violation,288
+2025-01-02 11:00:00,Server01,Login,167
+2025-01-02 12:00:00,Endpoint01,Malware Detected,109
+2025-01-02 13:00:00,Server01,File Copied,494
+2025-01-02 14:00:00,Firewall01,Malware Detected,36
+2025-01-02 15:00:00,Firewall02,Malware Detected,232
+2025-01-02 16:00:00,Endpoint02,File Copied,229
+2025-01-02 17:00:00,Firewall01,Malware Detected,353
+2025-01-02 18:00:00,Endpoint02,File Copied,164
+2025-01-02 19:00:00,Firewall02,Login,387
+2025-01-02 20:00:00,Firewall02,File Copied,73
+2025-01-02 21:00:00,Firewall01,File Copied,136
+2025-01-02 22:00:00,Firewall02,Policy Violation,353
+2025-01-02 23:00:00,Server01,File Copied,379
+2025-01-03 00:00:00,Firewall02,File Copied,70
+2025-01-03 01:00:00,Endpoint02,Login,425
+2025-01-03 02:00:00,Endpoint02,Policy Violation,487
+2025-01-03 03:00:00,Endpoint02,Port Scan,196
+2025-01-03 04:00:00,Endpoint02,Login,269
+2025-01-03 05:00:00,Server01,Login,49
+2025-01-03 06:00:00,Endpoint01,Port Scan,316
+2025-01-03 07:00:00,Firewall01,File Copied,130
+2025-01-03 08:00:00,Endpoint02,Malware Detected,444
+2025-01-03 09:00:00,Firewall02,Policy Violation,5
+2025-01-03 10:00:00,Endpoint02,Malware Detected,428
+2025-01-03 11:00:00,Firewall02,Port Scan,27
+2025-01-03 12:00:00,Firewall02,Login,160
+2025-01-03 13:00:00,Endpoint02,Login,149
+2025-01-03 14:00:00,Server01,Policy Violation,264
+2025-01-03 15:00:00,Firewall02,Login,230
+2025-01-03 16:00:00,Firewall02,Login,200
+2025-01-03 17:00:00,Endpoint02,Policy Violation,50
+2025-01-03 18:00:00,Firewall02,Policy Violation,67
+2025-01-03 19:00:00,Firewall02,Port Scan,300
+2025-01-03 20:00:00,Endpoint02,Login,381
+2025-01-03 21:00:00,Endpoint02,Login,58
+2025-01-03 22:00:00,Firewall01,Port Scan,259
+2025-01-03 23:00:00,Server01,File Copied,342
+2025-01-04 00:00:00,Server01,File Copied,326
+2025-01-04 01:00:00,Firewall02,File Copied,130
+2025-01-04 02:00:00,Server01,Port Scan,215
+2025-01-04 03:00:00,Firewall02,Login,172
+2025-01-04 04:00:00,Firewall01,Port Scan,258
+2025-01-04 05:00:00,Endpoint02,Port Scan,102
+2025-01-04 06:00:00,Endpoint02,File Copied,209
+2025-01-04 07:00:00,Endpoint02,Malware Detected,291
+2025-01-04 08:00:00,Server01,Login,354
+2025-01-04 09:00:00,Firewall01,File Copied,471
+2025-01-04 10:00:00,Server01,Malware Detected,286
+2025-01-04 11:00:00,Server01,Malware Detected,116
+2025-01-04 12:00:00,Firewall01,Policy Violation,264
+2025-01-04 13:00:00,Firewall01,Login,150
+2025-01-04 14:00:00,Firewall01,Malware Detected,300
+2025-01-04 15:00:00,Firewall01,File Copied,442
+2025-01-04 16:00:00,Endpoint02,Policy Violation,36
+2025-01-04 17:00:00,Endpoint01,Login,453
+2025-01-04 18:00:00,Endpoint01,Port Scan,333
+2025-01-04 19:00:00,Firewall01,File Copied,477
+2025-01-04 20:00:00,Endpoint01,Malware Detected,287
+2025-01-04 21:00:00,Endpoint01,Malware Detected,303
+2025-01-04 22:00:00,Firewall01,File Copied,311
+2025-01-04 23:00:00,Endpoint01,Malware Detected,208
+2025-01-05 00:00:00,Server01,Policy Violation,106
+2025-01-05 01:00:00,Firewall02,Login,446
+2025-01-05 02:00:00,Firewall02,Policy Violation,158
+2025-01-05 03:00:00,Firewall01,Malware Detected,121
+2025-01-05 04:00:00,Endpoint02,Port Scan,55
+2025-01-05 05:00:00,Firewall01,Login,400
+2025-01-05 06:00:00,Endpoint02,Login,12
+2025-01-05 07:00:00,Firewall02,File Copied,145
+2025-01-05 08:00:00,Firewall01,File Copied,400
+2025-01-05 09:00:00,Server01,Port Scan,396
+2025-01-05 10:00:00,Endpoint01,Login,136
+2025-01-05 11:00:00,Endpoint02,Port Scan,468
+2025-01-05 12:00:00,Endpoint01,File Copied,3
+2025-01-05 13:00:00,Endpoint01,File Copied,144
+2025-01-05 14:00:00,Firewall01,Login,30
+2025-01-05 15:00:00,Endpoint01,Policy Violation,237
+2025-01-05 16:00:00,Server01,Malware Detected,279
+2025-01-05 17:00:00,Endpoint01,File Copied,348
+2025-01-05 18:00:00,Firewall01,File Copied,115
+2025-01-05 19:00:00,Server01,Policy Violation,104
+2025-01-05 20:00:00,Firewall02,Policy Violation,118
+2025-01-05 21:00:00,Endpoint01,Port Scan,5
+2025-01-05 22:00:00,Firewall01,Port Scan,468
+2025-01-05 23:00:00,Firewall02,Malware Detected,360
+2025-01-06 00:00:00,Firewall02,Malware Detected,248
+2025-01-06 01:00:00,Endpoint02,Login,364
+2025-01-06 02:00:00,Server01,Port Scan,321
+2025-01-06 03:00:00,Endpoint01,File Copied,121
+2025-01-06 04:00:00,Firewall01,Port Scan,286
+2025-01-06 05:00:00,Endpoint02,File Copied,149
+2025-01-06 06:00:00,Server01,Policy Violation,84
+2025-01-06 07:00:00,Endpoint02,Port Scan,454
+2025-01-06 08:00:00,Server01,Policy Violation,406
+2025-01-06 09:00:00,Server01,Malware Detected,466
+2025-01-06 10:00:00,Endpoint01,Malware Detected,456
+2025-01-06 11:00:00,Server01,Login,231
+2025-01-06 12:00:00,Endpoint02,Port Scan,288
+2025-01-06 13:00:00,Server01,Policy Violation,161
+2025-01-06 14:00:00,Endpoint01,File Copied,272
+2025-01-06 15:00:00,Endpoint01,Malware Detected,460
+2025-01-06 16:00:00,Endpoint02,Malware Detected,38
+2025-01-06 17:00:00,Firewall02,File Copied,226
+2025-01-06 18:00:00,Firewall02,Policy Violation,142
+2025-01-06 19:00:00,Server01,Policy Violation,292
+2025-01-06 20:00:00,Firewall01,Port Scan,481
+2025-01-06 21:00:00,Server01,Port Scan,151
+2025-01-06 22:00:00,Endpoint02,Login,114
+2025-01-06 23:00:00,Endpoint02,Malware Detected,237
+2025-01-07 00:00:00,Endpoint02,Port Scan,66
+2025-01-07 01:00:00,Endpoint02,Policy Violation,361
+2025-01-07 02:00:00,Endpoint02,File Copied,341
+2025-01-07 03:00:00,Endpoint01,Policy Violation,258
+2025-01-07 04:00:00,Firewall02,Malware Detected,475
+2025-01-07 05:00:00,Endpoint02,Policy Violation,249
+2025-01-07 06:00:00,Firewall01,Login,457
+2025-01-07 07:00:00,Firewall01,Malware Detected,449
+2025-01-07 08:00:00,Firewall01,File Copied,331
+2025-01-07 09:00:00,Firewall01,Login,323
+2025-01-07 10:00:00,Endpoint01,Malware Detected,180
+2025-01-07 11:00:00,Firewall01,File Copied,190
+2025-01-07 12:00:00,Endpoint02,Login,407
+2025-01-07 13:00:00,Server01,Login,154
+2025-01-07 14:00:00,Firewall01,Malware Detected,196
+2025-01-07 15:00:00,Endpoint01,Port Scan,466
+2025-01-07 16:00:00,Endpoint01,Login,311
+2025-01-07 17:00:00,Firewall01,Login,262
+2025-01-07 18:00:00,Server01,File Copied,419
+2025-01-07 19:00:00,Firewall01,Policy Violation,406
+2025-01-07 20:00:00,Endpoint01,Malware Detected,427
+2025-01-07 21:00:00,Firewall02,Malware Detected,143
+2025-01-07 22:00:00,Endpoint02,Port Scan,342
+2025-01-07 23:00:00,Endpoint01,Port Scan,316
+2025-01-08 00:00:00,Firewall01,Malware Detected,101
+2025-01-08 01:00:00,Endpoint02,Port Scan,244
+2025-01-08 02:00:00,Firewall01,File Copied,490
+2025-01-08 03:00:00,Firewall01,Malware Detected,12
+2025-01-08 04:00:00,Firewall02,Port Scan,239
+2025-01-08 05:00:00,Endpoint02,Malware Detected,49
+2025-01-08 06:00:00,Endpoint02,Policy Violation,42
+2025-01-08 07:00:00,Firewall02,Login,166
+2025-01-08 08:00:00,Endpoint01,Malware Detected,82
+2025-01-08 09:00:00,Firewall01,Login,429
+2025-01-08 10:00:00,Server01,Port Scan,291
+2025-01-08 11:00:00,Firewall01,Login,158
+2025-01-08 12:00:00,Firewall01,Malware Detected,216
+2025-01-08 13:00:00,Endpoint01,Policy Violation,490
+2025-01-08 14:00:00,Firewall01,Port Scan,158
+2025-01-08 15:00:00,Firewall02,Malware Detected,462
+2025-01-08 16:00:00,Firewall02,Port Scan,134
+2025-01-08 17:00:00,Endpoint02,File Copied,67
+2025-01-08 18:00:00,Server01,Login,336
+2025-01-08 19:00:00,Firewall01,File Copied,7
+2025-01-08 20:00:00,Firewall01,Malware Detected,436
+2025-01-08 21:00:00,Endpoint01,Policy Violation,14
+2025-01-08 22:00:00,Firewall02,Port Scan,73
+2025-01-08 23:00:00,Server01,Login,399
+2025-01-09 00:00:00,Endpoint02,Port Scan,405
+2025-01-09 01:00:00,Firewall02,Malware Detected,163
+2025-01-09 02:00:00,Endpoint02,Port Scan,66
+2025-01-09 03:00:00,Endpoint01,Login,347
+2025-01-09 04:00:00,Endpoint01,Malware Detected,130
+2025-01-09 05:00:00,Firewall01,Port Scan,419
+2025-01-09 06:00:00,Server01,Policy Violation,466
+2025-01-09 07:00:00,Endpoint02,Malware Detected,206
+2025-01-09 08:00:00,Firewall02,Malware Detected,276
+2025-01-09 09:00:00,Endpoint01,Policy Violation,466
+2025-01-09 10:00:00,Firewall01,File Copied,256
+2025-01-09 11:00:00,Firewall01,Login,266
+2025-01-09 12:00:00,Endpoint02,File Copied,25
+2025-01-09 13:00:00,Endpoint01,Port Scan,450
+2025-01-09 14:00:00,Server01,Policy Violation,281
+2025-01-09 15:00:00,Endpoint01,File Copied,253
+2025-01-09 16:00:00,Endpoint02,Malware Detected,310
+2025-01-09 17:00:00,Endpoint02,Port Scan,289
+2025-01-09 18:00:00,Endpoint01,Port Scan,164
+2025-01-09 19:00:00,Endpoint02,File Copied,95
+2025-01-09 20:00:00,Endpoint01,File Copied,270
+2025-01-09 21:00:00,Firewall02,Policy Violation,321
+2025-01-09 22:00:00,Endpoint01,Login,110
+2025-01-09 23:00:00,Endpoint01,File Copied,336
+2025-01-10 00:00:00,Endpoint02,File Copied,310
+2025-01-10 01:00:00,Endpoint02,Malware Detected,238
+2025-01-10 02:00:00,Firewall01,Port Scan,381
+2025-01-10 03:00:00,Firewall01,Login,436
+2025-01-10 04:00:00,Firewall02,Malware Detected,387
+2025-01-10 05:00:00,Firewall01,Policy Violation,483
+2025-01-10 06:00:00,Endpoint01,Policy Violation,425
+2025-01-10 07:00:00,Endpoint02,File Copied,390
+2025-01-10 08:00:00,Firewall01,File Copied,25
+2025-01-10 09:00:00,Firewall01,Policy Violation,141
+2025-01-10 10:00:00,Firewall02,File Copied,117
+2025-01-10 11:00:00,Firewall02,Login,482
+2025-01-10 12:00:00,Endpoint01,File Copied,392
+2025-01-10 13:00:00,Endpoint02,Port Scan,405
+2025-01-10 14:00:00,Firewall02,File Copied,482
+2025-01-10 15:00:00,Firewall01,Malware Detected,452
+2025-01-10 16:00:00,Endpoint02,Login,25
+2025-01-10 17:00:00,Endpoint02,Malware Detected,79
+2025-01-10 18:00:00,Firewall01,Malware Detected,68
+2025-01-10 19:00:00,Firewall02,Port Scan,173
+2025-01-10 20:00:00,Firewall01,Login,444
+2025-01-10 21:00:00,Endpoint02,Login,12
+2025-01-10 22:00:00,Server01,Login,288
+2025-01-10 23:00:00,Server01,Login,128
+2025-01-11 00:00:00,Endpoint01,Login,96
+2025-01-11 01:00:00,Firewall01,Port Scan,92
+2025-01-11 02:00:00,Firewall01,File Copied,141
+2025-01-11 03:00:00,Endpoint01,Malware Detected,31
+2025-01-11 04:00:00,Endpoint01,Login,334
+2025-01-11 05:00:00,Endpoint01,File Copied,20
+2025-01-11 06:00:00,Endpoint02,File Copied,146
+2025-01-11 07:00:00,Firewall01,Malware Detected,477
+2025-01-11 08:00:00,Endpoint02,Port Scan,316
+2025-01-11 09:00:00,Endpoint01,Policy Violation,447
+2025-01-11 10:00:00,Firewall01,Policy Violation,390
+2025-01-11 11:00:00,Endpoint02,File Copied,160
+2025-01-11 12:00:00,Endpoint02,Malware Detected,349
+2025-01-11 13:00:00,Endpoint01,Policy Violation,43
+2025-01-11 14:00:00,Firewall01,File Copied,254
+2025-01-11 15:00:00,Endpoint01,Port Scan,130
+2025-01-11 16:00:00,Firewall01,Policy Violation,60
+2025-01-11 17:00:00,Server01,File Copied,151
+2025-01-11 18:00:00,Firewall02,File Copied,467
+2025-01-11 19:00:00,Firewall02,Login,287
+2025-01-11 20:00:00,Firewall02,Port Scan,499
+2025-01-11 21:00:00,Endpoint01,Login,5
+2025-01-11 22:00:00,Server01,Malware Detected,467
+2025-01-11 23:00:00,Firewall01,Login,418
+2025-01-12 00:00:00,Endpoint02,Login,266
+2025-01-12 01:00:00,Firewall01,Policy Violation,345
+2025-01-12 02:00:00,Endpoint02,File Copied,130
+2025-01-12 03:00:00,Firewall01,Port Scan,382
+2025-01-12 04:00:00,Server01,Login,267
+2025-01-12 05:00:00,Endpoint02,Port Scan,178
+2025-01-12 06:00:00,Endpoint01,Login,253
+2025-01-12 07:00:00,Firewall01,Malware Detected,415
+2025-01-12 08:00:00,Firewall01,Login,56
+2025-01-12 09:00:00,Endpoint02,Policy Violation,463
+2025-01-12 10:00:00,Endpoint01,File Copied,457
+2025-01-12 11:00:00,Endpoint01,Malware Detected,471
+2025-01-12 12:00:00,Server01,Login,83
+2025-01-12 13:00:00,Endpoint01,Port Scan,393
+2025-01-12 14:00:00,Endpoint01,Malware Detected,99
+2025-01-12 15:00:00,Endpoint01,Malware Detected,149
+2025-01-12 16:00:00,Firewall02,Login,329
+2025-01-12 17:00:00,Server01,Malware Detected,156
+2025-01-12 18:00:00,Firewall01,Port Scan,190
+2025-01-12 19:00:00,Endpoint02,Malware Detected,494
+2025-01-12 20:00:00,Firewall01,Port Scan,371
+2025-01-12 21:00:00,Server01,Login,263
+2025-01-12 22:00:00,Endpoint02,File Copied,80
+2025-01-12 23:00:00,Server01,Malware Detected,400
+2025-01-13 00:00:00,Endpoint01,File Copied,252
+2025-01-13 01:00:00,Endpoint02,Port Scan,97
+2025-01-13 02:00:00,Endpoint01,Malware Detected,260
+2025-01-13 03:00:00,Firewall01,Policy Violation,260
+2025-01-13 04:00:00,Firewall01,File Copied,103
+2025-01-13 05:00:00,Endpoint02,Malware Detected,40
+2025-01-13 06:00:00,Endpoint02,File Copied,273
+2025-01-13 07:00:00,Server01,Malware Detected,101
+2025-01-13 08:00:00,Server01,Login,359
+2025-01-13 09:00:00,Endpoint01,File Copied,380
+2025-01-13 10:00:00,Endpoint02,Policy Violation,308
+2025-01-13 11:00:00,Firewall01,Policy Violation,221
+2025-01-13 12:00:00,Server01,Port Scan,308
+2025-01-13 13:00:00,Server01,Malware Detected,420
+2025-01-13 14:00:00,Firewall01,File Copied,124
+2025-01-13 15:00:00,Server01,Port Scan,422
+2025-01-13 16:00:00,Endpoint01,File Copied,231
+2025-01-13 17:00:00,Endpoint02,Malware Detected,178
+2025-01-13 18:00:00,Firewall01,Policy Violation,63
+2025-01-13 19:00:00,Endpoint02,Login,485
+2025-01-13 20:00:00,Server01,Policy Violation,116
+2025-01-13 21:00:00,Server01,Port Scan,191
+2025-01-13 22:00:00,Firewall01,Login,62
+2025-01-13 23:00:00,Endpoint01,Port Scan,256
+2025-01-14 00:00:00,Firewall02,Malware Detected,483
+2025-01-14 01:00:00,Firewall01,Login,7
+2025-01-14 02:00:00,Firewall02,Port Scan,155
+2025-01-14 03:00:00,Firewall02,Malware Detected,92
+2025-01-14 04:00:00,Endpoint01,Policy Violation,470
+2025-01-14 05:00:00,Firewall02,Malware Detected,14
+2025-01-14 06:00:00,Firewall02,File Copied,455
+2025-01-14 07:00:00,Endpoint01,Malware Detected,229
+2025-01-14 08:00:00,Firewall02,Malware Detected,86
+2025-01-14 09:00:00,Firewall02,File Copied,133
+2025-01-14 10:00:00,Firewall02,Port Scan,183
+2025-01-14 11:00:00,Firewall01,Port Scan,386
+2025-01-14 12:00:00,Firewall01,Malware Detected,62
+2025-01-14 13:00:00,Firewall01,File Copied,219
+2025-01-14 14:00:00,Endpoint01,File Copied,405
+2025-01-14 15:00:00,Server01,Policy Violation,246
+2025-01-14 16:00:00,Firewall02,Port Scan,230
+2025-01-14 17:00:00,Firewall02,Login,79
+2025-01-14 18:00:00,Endpoint01,Port Scan,149
+2025-01-14 19:00:00,Firewall02,Port Scan,138
+2025-01-14 20:00:00,Firewall01,Policy Violation,471
+2025-01-14 21:00:00,Server01,Login,314
+2025-01-14 22:00:00,Endpoint02,Policy Violation,376
+2025-01-14 23:00:00,Firewall02,Login,423
+2025-01-15 00:00:00,Firewall01,Malware Detected,389
+2025-01-15 01:00:00,Endpoint02,Login,65
+2025-01-15 02:00:00,Server01,Policy Violation,13
+2025-01-15 03:00:00,Endpoint02,Port Scan,213
+2025-01-15 04:00:00,Firewall01,Login,474
+2025-01-15 05:00:00,Endpoint02,Login,242
+2025-01-15 06:00:00,Endpoint01,File Copied,493
+2025-01-15 07:00:00,Endpoint02,Port Scan,213
+2025-01-15 08:00:00,Firewall02,Malware Detected,181
+2025-01-15 09:00:00,Firewall02,Policy Violation,338
+2025-01-15 10:00:00,Endpoint01,Malware Detected,485
+2025-01-15 11:00:00,Firewall01,Port Scan,173
+2025-01-15 12:00:00,Firewall02,Login,160
+2025-01-15 13:00:00,Server01,Login,164
+2025-01-15 14:00:00,Firewall02,Port Scan,465
+2025-01-15 15:00:00,Firewall02,Login,483
+2025-01-15 16:00:00,Firewall01,Login,497
+2025-01-15 17:00:00,Endpoint02,Login,188
+2025-01-15 18:00:00,Firewall02,Policy Violation,395
+2025-01-15 19:00:00,Endpoint01,Policy Violation,191
+2025-01-15 20:00:00,Endpoint02,File Copied,405
+2025-01-15 21:00:00,Server01,Malware Detected,308
+2025-01-15 22:00:00,Firewall01,Port Scan,256
+2025-01-15 23:00:00,Server01,Port Scan,183
+2025-01-16 00:00:00,Endpoint02,Port Scan,117
+2025-01-16 01:00:00,Endpoint02,File Copied,282
+2025-01-16 02:00:00,Endpoint02,Policy Violation,196
+2025-01-16 03:00:00,Server01,File Copied,34
+2025-01-16 04:00:00,Endpoint02,Port Scan,52
+2025-01-16 05:00:00,Server01,Malware Detected,112
+2025-01-16 06:00:00,Endpoint02,Login,252
+2025-01-16 07:00:00,Endpoint01,Policy Violation,82
+2025-01-16 08:00:00,Endpoint02,Policy Violation,232
+2025-01-16 09:00:00,Server01,File Copied,227
+2025-01-16 10:00:00,Firewall02,Policy Violation,233
+2025-01-16 11:00:00,Endpoint02,Port Scan,221
+2025-01-16 12:00:00,Firewall02,Port Scan,436
+2025-01-16 13:00:00,Endpoint01,File Copied,413
+2025-01-16 14:00:00,Firewall01,Port Scan,422
+2025-01-16 15:00:00,Endpoint01,Malware Detected,42
+2025-01-16 16:00:00,Endpoint02,File Copied,21
+2025-01-16 17:00:00,Firewall02,Malware Detected,42
+2025-01-16 18:00:00,Firewall02,Login,397
+2025-01-16 19:00:00,Server01,Malware Detected,113
+2025-01-16 20:00:00,Firewall02,Login,105
+2025-01-16 21:00:00,Server01,Login,192
+2025-01-16 22:00:00,Firewall01,Malware Detected,17
+2025-01-16 23:00:00,Endpoint02,File Copied,120
+2025-01-17 00:00:00,Server01,Port Scan,393
+2025-01-17 01:00:00,Firewall01,Port Scan,425
+2025-01-17 02:00:00,Firewall02,Login,129
+2025-01-17 03:00:00,Firewall02,Login,130
+2025-01-17 04:00:00,Firewall01,File Copied,60
+2025-01-17 05:00:00,Firewall02,Policy Violation,48
+2025-01-17 06:00:00,Firewall01,Malware Detected,29
+2025-01-17 07:00:00,Server01,Login,97
+2025-01-17 08:00:00,Server01,Port Scan,10
+2025-01-17 09:00:00,Firewall01,File Copied,242
+2025-01-17 10:00:00,Server01,Malware Detected,314
+2025-01-17 11:00:00,Server01,File Copied,444
+2025-01-17 12:00:00,Server01,Malware Detected,232
+2025-01-17 13:00:00,Endpoint01,Malware Detected,277
+2025-01-17 14:00:00,Endpoint02,Login,284
+2025-01-17 15:00:00,Firewall02,File Copied,203
+2025-01-17 16:00:00,Endpoint01,File Copied,247
+2025-01-17 17:00:00,Server01,Port Scan,290
+2025-01-17 18:00:00,Firewall01,Port Scan,264
+2025-01-17 19:00:00,Server01,Login,443
+2025-01-17 20:00:00,Endpoint02,Login,214
+2025-01-17 21:00:00,Server01,Policy Violation,200
+2025-01-17 22:00:00,Firewall01,Port Scan,433
+2025-01-17 23:00:00,Endpoint02,Malware Detected,79
+2025-01-18 00:00:00,Server01,File Copied,401
+2025-01-18 01:00:00,Endpoint02,Login,444
+2025-01-18 02:00:00,Firewall02,File Copied,343
+2025-01-18 03:00:00,Firewall02,File Copied,344
+2025-01-18 04:00:00,Server01,Policy Violation,173
+2025-01-18 05:00:00,Endpoint02,Port Scan,467
+2025-01-18 06:00:00,Firewall01,Login,69
+2025-01-18 07:00:00,Server01,File Copied,416
+2025-01-18 08:00:00,Firewall02,Login,428
+2025-01-18 09:00:00,Firewall02,Malware Detected,449
+2025-01-18 10:00:00,Server01,Policy Violation,87
+2025-01-18 11:00:00,Endpoint02,Malware Detected,101
+2025-01-18 12:00:00,Firewall02,Login,8
+2025-01-18 13:00:00,Endpoint02,Login,333
+2025-01-18 14:00:00,Firewall02,Port Scan,200
+2025-01-18 15:00:00,Firewall02,File Copied,87
+2025-01-18 16:00:00,Endpoint01,File Copied,43
+2025-01-18 17:00:00,Firewall02,Malware Detected,385
+2025-01-18 18:00:00,Firewall01,Policy Violation,109
+2025-01-18 19:00:00,Server01,File Copied,435
+2025-01-18 20:00:00,Server01,Port Scan,408
+2025-01-18 21:00:00,Endpoint02,Malware Detected,483
+2025-01-18 22:00:00,Firewall02,Malware Detected,152
+2025-01-18 23:00:00,Firewall01,Port Scan,17
+2025-01-19 00:00:00,Endpoint02,Policy Violation,133
+2025-01-19 01:00:00,Endpoint01,Port Scan,148
+2025-01-19 02:00:00,Endpoint02,Policy Violation,277
+2025-01-19 03:00:00,Endpoint02,Port Scan,232
+2025-01-19 04:00:00,Firewall02,Port Scan,314
+2025-01-19 05:00:00,Endpoint01,Login,415
+2025-01-19 06:00:00,Endpoint02,Malware Detected,366
+2025-01-19 07:00:00,Firewall01,Port Scan,228
+2025-01-19 08:00:00,Firewall01,Port Scan,139
+2025-01-19 09:00:00,Server01,File Copied,436
+2025-01-19 10:00:00,Endpoint01,Malware Detected,399
+2025-01-19 11:00:00,Endpoint01,File Copied,211
+2025-01-19 12:00:00,Server01,Malware Detected,391
+2025-01-19 13:00:00,Endpoint02,File Copied,499
+2025-01-19 14:00:00,Endpoint01,Port Scan,28
+2025-01-19 15:00:00,Firewall01,Port Scan,51
+2025-01-19 16:00:00,Firewall01,Login,491
+2025-01-19 17:00:00,Firewall02,File Copied,442
+2025-01-19 18:00:00,Endpoint01,Policy Violation,261
+2025-01-19 19:00:00,Endpoint02,Login,261
+2025-01-19 20:00:00,Server01,File Copied,350
+2025-01-19 21:00:00,Server01,File Copied,352
+2025-01-19 22:00:00,Endpoint02,Login,8
+2025-01-19 23:00:00,Firewall02,Port Scan,320
+2025-01-20 00:00:00,Server01,File Copied,138
+2025-01-20 01:00:00,Endpoint01,Port Scan,38
+2025-01-20 02:00:00,Firewall02,Login,111
+2025-01-20 03:00:00,Endpoint01,Port Scan,480
+2025-01-20 04:00:00,Firewall01,Malware Detected,368
+2025-01-20 05:00:00,Firewall02,Policy Violation,220
+2025-01-20 06:00:00,Server01,File Copied,337
+2025-01-20 07:00:00,Firewall02,Policy Violation,223
+2025-01-20 08:00:00,Firewall02,Port Scan,136
+2025-01-20 09:00:00,Firewall02,File Copied,256
+2025-01-20 10:00:00,Firewall02,Port Scan,360
+2025-01-20 11:00:00,Endpoint01,Malware Detected,409
+2025-01-20 12:00:00,Firewall01,Login,329
+2025-01-20 13:00:00,Endpoint02,File Copied,450
+2025-01-20 14:00:00,Firewall02,Malware Detected,463
+2025-01-20 15:00:00,Server01,Malware Detected,434
+2025-01-20 16:00:00,Firewall02,File Copied,451
+2025-01-20 17:00:00,Server01,Port Scan,49
+2025-01-20 18:00:00,Endpoint01,Malware Detected,292
+2025-01-20 19:00:00,Server01,Policy Violation,382
+2025-01-20 20:00:00,Endpoint02,Malware Detected,324
+2025-01-20 21:00:00,Firewall01,Port Scan,78
+2025-01-20 22:00:00,Server01,Port Scan,105
+2025-01-20 23:00:00,Server01,Policy Violation,169
+2025-01-21 00:00:00,Firewall01,Malware Detected,217
+2025-01-21 01:00:00,Endpoint02,Port Scan,378
+2025-01-21 02:00:00,Firewall02,File Copied,119
+2025-01-21 03:00:00,Server01,Login,190
+2025-01-21 04:00:00,Firewall01,Login,255
+2025-01-21 05:00:00,Endpoint01,Login,370
+2025-01-21 06:00:00,Firewall01,Malware Detected,266
+2025-01-21 07:00:00,Endpoint01,Policy Violation,149
+2025-01-21 08:00:00,Endpoint02,Port Scan,164
+2025-01-21 09:00:00,Firewall02,File Copied,140
+2025-01-21 10:00:00,Firewall01,File Copied,347
+2025-01-21 11:00:00,Server01,Malware Detected,488
+2025-01-21 12:00:00,Endpoint02,Login,258
+2025-01-21 13:00:00,Firewall01,Malware Detected,374
+2025-01-21 14:00:00,Server01,Policy Violation,269
+2025-01-21 15:00:00,Firewall01,Policy Violation,181
+2025-01-21 16:00:00,Endpoint01,Port Scan,160
+2025-01-21 17:00:00,Firewall01,Port Scan,351
+2025-01-21 18:00:00,Firewall01,Policy Violation,400
+2025-01-21 19:00:00,Firewall01,Policy Violation,288
+2025-01-21 20:00:00,Endpoint02,Policy Violation,288
+2025-01-21 21:00:00,Firewall01,Malware Detected,380
+2025-01-21 22:00:00,Server01,Policy Violation,226
+2025-01-21 23:00:00,Endpoint01,File Copied,11
+2025-01-22 00:00:00,Endpoint01,Login,10
+2025-01-22 01:00:00,Firewall01,Policy Violation,271
+2025-01-22 02:00:00,Endpoint02,Login,273
+2025-01-22 03:00:00,Endpoint02,Malware Detected,424
+2025-01-22 04:00:00,Server01,Login,402
+2025-01-22 05:00:00,Firewall01,Malware Detected,183
+2025-01-22 06:00:00,Endpoint01,File Copied,457
+2025-01-22 07:00:00,Endpoint02,Malware Detected,153
+2025-01-22 08:00:00,Firewall01,Malware Detected,488
+2025-01-22 09:00:00,Endpoint02,Port Scan,315
+2025-01-22 10:00:00,Endpoint02,Policy Violation,334
+2025-01-22 11:00:00,Endpoint01,Policy Violation,124
+2025-01-22 12:00:00,Firewall02,File Copied,473
+2025-01-22 13:00:00,Server01,File Copied,114
+2025-01-22 14:00:00,Server01,Policy Violation,278
+2025-01-22 15:00:00,Endpoint01,Port Scan,414
+2025-01-22 16:00:00,Endpoint02,Policy Violation,468
+2025-01-22 17:00:00,Firewall01,Port Scan,213
+2025-01-22 18:00:00,Endpoint02,File Copied,172
+2025-01-22 19:00:00,Endpoint01,Login,288
+2025-01-22 20:00:00,Server01,File Copied,435
+2025-01-22 21:00:00,Endpoint02,File Copied,174
+2025-01-22 22:00:00,Server01,Malware Detected,113
+2025-01-22 23:00:00,Firewall01,Malware Detected,376
+2025-01-23 00:00:00,Server01,Malware Detected,405
+2025-01-23 01:00:00,Server01,Malware Detected,483
+2025-01-23 02:00:00,Firewall02,Port Scan,122
+2025-01-23 03:00:00,Firewall02,Policy Violation,32
+2025-01-23 04:00:00,Firewall02,Login,222
+2025-01-23 05:00:00,Server01,File Copied,119
+2025-01-23 06:00:00,Endpoint01,Port Scan,39
+2025-01-23 07:00:00,Server01,Login,497
+2025-01-23 08:00:00,Endpoint01,Port Scan,268
+2025-01-23 09:00:00,Endpoint01,Port Scan,233
+2025-01-23 10:00:00,Firewall02,File Copied,431
+2025-01-23 11:00:00,Endpoint02,Policy Violation,18
+2025-01-23 12:00:00,Firewall01,Malware Detected,149
+2025-01-23 13:00:00,Firewall02,Policy Violation,397
+2025-01-23 14:00:00,Firewall02,File Copied,149
+2025-01-23 15:00:00,Endpoint02,File Copied,126
+2025-01-23 16:00:00,Firewall01,File Copied,392
+2025-01-23 17:00:00,Server01,Login,302
+2025-01-23 18:00:00,Server01,Policy Violation,360
+2025-01-23 19:00:00,Firewall02,Policy Violation,238
+2025-01-23 20:00:00,Firewall01,Port Scan,135
+2025-01-23 21:00:00,Firewall02,Port Scan,151
+2025-01-23 22:00:00,Endpoint01,Port Scan,236
+2025-01-23 23:00:00,Firewall02,File Copied,224
+2025-01-24 00:00:00,Firewall02,Policy Violation,203
+2025-01-24 01:00:00,Server01,File Copied,256
+2025-01-24 02:00:00,Server01,Login,86
+2025-01-24 03:00:00,Server01,Port Scan,150
+2025-01-24 04:00:00,Endpoint01,File Copied,235
+2025-01-24 05:00:00,Server01,File Copied,345
+2025-01-24 06:00:00,Firewall01,Login,22
+2025-01-24 07:00:00,Endpoint02,Malware Detected,348
+2025-01-24 08:00:00,Firewall01,Policy Violation,285
+2025-01-24 09:00:00,Firewall01,Malware Detected,269
+2025-01-24 10:00:00,Server01,Port Scan,466
+2025-01-24 11:00:00,Endpoint02,File Copied,258
+2025-01-24 12:00:00,Endpoint02,Login,29
+2025-01-24 13:00:00,Endpoint02,Login,213
+2025-01-24 14:00:00,Endpoint01,Policy Violation,463
+2025-01-24 15:00:00,Server01,Malware Detected,436
+2025-01-24 16:00:00,Endpoint02,Policy Violation,283
+2025-01-24 17:00:00,Endpoint01,File Copied,50
+2025-01-24 18:00:00,Firewall02,Policy Violation,95
+2025-01-24 19:00:00,Firewall02,Login,463
+2025-01-24 20:00:00,Endpoint01,Login,499
+2025-01-24 21:00:00,Endpoint01,Port Scan,407
+2025-01-24 22:00:00,Server01,Port Scan,88
+2025-01-24 23:00:00,Server01,File Copied,44
+2025-01-25 00:00:00,Firewall02,Malware Detected,461
+2025-01-25 01:00:00,Endpoint02,Policy Violation,278
+2025-01-25 02:00:00,Firewall02,File Copied,171
+2025-01-25 03:00:00,Endpoint02,Port Scan,421
+2025-01-25 04:00:00,Endpoint02,Policy Violation,189
+2025-01-25 05:00:00,Server01,Port Scan,353
+2025-01-25 06:00:00,Firewall01,Policy Violation,184
+2025-01-25 07:00:00,Firewall01,Malware Detected,3
+2025-01-25 08:00:00,Endpoint01,File Copied,191
+2025-01-25 09:00:00,Server01,Policy Violation,118
+2025-01-25 10:00:00,Endpoint02,Login,19
+2025-01-25 11:00:00,Firewall01,Login,23
+2025-01-25 12:00:00,Endpoint02,Policy Violation,413
+2025-01-25 13:00:00,Firewall01,Policy Violation,30
+2025-01-25 14:00:00,Firewall01,Policy Violation,295
+2025-01-25 15:00:00,Firewall01,Login,108
+2025-01-25 16:00:00,Server01,Login,367
+2025-01-25 17:00:00,Firewall02,Policy Violation,281
+2025-01-25 18:00:00,Endpoint02,Port Scan,128
+2025-01-25 19:00:00,Server01,Port Scan,229
+2025-01-25 20:00:00,Server01,Malware Detected,111
+2025-01-25 21:00:00,Server01,File Copied,136
+2025-01-25 22:00:00,Server01,Port Scan,362
+2025-01-25 23:00:00,Server01,Login,186
+2025-01-26 00:00:00,Endpoint01,Port Scan,144
+2025-01-26 01:00:00,Endpoint02,Malware Detected,72
+2025-01-26 02:00:00,Server01,Malware Detected,129
+2025-01-26 03:00:00,Endpoint02,File Copied,364
+2025-01-26 04:00:00,Endpoint01,Port Scan,261
+2025-01-26 05:00:00,Endpoint01,Login,3
+2025-01-26 06:00:00,Endpoint02,Login,449
+2025-01-26 07:00:00,Firewall01,Policy Violation,388
+2025-01-26 08:00:00,Firewall02,Login,104
+2025-01-26 09:00:00,Firewall01,File Copied,483
+2025-01-26 10:00:00,Firewall01,File Copied,224
+2025-01-26 11:00:00,Firewall01,Login,320
+2025-01-26 12:00:00,Server01,Login,362
+2025-01-26 13:00:00,Endpoint01,Policy Violation,354
+2025-01-26 14:00:00,Firewall01,Login,491
+2025-01-26 15:00:00,Endpoint01,Policy Violation,473
+2025-01-26 16:00:00,Endpoint02,Policy Violation,10
+2025-01-26 17:00:00,Firewall02,Login,405
+2025-01-26 18:00:00,Endpoint02,Malware Detected,384
+2025-01-26 19:00:00,Endpoint02,Malware Detected,302
+2025-01-26 20:00:00,Server01,Policy Violation,231
+2025-01-26 21:00:00,Firewall02,Login,219
+2025-01-26 22:00:00,Endpoint02,Malware Detected,411
+2025-01-26 23:00:00,Endpoint02,Login,66
+2025-01-27 00:00:00,Firewall02,Login,425
+2025-01-27 01:00:00,Firewall02,Login,112
+2025-01-27 02:00:00,Endpoint02,Port Scan,13
+2025-01-27 03:00:00,Firewall02,Login,393
+2025-01-27 04:00:00,Endpoint02,Port Scan,420
+2025-01-27 05:00:00,Endpoint02,Policy Violation,86
+2025-01-27 06:00:00,Server01,Malware Detected,234
+2025-01-27 07:00:00,Firewall01,Malware Detected,90
+2025-01-27 08:00:00,Endpoint02,Malware Detected,314
+2025-01-27 09:00:00,Endpoint01,Malware Detected,54
+2025-01-27 10:00:00,Firewall01,Malware Detected,12
+2025-01-27 11:00:00,Firewall01,Malware Detected,209
+2025-01-27 12:00:00,Firewall01,Malware Detected,462
+2025-01-27 13:00:00,Server01,Policy Violation,14
+2025-01-27 14:00:00,Endpoint02,Login,121
+2025-01-27 15:00:00,Server01,File Copied,418
+2025-01-27 16:00:00,Endpoint02,Port Scan,437
+2025-01-27 17:00:00,Server01,File Copied,377
+2025-01-27 18:00:00,Server01,File Copied,20
+2025-01-27 19:00:00,Endpoint01,Login,75
+2025-01-27 20:00:00,Server01,Login,400
+2025-01-27 21:00:00,Firewall02,Login,243
+2025-01-27 22:00:00,Endpoint01,Malware Detected,223
+2025-01-27 23:00:00,Server01,Policy Violation,70
+2025-01-28 00:00:00,Firewall01,Malware Detected,312
+2025-01-28 01:00:00,Firewall02,Policy Violation,211
+2025-01-28 02:00:00,Firewall02,Policy Violation,101
+2025-01-28 03:00:00,Firewall02,File Copied,186
+2025-01-28 04:00:00,Endpoint01,File Copied,132
+2025-01-28 05:00:00,Server01,Policy Violation,111
+2025-01-28 06:00:00,Server01,Policy Violation,381
+2025-01-28 07:00:00,Firewall01,Malware Detected,132
+2025-01-28 08:00:00,Firewall01,Malware Detected,20
+2025-01-28 09:00:00,Firewall02,File Copied,394
+2025-01-28 10:00:00,Firewall01,Login,24
+2025-01-28 11:00:00,Endpoint01,Policy Violation,227
+2025-01-28 12:00:00,Server01,Malware Detected,154
+2025-01-28 13:00:00,Firewall02,File Copied,293
+2025-01-28 14:00:00,Firewall01,Malware Detected,230
+2025-01-28 15:00:00,Endpoint01,Policy Violation,469
+2025-01-28 16:00:00,Endpoint01,Policy Violation,310
+2025-01-28 17:00:00,Firewall01,Port Scan,488
+2025-01-28 18:00:00,Server01,Login,359
+2025-01-28 19:00:00,Firewall01,Port Scan,405
+2025-01-28 20:00:00,Firewall02,File Copied,202
+2025-01-28 21:00:00,Firewall01,Malware Detected,38
+2025-01-28 22:00:00,Endpoint01,File Copied,430
+2025-01-28 23:00:00,Firewall01,Policy Violation,260
+2025-01-29 00:00:00,Server01,Port Scan,188
+2025-01-29 01:00:00,Endpoint02,Port Scan,57
+2025-01-29 02:00:00,Firewall01,Port Scan,429
+2025-01-29 03:00:00,Server01,File Copied,20
+2025-01-29 04:00:00,Server01,Policy Violation,273
+2025-01-29 05:00:00,Endpoint01,Malware Detected,119
+2025-01-29 06:00:00,Server01,Malware Detected,71
+2025-01-29 07:00:00,Server01,File Copied,4
+2025-01-29 08:00:00,Server01,Port Scan,221
+2025-01-29 09:00:00,Server01,Login,14
+2025-01-29 10:00:00,Firewall02,File Copied,3
+2025-01-29 11:00:00,Firewall02,File Copied,216
+2025-01-29 12:00:00,Endpoint01,Policy Violation,229
+2025-01-29 13:00:00,Firewall01,Malware Detected,336
+2025-01-29 14:00:00,Server01,File Copied,186
+2025-01-29 15:00:00,Firewall01,File Copied,55
+2025-01-29 16:00:00,Firewall01,Port Scan,388
+2025-01-29 17:00:00,Endpoint01,Port Scan,376
+2025-01-29 18:00:00,Server01,Login,254
+2025-01-29 19:00:00,Server01,Policy Violation,24
+2025-01-29 20:00:00,Endpoint02,Login,162
+2025-01-29 21:00:00,Firewall01,Port Scan,158
+2025-01-29 22:00:00,Firewall01,Malware Detected,82
+2025-01-29 23:00:00,Firewall02,Port Scan,403
+2025-01-30 00:00:00,Endpoint02,Policy Violation,159
+2025-01-30 01:00:00,Firewall02,Port Scan,188
+2025-01-30 02:00:00,Firewall02,Policy Violation,60
+2025-01-30 03:00:00,Firewall02,Policy Violation,403
+2025-01-30 04:00:00,Endpoint01,Policy Violation,305
+2025-01-30 05:00:00,Endpoint01,Policy Violation,319
+2025-01-30 06:00:00,Firewall02,Policy Violation,366
+2025-01-30 07:00:00,Endpoint02,Malware Detected,211
+2025-01-30 08:00:00,Firewall01,Login,406
+2025-01-30 09:00:00,Endpoint02,File Copied,152
+2025-01-30 10:00:00,Server01,Login,109
+2025-01-30 11:00:00,Endpoint01,Policy Violation,76
+2025-01-30 12:00:00,Firewall01,Malware Detected,30
+2025-01-30 13:00:00,Firewall01,Port Scan,314
+2025-01-30 14:00:00,Server01,Malware Detected,486
+2025-01-30 15:00:00,Server01,Policy Violation,117
+2025-01-30 16:00:00,Firewall02,Malware Detected,415
+2025-01-30 17:00:00,Endpoint01,Malware Detected,356
+2025-01-30 18:00:00,Endpoint01,Policy Violation,192
+2025-01-30 19:00:00,Endpoint02,Malware Detected,19
+2025-01-30 20:00:00,Firewall02,File Copied,432
+2025-01-30 21:00:00,Firewall02,File Copied,173
+2025-01-30 22:00:00,Firewall02,Malware Detected,228
+2025-01-30 23:00:00,Firewall02,Port Scan,350
+2025-01-31 00:00:00,Endpoint01,Policy Violation,183
+2025-01-31 01:00:00,Endpoint01,File Copied,113
+2025-01-31 02:00:00,Firewall02,Port Scan,183
+2025-01-31 03:00:00,Endpoint02,Malware Detected,481
+2025-01-31 04:00:00,Firewall01,Port Scan,146
+2025-01-31 05:00:00,Firewall01,Login,319
+2025-01-31 06:00:00,Endpoint02,File Copied,116
+2025-01-31 07:00:00,Firewall02,Malware Detected,113
+2025-01-31 08:00:00,Endpoint01,Policy Violation,251
+2025-01-31 09:00:00,Firewall01,Malware Detected,476
+2025-01-31 10:00:00,Server01,Policy Violation,251
+2025-01-31 11:00:00,Server01,Malware Detected,303
+2025-01-31 12:00:00,Endpoint02,Port Scan,459
+2025-01-31 13:00:00,Firewall02,Port Scan,313
+2025-01-31 14:00:00,Firewall01,Port Scan,118
+2025-01-31 15:00:00,Firewall02,Login,301
+2025-01-31 16:00:00,Firewall01,Policy Violation,161
+2025-01-31 17:00:00,Endpoint02,Port Scan,401
+2025-01-31 18:00:00,Endpoint02,Login,198
+2025-01-31 19:00:00,Server01,Policy Violation,260
+2025-01-31 20:00:00,Firewall02,Malware Detected,148
+2025-01-31 21:00:00,Server01,Login,240
+2025-01-31 22:00:00,Firewall02,File Copied,47
+2025-01-31 23:00:00,Server01,Login,475
+2025-02-01 00:00:00,Endpoint01,Login,399
+2025-02-01 01:00:00,Endpoint01,Policy Violation,198
+2025-02-01 02:00:00,Endpoint01,Malware Detected,47
+2025-02-01 03:00:00,Endpoint01,File Copied,78
+2025-02-01 04:00:00,Firewall01,Port Scan,124
+2025-02-01 05:00:00,Endpoint01,Port Scan,75
+2025-02-01 06:00:00,Endpoint02,Login,359
+2025-02-01 07:00:00,Endpoint02,Policy Violation,137
+2025-02-01 08:00:00,Firewall01,Policy Violation,90
+2025-02-01 09:00:00,Endpoint01,Port Scan,400
+2025-02-01 10:00:00,Endpoint01,File Copied,325
+2025-02-01 11:00:00,Endpoint01,Malware Detected,61
+2025-02-01 12:00:00,Server01,File Copied,138
+2025-02-01 13:00:00,Firewall02,Malware Detected,50
+2025-02-01 14:00:00,Server01,Port Scan,259
+2025-02-01 15:00:00,Firewall02,Malware Detected,461
+2025-02-01 16:00:00,Endpoint01,Policy Violation,107
+2025-02-01 17:00:00,Endpoint01,Login,113
+2025-02-01 18:00:00,Server01,Login,350
+2025-02-01 19:00:00,Server01,Port Scan,254
+2025-02-01 20:00:00,Firewall02,Policy Violation,118
+2025-02-01 21:00:00,Endpoint02,File Copied,493
+2025-02-01 22:00:00,Firewall02,Policy Violation,198
+2025-02-01 23:00:00,Server01,Login,337
+2025-02-02 00:00:00,Server01,Login,365
+2025-02-02 01:00:00,Firewall01,Policy Violation,51
+2025-02-02 02:00:00,Server01,Policy Violation,245
+2025-02-02 03:00:00,Firewall01,Login,403
+2025-02-02 04:00:00,Endpoint02,File Copied,426
+2025-02-02 05:00:00,Firewall02,Port Scan,35
+2025-02-02 06:00:00,Firewall02,Port Scan,302
+2025-02-02 07:00:00,Firewall01,Policy Violation,410
+2025-02-02 08:00:00,Firewall02,Port Scan,499
+2025-02-02 09:00:00,Server01,Login,69
+2025-02-02 10:00:00,Endpoint01,Login,349
+2025-02-02 11:00:00,Firewall01,Policy Violation,320
+2025-02-02 12:00:00,Firewall02,Policy Violation,421
+2025-02-02 13:00:00,Firewall01,Policy Violation,468
+2025-02-02 14:00:00,Firewall01,File Copied,49
+2025-02-02 15:00:00,Endpoint01,Port Scan,405
+2025-02-02 16:00:00,Server01,Policy Violation,74
+2025-02-02 17:00:00,Firewall01,Malware Detected,192
+2025-02-02 18:00:00,Firewall02,Malware Detected,261
+2025-02-02 19:00:00,Endpoint02,Login,356
+2025-02-02 20:00:00,Firewall01,Port Scan,70
+2025-02-02 21:00:00,Firewall01,Policy Violation,90
+2025-02-02 22:00:00,Endpoint01,Malware Detected,260
+2025-02-02 23:00:00,Server01,Port Scan,126
+2025-02-03 00:00:00,Endpoint02,Login,231
+2025-02-03 01:00:00,Firewall02,File Copied,295
+2025-02-03 02:00:00,Endpoint02,Port Scan,498
+2025-02-03 03:00:00,Firewall02,Port Scan,419
+2025-02-03 04:00:00,Server01,File Copied,129
+2025-02-03 05:00:00,Firewall02,Port Scan,280
+2025-02-03 06:00:00,Endpoint01,Login,313
+2025-02-03 07:00:00,Endpoint01,Login,100
+2025-02-03 08:00:00,Endpoint01,File Copied,326
+2025-02-03 09:00:00,Endpoint01,Policy Violation,297
+2025-02-03 10:00:00,Endpoint02,Malware Detected,182
+2025-02-03 11:00:00,Server01,Policy Violation,174
+2025-02-03 12:00:00,Firewall02,Port Scan,316
+2025-02-03 13:00:00,Firewall02,Malware Detected,364
+2025-02-03 14:00:00,Endpoint01,File Copied,188
+2025-02-03 15:00:00,Endpoint01,File Copied,57
+2025-02-03 16:00:00,Firewall01,Malware Detected,31
+2025-02-03 17:00:00,Server01,Login,84
+2025-02-03 18:00:00,Endpoint02,Malware Detected,152
+2025-02-03 19:00:00,Firewall02,Port Scan,473
+2025-02-03 20:00:00,Firewall01,Login,36
+2025-02-03 21:00:00,Firewall01,File Copied,213
+2025-02-03 22:00:00,Firewall02,Malware Detected,414
+2025-02-03 23:00:00,Endpoint02,Policy Violation,408
+2025-02-04 00:00:00,Firewall01,Policy Violation,364
+2025-02-04 01:00:00,Firewall01,Port Scan,106
+2025-02-04 02:00:00,Server01,Policy Violation,414
+2025-02-04 03:00:00,Endpoint02,Malware Detected,342
+2025-02-04 04:00:00,Firewall01,Malware Detected,220
+2025-02-04 05:00:00,Endpoint02,Policy Violation,391
+2025-02-04 06:00:00,Firewall02,Malware Detected,163
+2025-02-04 07:00:00,Endpoint01,Port Scan,439
+2025-02-04 08:00:00,Firewall01,Login,220
+2025-02-04 09:00:00,Server01,Port Scan,270
+2025-02-04 10:00:00,Firewall02,Port Scan,120
+2025-02-04 11:00:00,Endpoint02,Malware Detected,394
+2025-02-04 12:00:00,Firewall02,Login,336
+2025-02-04 13:00:00,Firewall01,Malware Detected,400
+2025-02-04 14:00:00,Endpoint02,File Copied,182
+2025-02-04 15:00:00,Endpoint01,Malware Detected,479
+2025-02-04 16:00:00,Firewall02,Malware Detected,106
+2025-02-04 17:00:00,Firewall01,Malware Detected,217
+2025-02-04 18:00:00,Server01,Login,205
+2025-02-04 19:00:00,Endpoint02,Malware Detected,70
+2025-02-04 20:00:00,Firewall02,Login,44
+2025-02-04 21:00:00,Firewall02,Policy Violation,329
+2025-02-04 22:00:00,Endpoint01,File Copied,301
+2025-02-04 23:00:00,Endpoint01,Login,228
+2025-02-05 00:00:00,Server01,Policy Violation,184
+2025-02-05 01:00:00,Server01,Login,107
+2025-02-05 02:00:00,Firewall01,Login,84
+2025-02-05 03:00:00,Firewall01,File Copied,338
+2025-02-05 04:00:00,Server01,Port Scan,250
+2025-02-05 05:00:00,Server01,Port Scan,363
+2025-02-05 06:00:00,Endpoint02,Login,441
+2025-02-05 07:00:00,Endpoint01,Malware Detected,21
+2025-02-05 08:00:00,Firewall01,Policy Violation,196
+2025-02-05 09:00:00,Endpoint01,Malware Detected,178
+2025-02-05 10:00:00,Endpoint01,Malware Detected,417
+2025-02-05 11:00:00,Server01,Login,475
+2025-02-05 12:00:00,Endpoint02,Login,7
+2025-02-05 13:00:00,Firewall02,Login,70
+2025-02-05 14:00:00,Endpoint02,Login,127
+2025-02-05 15:00:00,Endpoint02,Port Scan,399
+2025-02-05 16:00:00,Endpoint01,Login,466
+2025-02-05 17:00:00,Endpoint02,Port Scan,160
+2025-02-05 18:00:00,Firewall01,Port Scan,248
+2025-02-05 19:00:00,Endpoint01,Login,203
+2025-02-05 20:00:00,Firewall01,File Copied,148
+2025-02-05 21:00:00,Firewall02,Policy Violation,472
+2025-02-05 22:00:00,Endpoint01,Malware Detected,143
+2025-02-05 23:00:00,Firewall02,Port Scan,432
+2025-02-06 00:00:00,Endpoint01,Policy Violation,199
+2025-02-06 01:00:00,Server01,File Copied,405
+2025-02-06 02:00:00,Endpoint02,Malware Detected,426
+2025-02-06 03:00:00,Server01,Malware Detected,154
+2025-02-06 04:00:00,Firewall02,Port Scan,492
+2025-02-06 05:00:00,Endpoint02,Login,376
+2025-02-06 06:00:00,Endpoint01,File Copied,384
+2025-02-06 07:00:00,Endpoint02,Port Scan,142
+2025-02-06 08:00:00,Firewall01,File Copied,313
+2025-02-06 09:00:00,Endpoint02,Login,165
+2025-02-06 10:00:00,Firewall01,Login,314
+2025-02-06 11:00:00,Endpoint02,Port Scan,21
+2025-02-06 12:00:00,Firewall01,Login,82
+2025-02-06 13:00:00,Firewall02,Policy Violation,69
+2025-02-06 14:00:00,Server01,Malware Detected,131
+2025-02-06 15:00:00,Endpoint01,Port Scan,87
+2025-02-06 16:00:00,Endpoint02,File Copied,218
+2025-02-06 17:00:00,Server01,Policy Violation,421
+2025-02-06 18:00:00,Endpoint01,Port Scan,472
+2025-02-06 19:00:00,Endpoint01,Login,305
+2025-02-06 20:00:00,Firewall01,Login,403
+2025-02-06 21:00:00,Firewall02,Login,371
+2025-02-06 22:00:00,Firewall02,Login,345
+2025-02-06 23:00:00,Server01,File Copied,341
+2025-02-07 00:00:00,Firewall02,Policy Violation,384
+2025-02-07 01:00:00,Endpoint02,Malware Detected,396
+2025-02-07 02:00:00,Firewall02,File Copied,445
+2025-02-07 03:00:00,Server01,File Copied,425
+2025-02-07 04:00:00,Firewall02,Malware Detected,161
+2025-02-07 05:00:00,Endpoint02,Malware Detected,178
+2025-02-07 06:00:00,Firewall01,Login,117
+2025-02-07 07:00:00,Server01,File Copied,196
+2025-02-07 08:00:00,Firewall01,Port Scan,383
+2025-02-07 09:00:00,Firewall01,Malware Detected,490
+2025-02-07 10:00:00,Firewall01,Malware Detected,327
+2025-02-07 11:00:00,Endpoint01,Policy Violation,86
+2025-02-07 12:00:00,Endpoint01,Port Scan,289
+2025-02-07 13:00:00,Firewall01,Port Scan,81
+2025-02-07 14:00:00,Server01,Malware Detected,152
+2025-02-07 15:00:00,Endpoint02,Login,61
+2025-02-07 16:00:00,Endpoint02,Policy Violation,61
+2025-02-07 17:00:00,Firewall02,Port Scan,354
+2025-02-07 18:00:00,Server01,Malware Detected,28
+2025-02-07 19:00:00,Endpoint01,Port Scan,442
+2025-02-07 20:00:00,Firewall01,Policy Violation,43
+2025-02-07 21:00:00,Firewall02,Policy Violation,169
+2025-02-07 22:00:00,Endpoint02,File Copied,423
+2025-02-07 23:00:00,Endpoint01,Malware Detected,86
+2025-02-08 00:00:00,Endpoint01,Policy Violation,177
+2025-02-08 01:00:00,Firewall01,File Copied,17
+2025-02-08 02:00:00,Endpoint02,File Copied,98
+2025-02-08 03:00:00,Server01,Port Scan,454
+2025-02-08 04:00:00,Endpoint01,Port Scan,494
+2025-02-08 05:00:00,Firewall01,File Copied,198
+2025-02-08 06:00:00,Server01,Port Scan,98
+2025-02-08 07:00:00,Endpoint02,Policy Violation,65
+2025-02-08 08:00:00,Endpoint01,Login,330
+2025-02-08 09:00:00,Server01,Policy Violation,341
+2025-02-08 10:00:00,Server01,File Copied,5
+2025-02-08 11:00:00,Server01,File Copied,2
+2025-02-08 12:00:00,Endpoint01,Policy Violation,22
+2025-02-08 13:00:00,Endpoint01,Port Scan,112
+2025-02-08 14:00:00,Firewall02,Port Scan,57
+2025-02-08 15:00:00,Endpoint02,File Copied,66
+2025-02-08 16:00:00,Firewall01,Malware Detected,330
+2025-02-08 17:00:00,Server01,Port Scan,98
+2025-02-08 18:00:00,Firewall02,Policy Violation,144
+2025-02-08 19:00:00,Firewall01,Port Scan,368
+2025-02-08 20:00:00,Firewall02,Policy Violation,435
+2025-02-08 21:00:00,Endpoint01,File Copied,125
+2025-02-08 22:00:00,Server01,Port Scan,167
+2025-02-08 23:00:00,Firewall01,Policy Violation,86
+2025-02-09 00:00:00,Firewall01,File Copied,76
+2025-02-09 01:00:00,Firewall01,Malware Detected,344
+2025-02-09 02:00:00,Firewall01,Policy Violation,495
+2025-02-09 03:00:00,Firewall01,Malware Detected,424
+2025-02-09 04:00:00,Firewall02,Malware Detected,294
+2025-02-09 05:00:00,Server01,Login,444
+2025-02-09 06:00:00,Endpoint01,Port Scan,59
+2025-02-09 07:00:00,Endpoint01,Policy Violation,138
+2025-02-09 08:00:00,Endpoint01,Malware Detected,99
+2025-02-09 09:00:00,Endpoint01,Login,192
+2025-02-09 10:00:00,Firewall02,File Copied,243
+2025-02-09 11:00:00,Endpoint02,Policy Violation,319
+2025-02-09 12:00:00,Server01,Malware Detected,49
+2025-02-09 13:00:00,Firewall01,Port Scan,448
+2025-02-09 14:00:00,Endpoint02,Login,32
+2025-02-09 15:00:00,Endpoint01,Malware Detected,391
+2025-02-09 16:00:00,Endpoint02,Port Scan,277
+2025-02-09 17:00:00,Server01,Malware Detected,20
+2025-02-09 18:00:00,Firewall01,Policy Violation,154
+2025-02-09 19:00:00,Firewall01,Policy Violation,383
+2025-02-09 20:00:00,Server01,Policy Violation,68
+2025-02-09 21:00:00,Server01,Login,366
+2025-02-09 22:00:00,Endpoint01,Policy Violation,372
+2025-02-09 23:00:00,Firewall01,Port Scan,214
+2025-02-10 00:00:00,Endpoint02,Malware Detected,143
+2025-02-10 01:00:00,Firewall02,File Copied,376
+2025-02-10 02:00:00,Firewall02,Port Scan,232
+2025-02-10 03:00:00,Server01,Port Scan,213
+2025-02-10 04:00:00,Endpoint01,Policy Violation,79
+2025-02-10 05:00:00,Firewall02,Login,214
+2025-02-10 06:00:00,Firewall01,Malware Detected,116
+2025-02-10 07:00:00,Server01,Login,92
+2025-02-10 08:00:00,Endpoint02,Malware Detected,270
+2025-02-10 09:00:00,Server01,Malware Detected,411
+2025-02-10 10:00:00,Endpoint02,Login,381
+2025-02-10 11:00:00,Server01,Port Scan,489
+2025-02-10 12:00:00,Server01,Malware Detected,168
+2025-02-10 13:00:00,Server01,Login,58
+2025-02-10 14:00:00,Endpoint02,Malware Detected,284
+2025-02-10 15:00:00,Endpoint02,File Copied,26
+2025-02-10 16:00:00,Server01,Port Scan,369
+2025-02-10 17:00:00,Firewall02,Policy Violation,447
+2025-02-10 18:00:00,Endpoint01,Malware Detected,66
+2025-02-10 19:00:00,Endpoint01,File Copied,409
+2025-02-10 20:00:00,Endpoint01,Policy Violation,248
+2025-02-10 21:00:00,Endpoint02,Policy Violation,254
+2025-02-10 22:00:00,Endpoint02,Malware Detected,387
+2025-02-10 23:00:00,Firewall02,Login,456
+2025-02-11 00:00:00,Endpoint01,Malware Detected,44
+2025-02-11 01:00:00,Endpoint01,File Copied,97
+2025-02-11 02:00:00,Server01,Policy Violation,42
+2025-02-11 03:00:00,Endpoint02,Malware Detected,227
+2025-02-11 04:00:00,Endpoint01,Login,262
+2025-02-11 05:00:00,Firewall02,Malware Detected,167
+2025-02-11 06:00:00,Firewall02,Port Scan,436
+2025-02-11 07:00:00,Endpoint01,Login,279
+2025-02-11 08:00:00,Endpoint02,File Copied,89
+2025-02-11 09:00:00,Firewall02,Policy Violation,379
+2025-02-11 10:00:00,Server01,Malware Detected,178
+2025-02-11 11:00:00,Firewall02,Login,427
+2025-02-11 12:00:00,Firewall01,Port Scan,403
+2025-02-11 13:00:00,Firewall01,Login,197
+2025-02-11 14:00:00,Endpoint02,Port Scan,307
+2025-02-11 15:00:00,Endpoint01,File Copied,267
