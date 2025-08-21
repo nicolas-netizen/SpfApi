@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Upload, FileText, BarChart3, PieChart, TrendingUp, Download, Trash2 } from 'lucide-react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, PieChart as RechartsPieChart, Pie, Cell } from 'recharts'
+import { BarChart3, Upload, FileText, TrendingUp, Activity } from 'lucide-react'
+import { PieChart, LineChart, BarChart, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Line, Bar, Pie, Cell } from 'recharts'
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE_URL = `http://${window.location.hostname}:8000`
 
 function App() {
   const [files, setFiles] = useState([])
@@ -11,10 +11,11 @@ function App() {
   const [fileData, setFileData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [uploadFile, setUploadFile] = useState(null)
-  const [chartType, setChartType] = useState('line')
+  const [uploadLoading, setUploadLoading] = useState(false)
+  const [uploadMessage, setUploadMessage] = useState('')
 
-  // Colores mejorados para los gráficos
-  const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4']
+  // Colores optimizados para fondo negro
+  const COLORS = ['#00D4FF', '#FF6B35', '#4ECDC4', '#FFE66D', '#FF8A80', '#A8E6CF', '#FFB3BA', '#FFD93D']
 
   useEffect(() => {
     fetchFiles()
@@ -49,7 +50,9 @@ function App() {
     formData.append('file', uploadFile)
 
     try {
-      setLoading(true)
+      setUploadLoading(true)
+      setUploadMessage('')
+      
       await axios.post(`${API_BASE_URL}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -57,13 +60,17 @@ function App() {
       })
       
       setUploadFile(null)
+      setUploadMessage('✅ Archivo subido exitosamente!')
       fetchFiles()
-      alert('Archivo subido exitosamente')
+      
+      setTimeout(() => setUploadMessage(''), 3000)
+      
     } catch (error) {
       console.error('Error uploading file:', error)
-      alert('Error subiendo archivo')
+      setUploadMessage('❌ Error subiendo archivo')
+      setTimeout(() => setUploadMessage(''), 3000)
     } finally {
-      setLoading(false)
+      setUploadLoading(false)
     }
   }
 
@@ -77,46 +84,16 @@ function App() {
         setSelectedFile(null)
         setFileData(null)
       }
-      alert('Archivo eliminado exitosamente')
+      setUploadMessage('🗑️ Archivo eliminado exitosamente!')
+      setTimeout(() => setUploadMessage(''), 3000)
     } catch (error) {
       console.error('Error deleting file:', error)
-      alert('Error eliminando archivo')
+      setUploadMessage('❌ Error eliminando archivo')
+      setTimeout(() => setUploadMessage(''), 3000)
     }
   }
 
-  const downloadCSV = (data, filename) => {
-    if (!data || !data.data) return
-
-    const csvContent = convertToCSV(data.data)
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    const url = URL.createObjectURL(blob)
-    link.setAttribute('href', url)
-    link.setAttribute('download', filename)
-    link.style.visibility = 'hidden'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
-  const convertToCSV = (data) => {
-    if (!data || data.length === 0) return ''
-    
-    const headers = Object.keys(data[0])
-    const csvRows = [headers.join(',')]
-    
-    for (const row of data) {
-      const values = headers.map(header => {
-        const value = row[header]
-        return typeof value === 'string' ? `"${value}"` : value
-      })
-      csvRows.push(values.join(','))
-    }
-    
-    return csvRows.join('\n')
-  }
-
-  // Función mejorada para detectar tipos de columnas
+  // Función para detectar tipos de columnas
   const analyzeColumns = (data) => {
     if (!data || data.length === 0) return { numeric: [], text: [], date: [] }
     
@@ -128,15 +105,12 @@ function App() {
     columns.forEach(col => {
       const sampleValues = data.slice(0, 10).map(row => row[col])
       
-      // Detectar fechas (formato YYYY-MM-DD)
       if (sampleValues.some(val => /^\d{4}-\d{2}-\d{2}$/.test(val))) {
         date.push(col)
       }
-      // Detectar números
       else if (sampleValues.some(val => !isNaN(parseFloat(val)) && parseFloat(val) !== 0)) {
         numeric.push(col)
       }
-      // El resto son texto
       else {
         text.push(col)
       }
@@ -145,381 +119,470 @@ function App() {
     return { numeric, text, date }
   }
 
-  // Función para formatear tooltips
-  const formatTooltip = (value, name) => {
-    if (typeof value === 'number') {
-      return [value.toLocaleString(), name]
-    }
-    return [value, name]
+  // Generar datos para gráfico de radar
+  const getRadarData = () => {
+    if (!fileData || !fileData.data || fileData.data.length === 0) return []
+    
+    const data = fileData.data
+    const { numeric } = analyzeColumns(data)
+    
+    if (numeric.length === 0) return []
+    
+    const selectedColumns = numeric.slice(0, 6)
+    
+    return selectedColumns.map((col, index) => {
+      const avgValue = data.reduce((sum, row) => sum + (parseFloat(row[col]) || 0), 0) / data.length
+      return {
+        metric: col,
+        value: parseFloat(avgValue.toFixed(1)),
+        fullMark: Math.max(100, avgValue * 1.2)
+      }
+    })
   }
 
-  const renderChart = () => {
-    if (!fileData || !fileData.data || fileData.data.length === 0) {
-      return (
-        <div className="flex items-center justify-center h-64 text-gray-500">
-          <div className="text-center">
-            <BarChart3 className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-            <p>No hay datos para mostrar</p>
-          </div>
-        </div>
-      )
-    }
-
-    const data = fileData.data
-    const { numeric, text, date } = analyzeColumns(data)
+  // Generar datos para gráfico de pie
+  const getPieData = () => {
+    if (!fileData || !fileData.data || fileData.data.length === 0) return []
     
-    // Priorizar fechas para el eje X, luego texto
-    const xAxisKey = date[0] || text[0] || Object.keys(data[0])[0]
-    const yAxisKeys = numeric.length > 0 ? numeric : [Object.keys(data[0])[1]]
+    const data = fileData.data
+    const { numeric } = analyzeColumns(data)
+    
+    if (numeric.length === 0) return []
+    
+    const selectedColumns = numeric.slice(0, 5)
+    
+    return selectedColumns.map((col, index) => {
+      const totalValue = data.reduce((sum, row) => sum + (parseFloat(row[col]) || 0), 0)
+      return {
+        name: col,
+        value: totalValue,
+        color: COLORS[index % COLORS.length]
+      }
+    })
+  }
 
-    // Ordenar datos si hay fechas
-    let sortedData = [...data]
-    if (date.length > 0) {
-      sortedData.sort((a, b) => new Date(a[date[0]]) - new Date(b[date[0]]))
-    }
-
-    switch (chartType) {
-      case 'line':
-        return (
-          <ResponsiveContainer width="100%" height={400}>
-            <LineChart data={sortedData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis 
-                dataKey={xAxisKey} 
-                tick={{ fontSize: 12 }}
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis 
-                tick={{ fontSize: 12 }}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={(value) => value.toLocaleString()}
-              />
-              <Tooltip 
-                formatter={formatTooltip}
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                }}
-              />
-              <Legend 
-                wrapperStyle={{ paddingTop: '20px' }}
-                iconType="circle"
-              />
-              {yAxisKeys.map((col, index) => (
-                <Line 
-                  key={col}
-                  type="monotone" 
-                  dataKey={col} 
-                  stroke={COLORS[index % COLORS.length]} 
-                  strokeWidth={3}
-                  dot={{ fill: COLORS[index % COLORS.length], strokeWidth: 2, r: 4 }}
-                  activeDot={{ r: 6, stroke: COLORS[index % COLORS.length], strokeWidth: 2 }}
-                />
-              ))}
-            </LineChart>
-          </ResponsiveContainer>
-        )
-
-      case 'bar':
-        return (
-          <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={sortedData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis 
-                dataKey={xAxisKey} 
-                tick={{ fontSize: 12 }}
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis 
-                tick={{ fontSize: 12 }}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={(value) => value.toLocaleString()}
-              />
-              <Tooltip 
-                formatter={formatTooltip}
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                }}
-              />
-              <Legend 
-                wrapperStyle={{ paddingTop: '20px' }}
-                iconType="circle"
-              />
-              {yAxisKeys.map((col, index) => (
-                <Bar 
-                  key={col}
-                  dataKey={col} 
-                  fill={COLORS[index % COLORS.length]}
-                  radius={[4, 4, 0, 0]}
-                />
-              ))}
-            </BarChart>
-          </ResponsiveContainer>
-        )
-
-      case 'pie':
-        // Solo mostrar las primeras 8 filas para el gráfico de pie
-        const pieData = sortedData.slice(0, 8).map((item, index) => ({
-          name: item[xAxisKey] || `Item ${index + 1}`,
-          value: parseFloat(item[yAxisKeys[0]]) || 0
-        }))
-
-        return (
-          <ResponsiveContainer width="100%" height={400}>
-            <RechartsPieChart margin={{ top: 20, right: 30, left: 30, bottom: 20 }}>
-              <Pie
-                data={pieData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={({ name, percent, value }) => 
-                  `${name}: ${value.toLocaleString()} (${(percent * 100).toFixed(1)}%)`
-                }
-                outerRadius={120}
-                fill="#8884d8"
-                dataKey="value"
-                paddingAngle={2}
-              >
-                {pieData.map((entry, index) => (
-                  <Cell 
-                    key={`cell-${index}`} 
-                    fill={COLORS[index % COLORS.length]}
-                    stroke="#ffffff"
-                    strokeWidth={2}
-                  />
-                ))}
-              </Pie>
-              <Tooltip 
-                formatter={(value) => [value.toLocaleString(), 'Valor']}
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                }}
-              />
-            </RechartsPieChart>
-          </ResponsiveContainer>
-        )
-
-      default:
-        return null
-    }
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-cyan-400 border-t-orange-400"></div>
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+    <div className="min-h-screen bg-black text-white">
+      {/* Header principal */}
+      <div className="bg-gray-900 shadow-2xl border-b-4 border-cyan-400">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <BarChart3 className="h-8 w-8 text-primary-600 mr-3" />
-              <h1 className="text-2xl font-bold text-gray-900">CSV Dashboard</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={(e) => setUploadFile(e.target.files[0])}
-                  className="hidden"
-                  id="file-upload"
-                />
-                <label
-                  htmlFor="file-upload"
-                  className="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 cursor-pointer flex items-center transition-colors"
-                >
-                  <Upload className="h-4 w-4 mr-2" />
-                  Subir CSV
-                </label>
-                {uploadFile && (
-                  <button
-                    onClick={handleFileUpload}
-                    disabled={loading}
-                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 disabled:opacity-50 transition-colors"
-                  >
-                    {loading ? 'Subiendo...' : 'Confirmar'}
-                  </button>
-                )}
+              <BarChart3 className="h-10 w-10 text-cyan-400 mr-4" />
+              <div>
+                <h1 className="text-3xl font-bold text-white">CSV Dashboard</h1>
+                <p className="text-gray-300">Análisis de datos en tiempo real</p>
               </div>
             </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar - Lista de archivos */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <FileText className="h-5 w-5 mr-2" />
-                Archivos CSV
-              </h2>
+            
+            {/* Panel de upload */}
+            <div className="flex items-center space-x-4">
+              <input
+                type="file"
+                accept=".csv"
+                onChange={(e) => setUploadFile(e.target.files[0])}
+                className="hidden"
+                id="file-upload"
+              />
+              <label
+                htmlFor="file-upload"
+                className="bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 cursor-pointer flex items-center transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Upload className="h-5 w-5 mr-2" />
+                Subir CSV
+              </label>
               
-              {files.length === 0 ? (
-                <p className="text-gray-500 text-sm">No hay archivos CSV disponibles</p>
-              ) : (
-                <div className="space-y-2">
-                  {files.map((file) => (
-                    <div
-                      key={file}
-                      className={`p-3 rounded-md cursor-pointer transition-colors ${
-                        selectedFile === file
-                          ? 'bg-primary-100 border border-primary-300'
-                          : 'hover:bg-gray-50'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <button
-                          onClick={() => fetchFileData(file)}
-                          className="flex-1 text-left text-sm font-medium text-gray-700 hover:text-primary-600"
-                        >
-                          {file}
-                        </button>
-                        <button
-                          onClick={() => handleFileDelete(file)}
-                          className="text-red-500 hover:text-red-700 p-1 transition-colors"
-                          title="Eliminar archivo"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              {uploadFile && (
+                <button
+                  onClick={handleFileUpload}
+                  disabled={uploadLoading}
+                  className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 disabled:opacity-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  {uploadLoading ? 'Subiendo...' : 'Confirmar'}
+                </button>
               )}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Main content - Dashboard */}
-          <div className="lg:col-span-3">
-            {!selectedFile ? (
-              <div className="bg-white rounded-lg shadow p-12 text-center">
-                <BarChart3 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Selecciona un archivo CSV
-                </h3>
-                <p className="text-gray-500">
-                  Elige un archivo de la lista para comenzar a visualizar los datos
-                </p>
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {uploadMessage && (
+          <div className={`mb-8 p-4 rounded-lg border-2 ${
+            uploadMessage.includes('Error') 
+              ? 'bg-red-900 border-red-500 text-red-200' 
+              : 'bg-green-900 border-green-500 text-green-200'
+          }`}>
+            {uploadMessage}
+          </div>
+        )}
+
+        {/* Selector de archivo */}
+        <div className="mb-8">
+          <label className="block text-lg font-semibold text-white mb-3">Archivo CSV activo:</label>
+          <select
+            value={selectedFile || ''}
+            onChange={(e) => e.target.value && fetchFileData(e.target.value)}
+            className="w-80 px-4 py-3 border-2 border-cyan-400 rounded-lg focus:outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-200 text-lg bg-gray-800 text-white"
+          >
+            <option value="">Seleccionar archivo CSV</option>
+            {files.map((file) => (
+              <option key={file} value={file}>{file}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* KPIs principales */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="bg-gradient-to-r from-cyan-600 to-cyan-700 p-6 rounded-xl text-white shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-cyan-100 text-sm font-medium">Total Filas</p>
+                <p className="text-4xl font-bold">{fileData && fileData.data ? fileData.data.length : '--'}</p>
               </div>
-            ) : (
-              <div className="space-y-6">
-                {/* File info */}
-                <div className="bg-white rounded-lg shadow p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h2 className="text-xl font-semibold text-gray-900">
-                        {selectedFile}
-                      </h2>
-                      {fileData && (
-                        <p className="text-gray-600">
-                          {fileData.info.rows} filas • {fileData.info.columns.length} columnas
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <button
-                        onClick={() => downloadCSV(fileData, selectedFile)}
-                        className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 flex items-center transition-colors"
-                      >
-                        <Download className="h-4 w-4 mr-2" />
-                        Descargar
-                      </button>
-                    </div>
-                  </div>
+              <BarChart3 className="h-12 w-12 text-cyan-200" />
+            </div>
+          </div>
 
-                  {/* Chart type selector */}
-                  <div className="flex items-center space-x-4 mb-6">
-                    <span className="text-sm font-medium text-gray-700">Tipo de gráfico:</span>
-                    <div className="flex space-x-2">
-                      {[
-                        { key: 'line', label: 'Línea', icon: TrendingUp },
-                        { key: 'bar', label: 'Barras', icon: BarChart3 },
-                        { key: 'pie', label: 'Circular', icon: PieChart }
-                      ].map(({ key, label, icon: Icon }) => (
-                        <button
-                          key={key}
-                          onClick={() => setChartType(key)}
-                          className={`px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors ${
-                            chartType === key
-                              ? 'bg-primary-100 text-primary-700 border border-primary-300'
-                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                          }`}
-                        >
-                          <Icon className="h-4 w-4 mr-2" />
-                          {label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-6 rounded-xl text-white shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-orange-100 text-sm font-medium">Total Columnas</p>
+                <p className="text-4xl font-bold">{fileData && fileData.info ? fileData.info.columns.length : '--'}</p>
+              </div>
+              <FileText className="h-12 w-12 text-orange-200" />
+            </div>
+          </div>
 
-                  {/* Chart */}
-                  <div className="border rounded-lg p-4 bg-gray-50">
-                    {loading ? (
-                      <div className="flex items-center justify-center h-64">
-                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                      </div>
-                    ) : (
-                      renderChart()
-                    )}
+          <div className="bg-gradient-to-r from-cyan-700 to-cyan-800 p-6 rounded-xl text-white shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-cyan-100 text-sm font-medium">Columnas Numéricas</p>
+                <p className="text-4xl font-bold">{fileData && fileData.data ? analyzeColumns(fileData.data).numeric.length : '--'}</p>
+              </div>
+              <TrendingUp className="h-12 w-12 text-cyan-200" />
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-orange-600 to-orange-700 p-6 rounded-xl text-white shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-orange-100 text-sm font-medium">Columnas de Fecha</p>
+                <p className="text-4xl font-bold">{fileData && fileData.data ? analyzeColumns(fileData.data).date.length : '--'}</p>
+              </div>
+              <Activity className="h-12 w-12 text-orange-200" />
+            </div>
+          </div>
+        </div>
+
+        {/* Primera fila de gráficos - Pantalla completa */}
+        <div className="grid grid-cols-1 gap-8 mb-12">
+          {/* Gráfico de línea principal - Pantalla completa */}
+          <div className="bg-gray-900 p-8 rounded-xl shadow-2xl border-l-4 border-cyan-400 min-h-[500px]">
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+              <LineChart className="h-8 w-8 mr-3 text-cyan-400" />
+              Análisis de Datos Principales
+            </h3>
+            <ResponsiveContainer width="100%" height={450}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <LineChart data={fileData.data}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis 
+                    dataKey={analyzeColumns(fileData.data).date[0] || Object.keys(fileData.data[0])[0]} 
+                    tick={{ fontSize: 14, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#00D4FF', strokeWidth: 2 }}
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 14, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#00D4FF', strokeWidth: 2 }}
+                  />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: '#1F2937',
+                      border: '2px solid #00D4FF',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                      color: 'white'
+                    }}
+                  />
+                  <Legend />
+                  {analyzeColumns(fileData.data).numeric.slice(0, 4).map((col, index) => (
+                    <Line 
+                      key={col}
+                      type="monotone" 
+                      dataKey={col} 
+                      stroke={COLORS[index % COLORS.length]} 
+                      strokeWidth={4}
+                      dot={{ fill: COLORS[index % COLORS.length], strokeWidth: 2, r: 6 }}
+                      activeDot={{ r: 8, stroke: COLORS[index % COLORS.length], strokeWidth: 3 }}
+                    />
+                  ))}
+                </LineChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <div className="text-center">
+                    <BarChart3 className="h-20 w-20 mx-auto mb-4 text-gray-500" />
+                    <p className="text-xl">Selecciona un archivo CSV para ver los datos</p>
                   </div>
                 </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-                {/* Data preview */}
-                {fileData && (
-                  <div className="bg-white rounded-lg shadow p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                      Vista previa de datos
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            {fileData.info.columns.map((column) => (
-                              <th
-                                key={column}
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                              >
-                                {column}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          {fileData.info.sample_data.map((row, index) => (
-                            <tr key={index} className="hover:bg-gray-50">
-                              {fileData.info.columns.map((column) => (
-                                <td
-                                  key={column}
-                                  className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                                >
-                                  {typeof row[column] === 'number' 
-                                    ? row[column].toLocaleString() 
-                                    : row[column]
-                                  }
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
+        {/* Segunda fila - Gráficos en grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Gráfico de área */}
+          <div className="bg-gray-900 p-8 rounded-xl shadow-2xl border-l-4 border-orange-500 min-h-[400px]">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+              <AreaChart className="h-6 w-6 mr-3 text-orange-400" />
+              Análisis de Datos Secundarios
+            </h3>
+            <ResponsiveContainer width="100%" height={350}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <AreaChart data={fileData.data}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis 
+                    dataKey={analyzeColumns(fileData.data).date[0] || Object.keys(fileData.data[0])[0]} 
+                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                  />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: '#1F2937',
+                      border: '2px solid #FF6B35',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                      color: 'white'
+                    }}
+                  />
+                  <Legend />
+                  {analyzeColumns(fileData.data).numeric.slice(3, 6).map((col, index) => (
+                    <Area 
+                      key={col}
+                      type="monotone" 
+                      dataKey={col} 
+                      stackId="1" 
+                      stroke={COLORS[index % COLORS.length]} 
+                      fill={COLORS[index % COLORS.length]} 
+                      fillOpacity={0.7}
+                    />
+                  ))}
+                </AreaChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <AreaChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                  <p className="text-lg">Selecciona un archivo CSV para ver los datos</p>
+                </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+
+          {/* Gráfico de barras */}
+          <div className="bg-gray-900 p-8 rounded-xl shadow-2xl border-l-4 border-cyan-600 min-h-[400px]">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+              <BarChart className="h-6 w-6 mr-3 text-cyan-400" />
+              Comparación de Datos
+            </h3>
+            <ResponsiveContainer width="100%" height={350}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <BarChart data={fileData.data.slice(-10)}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis 
+                    dataKey={analyzeColumns(fileData.data).date[0] || Object.keys(fileData.data[0])[0]} 
+                    tick={{ fontSize: 10, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#00D4FF', strokeWidth: 2 }}
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#00D4FF', strokeWidth: 2 }}
+                  />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: '#1F2937',
+                      border: '2px solid #00D4FF',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                      color: 'white'
+                    }}
+                  />
+                  <Legend />
+                  {analyzeColumns(fileData.data).numeric.slice(0, 3).map((col, index) => (
+                    <Bar key={col} dataKey={col} fill={COLORS[index % COLORS.length]} radius={[6, 6, 0, 0]} />
+                  ))}
+                </BarChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <BarChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                  <p className="text-lg">Selecciona un archivo CSV para ver los datos</p>
+                </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Tercera fila - Gráficos especializados */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* Gráfico de radar */}
+          <div className="bg-gray-900 p-6 rounded-xl shadow-2xl border-l-4 border-orange-600 min-h-[350px]">
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+              <RadarChart className="h-5 w-5 mr-2 text-orange-400" />
+              Métricas de Datos
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <RadarChart data={getRadarData()}>
+                  <PolarGrid stroke="#374151" />
+                  <PolarAngleAxis 
+                    dataKey="metric" 
+                    tick={{ fill: '#9CA3AF', fontSize: 10 }}
+                  />
+                  <PolarRadiusAxis 
+                    tick={{ fill: '#9CA3AF', fontSize: 10 }}
+                    axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                  />
+                  <Radar 
+                    name="Datos" 
+                    dataKey="value" 
+                    stroke="#FF6B35" 
+                    fill="#FF6B35" 
+                    fillOpacity={0.4}
+                    strokeWidth={3}
+                  />
+                </RadarChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <RadarChart className="h-12 w-12 mx-auto mb-2 text-gray-500" />
+                </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+
+          {/* Gráfico de pie */}
+          <div className="bg-gray-900 p-6 rounded-xl shadow-2xl border-l-4 border-cyan-700 min-h-[350px]">
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+              <PieChart className="h-5 w-5 mr-2 text-cyan-400" />
+              Distribución de Datos
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <PieChart>
+                  <Pie
+                    data={getPieData()}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${(percent * 100).toFixed(1)}%`}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {getPieData().map((entry, index) => (
+                      <Cell 
+                        key={`cell-${index}`} 
+                        fill={entry.color}
+                        stroke="#1F2937"
+                        strokeWidth={3}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: '#1F2937',
+                      border: '2px solid #00D4FF',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                      color: 'white'
+                    }}
+                  />
+                </PieChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <PieChart className="h-12 w-12 mx-auto mb-2 text-gray-500" />
+                </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+
+          {/* Gráfico de línea adicional */}
+          <div className="bg-gray-900 p-6 rounded-xl shadow-2xl border-l-4 border-orange-700 min-h-[350px]">
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+              <TrendingUp className="h-5 w-5 mr-2 text-orange-400" />
+              Tendencias
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              {fileData && fileData.data && fileData.data.length > 0 ? (
+                <LineChart data={fileData.data.slice(-15)}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis 
+                    dataKey={analyzeColumns(fileData.data).date[0] || Object.keys(fileData.data[0])[0]} 
+                    tick={{ fontSize: 8, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 10, fill: '#9CA3AF' }}
+                    tickLine={false}
+                    axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                  />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: '#1F2937',
+                      border: '2px solid #FF6B35',
+                      borderRadius: '12px',
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                      color: 'white'
+                    }}
+                  />
+                  <Legend />
+                  {analyzeColumns(fileData.data).numeric.slice(6, 8).map((col, index) => (
+                    <Line 
+                      key={col}
+                      type="monotone" 
+                      dataKey={col} 
+                      stroke={COLORS[index % COLORS.length]} 
+                      strokeWidth={3}
+                      dot={{ fill: COLORS[index % COLORS.length], strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, stroke: COLORS[index % COLORS.length], strokeWidth: 2 }}
+                    />
+                  ))}
+                </LineChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-500" />
+                </div>
+              )}
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="bg-gray-900 p-8 rounded-xl shadow-2xl border-t-4 border-gradient-to-r from-cyan-500 to-orange-500">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-white mb-6">
+              📊 Dashboard CSV - Análisis Completo
+            </h3>
+            <p className="text-gray-300 text-lg">
+              Visualización de datos en tiempo real con tema oscuro optimizado
+            </p>
           </div>
         </div>
       </div>

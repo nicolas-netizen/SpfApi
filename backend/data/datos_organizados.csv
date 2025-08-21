@@ -1,0 +1,301 @@
+EmpleadoID,Nombre,Departamento,Ciudad,Fecha,HorasTrabajadas,Proyectos,Rendimiento
+1,Pedro,Ventas,México DF,2025-04-30,5,3,62.93
+2,Jorge,Finanzas,México DF,2025-09-19,7,2,68.92
+3,Pedro,Marketing,Madrid,2025-04-05,4,3,61.8
+4,Luis,IT,Madrid,2025-04-26,5,2,80.18
+5,María,Marketing,Bogotá,2025-01-03,6,2,84.94
+6,Sofía,Finanzas,Bogotá,2025-07-16,6,2,89.55
+7,Lucía,IT,Bogotá,2025-01-31,4,3,71.3
+8,María,RRHH,Bogotá,2025-10-25,8,4,99.03
+9,Sofía,Marketing,Santiago,2025-01-02,5,3,93.07
+10,Jorge,Finanzas,México DF,2025-08-03,4,4,79.54
+11,Sofía,IT,Buenos Aires,2025-07-08,4,2,67.08
+12,Jorge,IT,Lima,2025-04-26,7,1,89.42
+13,Jorge,IT,Bogotá,2025-05-21,5,3,64.2
+14,Sofía,Finanzas,México DF,2025-08-28,7,4,67.99
+15,Luis,Marketing,Lima,2025-03-23,4,1,64.3
+16,Pedro,Ventas,México DF,2025-04-05,8,4,97.24
+17,Ana,IT,México DF,2025-03-08,9,4,75.97
+18,Pedro,Marketing,Lima,2025-09-13,5,4,89.25
+19,Jorge,RRHH,Bogotá,2025-10-21,7,2,60.57
+20,Jorge,IT,Buenos Aires,2025-01-06,8,1,85.31
+21,María,IT,México DF,2025-08-02,4,2,85.78
+22,Lucía,IT,Santiago,2025-05-02,8,1,65.81
+23,Sofía,Finanzas,México DF,2025-04-09,8,4,64.42
+24,María,Ventas,Santiago,2025-05-25,9,1,98.3
+25,María,IT,Madrid,2025-07-17,6,2,77.98
+26,Pedro,RRHH,Madrid,2025-05-03,7,2,69.68
+27,Ana,IT,México DF,2025-09-10,7,1,72.04
+28,Sofía,Marketing,Lima,2025-07-09,4,4,86.54
+29,Ana,RRHH,Santiago,2025-09-18,5,3,96.99
+30,Jorge,IT,Buenos Aires,2025-04-24,8,3,81.95
+31,Lucía,IT,Lima,2025-09-05,6,3,83.37
+32,Lucía,Finanzas,Lima,2025-05-02,7,2,85.71
+33,Ana,RRHH,Madrid,2025-06-24,5,4,69.68
+34,Luis,Finanzas,Bogotá,2025-07-06,7,1,71.13
+35,María,Marketing,Lima,2025-03-18,9,3,93.27
+36,Ana,Finanzas,Buenos Aires,2025-03-06,4,4,80.86
+37,Sofía,IT,Madrid,2025-06-16,6,2,99.03
+38,María,IT,Buenos Aires,2025-02-28,9,3,96.23
+39,Pedro,Marketing,Madrid,2025-07-11,5,4,99.43
+40,Lucía,Finanzas,Santiago,2025-05-10,6,1,63.74
+41,Ana,Marketing,Bogotá,2025-03-06,4,4,90.24
+42,Ana,Marketing,Madrid,2025-10-01,9,3,92.12
+43,Jorge,RRHH,Buenos Aires,2025-09-21,6,4,89.56
+44,Pedro,RRHH,Santiago,2025-09-08,6,1,66.15
+45,Pedro,Finanzas,Santiago,2025-06-03,4,2,74.14
+46,Jorge,IT,Bogotá,2025-03-26,4,1,98.64
+47,Jorge,IT,Bogotá,2025-07-04,6,4,81.24
+48,María,IT,Bogotá,2025-06-05,8,4,81.85
+49,Lucía,Marketing,Santiago,2025-02-24,9,3,71.9
+50,Jorge,RRHH,Madrid,2025-04-20,9,3,99.23
+51,Lucía,Marketing,México DF,2025-08-20,4,2,91.11
+52,Pedro,IT,Santiago,2025-08-22,6,2,88.05
+53,Ana,Ventas,Lima,2025-02-22,4,4,95.08
+54,Luis,Finanzas,Santiago,2025-05-17,9,2,97.12
+55,Lucía,Ventas,Bogotá,2025-02-04,6,1,94.07
+56,María,Ventas,Buenos Aires,2025-07-17,4,2,98.36
+57,Jorge,Ventas,Bogotá,2025-10-04,6,2,99.9
+58,Luis,RRHH,Lima,2025-09-13,4,1,77.44
+59,Lucía,Marketing,Buenos Aires,2025-03-25,9,4,84.13
+60,Sofía,Finanzas,México DF,2025-05-18,7,4,60.98
+61,Sofía,IT,Lima,2025-01-27,5,3,66.19
+62,Luis,Finanzas,Buenos Aires,2025-08-31,4,1,77.6
+63,Pedro,IT,Bogotá,2025-10-10,5,3,87.64
+64,Pedro,IT,Lima,2025-03-28,7,1,71.3
+65,Pedro,Ventas,Buenos Aires,2025-09-21,6,3,95.69
+66,Jorge,RRHH,México DF,2025-06-24,7,3,87.78
+67,María,Marketing,Buenos Aires,2025-01-11,4,2,80.0
+68,Lucía,Marketing,Buenos Aires,2025-05-26,7,1,75.13
+69,Jorge,IT,Madrid,2025-08-03,4,4,73.49
+70,Luis,Marketing,Bogotá,2025-10-02,4,2,63.79
+71,Sofía,IT,Santiago,2025-04-05,6,2,68.06
+72,Lucía,Finanzas,Santiago,2025-07-07,7,1,86.24
+73,Luis,Marketing,Bogotá,2025-08-02,9,4,93.82
+74,Sofía,IT,Madrid,2025-08-04,9,2,69.31
+75,Jorge,Marketing,Bogotá,2025-08-12,4,4,92.76
+76,Pedro,Ventas,Buenos Aires,2025-10-02,5,2,82.32
+77,Jorge,RRHH,Bogotá,2025-07-20,6,3,97.97
+78,María,Finanzas,Bogotá,2025-04-06,6,3,64.21
+79,María,IT,Lima,2025-10-07,9,2,78.8
+80,Sofía,IT,Buenos Aires,2025-04-20,4,2,80.69
+81,Jorge,Ventas,Buenos Aires,2025-01-30,7,2,77.66
+82,Sofía,RRHH,Buenos Aires,2025-01-06,5,3,64.28
+83,Pedro,IT,Santiago,2025-10-10,6,1,62.97
+84,Jorge,Marketing,Lima,2025-01-27,7,4,96.62
+85,María,Marketing,Bogotá,2025-03-09,4,1,64.52
+86,Luis,Finanzas,México DF,2025-01-08,9,4,88.72
+87,María,Ventas,Madrid,2025-09-25,4,3,95.66
+88,Pedro,IT,Lima,2025-04-11,9,1,66.66
+89,Sofía,Ventas,Lima,2025-07-22,9,4,69.3
+90,Luis,Marketing,Lima,2025-04-07,4,2,90.41
+91,Sofía,Marketing,Lima,2025-01-12,5,4,76.18
+92,Pedro,Finanzas,Santiago,2025-08-14,4,4,77.57
+93,Pedro,Finanzas,Santiago,2025-06-03,5,2,75.72
+94,Lucía,Marketing,Bogotá,2025-08-07,8,1,85.48
+95,Sofía,RRHH,Buenos Aires,2025-10-14,5,2,62.02
+96,Jorge,IT,Buenos Aires,2025-09-14,6,1,65.75
+97,Luis,Finanzas,Bogotá,2025-10-24,5,4,76.73
+98,Ana,Ventas,Bogotá,2025-05-13,5,2,82.89
+99,Lucía,IT,Madrid,2025-06-03,4,1,91.99
+100,Lucía,Finanzas,Santiago,2025-06-04,9,3,98.97
+101,Luis,IT,Bogotá,2025-09-07,4,2,87.38
+102,Lucía,IT,Buenos Aires,2025-07-05,9,2,92.37
+103,Sofía,RRHH,Madrid,2025-05-29,4,1,66.2
+104,Luis,RRHH,Buenos Aires,2025-02-13,9,1,74.17
+105,Pedro,Ventas,Santiago,2025-10-07,5,2,85.71
+106,Luis,IT,Lima,2025-01-12,5,2,60.51
+107,Sofía,Marketing,Madrid,2025-03-13,8,4,85.98
+108,Jorge,Ventas,Lima,2025-06-01,9,4,79.84
+109,Luis,Marketing,Lima,2025-07-02,7,2,90.77
+110,María,Ventas,Lima,2025-06-13,5,2,87.49
+111,Ana,Marketing,Bogotá,2025-06-24,4,2,70.33
+112,Lucía,IT,Buenos Aires,2025-05-25,5,3,86.38
+113,Lucía,Marketing,México DF,2025-01-26,4,4,82.25
+114,Sofía,Marketing,Lima,2025-09-25,9,2,77.52
+115,Ana,Marketing,Bogotá,2025-08-23,9,1,95.58
+116,Pedro,RRHH,Madrid,2025-06-03,7,4,90.91
+117,Ana,Ventas,Lima,2025-05-19,4,3,99.61
+118,Sofía,Finanzas,Santiago,2025-04-15,8,1,99.69
+119,Pedro,Ventas,Buenos Aires,2025-09-14,4,4,61.48
+120,Lucía,RRHH,Madrid,2025-06-18,7,3,74.85
+121,Lucía,Ventas,Madrid,2025-06-11,7,2,96.11
+122,Ana,Marketing,México DF,2025-01-22,6,3,65.88
+123,Jorge,Marketing,Madrid,2025-09-05,7,2,90.9
+124,Sofía,Finanzas,Madrid,2025-01-08,4,1,76.2
+125,Sofía,RRHH,Bogotá,2025-09-18,8,4,68.39
+126,María,RRHH,Madrid,2025-01-06,9,1,99.0
+127,Ana,RRHH,México DF,2025-07-31,8,4,85.44
+128,María,Finanzas,Santiago,2025-01-13,6,2,87.14
+129,Luis,Ventas,Santiago,2025-01-31,7,1,71.11
+130,Sofía,IT,Lima,2025-10-25,5,1,61.44
+131,Jorge,IT,Lima,2025-08-14,5,4,92.69
+132,Pedro,Ventas,Buenos Aires,2025-09-05,5,3,99.57
+133,Jorge,RRHH,Santiago,2025-01-26,6,3,81.87
+134,Sofía,IT,Santiago,2025-01-20,6,1,78.23
+135,Sofía,RRHH,Buenos Aires,2025-10-22,8,4,77.05
+136,Luis,RRHH,Madrid,2025-09-02,6,2,76.07
+137,Pedro,RRHH,Lima,2025-09-04,9,3,86.76
+138,Lucía,Finanzas,Bogotá,2025-03-09,6,3,65.94
+139,María,Ventas,México DF,2025-07-16,8,2,60.65
+140,Sofía,Finanzas,México DF,2025-02-14,9,3,85.68
+141,María,Finanzas,México DF,2025-07-16,9,3,71.3
+142,María,IT,Bogotá,2025-06-12,7,4,91.07
+143,Jorge,RRHH,Bogotá,2025-07-08,4,4,82.99
+144,Pedro,Ventas,México DF,2025-03-29,8,1,92.76
+145,María,RRHH,Bogotá,2025-02-18,9,3,61.28
+146,María,IT,Buenos Aires,2025-05-11,4,1,87.98
+147,Luis,Marketing,Lima,2025-05-03,9,1,71.02
+148,Ana,Marketing,Buenos Aires,2025-05-04,8,1,84.75
+149,Lucía,IT,Lima,2025-08-30,9,3,99.7
+150,Jorge,RRHH,México DF,2025-10-16,9,1,73.37
+151,Jorge,Ventas,Madrid,2025-06-11,4,3,70.03
+152,Sofía,Marketing,Bogotá,2025-03-05,8,3,68.4
+153,Jorge,Marketing,Bogotá,2025-02-08,7,3,91.62
+154,Luis,Finanzas,México DF,2025-04-14,5,3,99.61
+155,Sofía,Marketing,Buenos Aires,2025-05-04,6,3,70.66
+156,Jorge,Ventas,Lima,2025-09-04,9,4,76.31
+157,Luis,RRHH,Madrid,2025-04-03,9,4,99.55
+158,Pedro,Marketing,Lima,2025-05-06,8,1,73.72
+159,Jorge,RRHH,Madrid,2025-10-16,9,1,75.65
+160,Luis,Marketing,México DF,2025-04-21,8,2,94.22
+161,Jorge,RRHH,Lima,2025-04-28,8,3,95.79
+162,Lucía,Ventas,Santiago,2025-10-20,7,1,61.38
+163,Ana,RRHH,Lima,2025-08-15,7,3,60.75
+164,María,Ventas,Lima,2025-03-31,8,3,85.91
+165,Ana,RRHH,Madrid,2025-10-08,8,2,91.21
+166,Ana,RRHH,México DF,2025-03-30,5,2,92.96
+167,Pedro,RRHH,Santiago,2025-03-30,7,4,67.92
+168,Pedro,IT,México DF,2025-01-21,9,1,97.94
+169,Ana,Finanzas,Buenos Aires,2025-02-04,7,2,91.68
+170,Jorge,RRHH,Bogotá,2025-07-06,9,2,69.48
+171,Jorge,Ventas,Lima,2025-07-07,5,3,83.1
+172,Lucía,IT,México DF,2025-09-30,5,4,92.86
+173,Jorge,Finanzas,México DF,2025-09-10,5,2,89.4
+174,María,Finanzas,Buenos Aires,2025-08-09,4,2,74.65
+175,Luis,IT,Lima,2025-03-09,9,3,69.99
+176,Lucía,Marketing,Madrid,2025-09-09,9,3,81.78
+177,Lucía,Ventas,México DF,2025-08-22,6,1,68.79
+178,Lucía,Finanzas,Bogotá,2025-06-29,6,2,98.6
+179,Jorge,RRHH,Santiago,2025-02-09,7,3,63.7
+180,Pedro,RRHH,Bogotá,2025-05-20,8,1,60.43
+181,Pedro,Finanzas,México DF,2025-09-25,5,4,75.86
+182,Jorge,Finanzas,Buenos Aires,2025-02-27,9,3,67.28
+183,Ana,Ventas,Buenos Aires,2025-07-29,8,2,85.59
+184,Lucía,Ventas,Madrid,2025-10-08,8,1,68.61
+185,Jorge,Marketing,Buenos Aires,2025-10-06,9,4,98.97
+186,Ana,Ventas,México DF,2025-07-30,6,3,96.5
+187,Ana,RRHH,Santiago,2025-01-15,6,2,79.6
+188,Lucía,RRHH,México DF,2025-07-16,8,2,71.34
+189,Lucía,Finanzas,Lima,2025-05-02,6,2,98.25
+190,Pedro,Ventas,México DF,2025-07-15,6,3,62.93
+191,Jorge,IT,Bogotá,2025-03-10,8,3,88.32
+192,María,IT,Buenos Aires,2025-09-29,4,2,99.1
+193,María,Ventas,Lima,2025-02-24,4,2,91.68
+194,Luis,RRHH,Santiago,2025-10-05,8,1,72.96
+195,María,Finanzas,Buenos Aires,2025-01-13,9,4,82.81
+196,Luis,RRHH,Madrid,2025-09-13,8,1,97.6
+197,María,Finanzas,México DF,2025-08-17,4,2,62.17
+198,Sofía,RRHH,Madrid,2025-07-19,5,3,87.3
+199,Ana,IT,Madrid,2025-08-08,7,1,66.37
+200,Sofía,Finanzas,Madrid,2025-10-09,8,2,76.58
+201,María,Finanzas,México DF,2025-08-22,8,1,60.67
+202,Lucía,Ventas,Santiago,2025-01-10,8,3,75.24
+203,Pedro,RRHH,Santiago,2025-06-04,5,4,75.96
+204,Jorge,Ventas,Santiago,2025-06-02,8,2,78.3
+205,Luis,IT,Bogotá,2025-03-28,7,4,94.77
+206,Lucía,IT,Buenos Aires,2025-09-23,8,4,83.53
+207,Ana,Finanzas,Bogotá,2025-09-28,5,3,93.23
+208,Luis,Ventas,Madrid,2025-05-06,9,1,85.22
+209,Pedro,IT,México DF,2025-04-09,7,1,65.1
+210,Ana,Ventas,México DF,2025-03-16,9,2,68.41
+211,Lucía,Finanzas,Madrid,2025-05-27,8,2,77.43
+212,María,Marketing,Santiago,2025-02-26,6,4,72.5
+213,Pedro,IT,Santiago,2025-07-30,8,4,93.19
+214,Pedro,Ventas,Lima,2025-03-13,7,4,77.94
+215,Lucía,Marketing,Buenos Aires,2025-07-22,9,3,92.51
+216,Ana,RRHH,Bogotá,2025-01-28,8,3,93.68
+217,Jorge,RRHH,Santiago,2025-07-13,4,3,72.7
+218,Luis,Ventas,Buenos Aires,2025-08-22,8,3,77.92
+219,Sofía,Finanzas,Lima,2025-10-26,5,2,69.39
+220,Jorge,Marketing,Santiago,2025-01-05,9,2,82.74
+221,Lucía,RRHH,Buenos Aires,2025-04-07,7,3,76.75
+222,Luis,Ventas,México DF,2025-06-17,4,2,82.55
+223,Pedro,Finanzas,Santiago,2025-09-04,7,3,83.17
+224,Luis,Ventas,Bogotá,2025-01-04,8,4,72.88
+225,María,Ventas,Santiago,2025-10-13,4,3,78.4
+226,Jorge,RRHH,Buenos Aires,2025-01-04,9,3,60.72
+227,Pedro,Ventas,Bogotá,2025-10-02,9,4,90.52
+228,Sofía,Ventas,Madrid,2025-02-10,8,2,81.79
+229,Sofía,Marketing,Bogotá,2025-09-12,8,3,97.67
+230,Ana,Finanzas,Santiago,2025-05-18,7,4,60.11
+231,Luis,RRHH,Lima,2025-06-27,8,2,67.91
+232,Jorge,Finanzas,Buenos Aires,2025-03-18,4,4,60.52
+233,Jorge,IT,Santiago,2025-09-02,8,4,99.58
+234,Sofía,Marketing,Bogotá,2025-05-29,8,3,76.81
+235,Ana,RRHH,Santiago,2025-05-20,9,3,71.47
+236,Lucía,RRHH,Buenos Aires,2025-04-10,9,1,64.12
+237,Pedro,Marketing,Lima,2025-08-04,5,4,95.14
+238,Luis,IT,Santiago,2025-09-04,8,3,66.92
+239,Jorge,RRHH,México DF,2025-10-20,4,1,98.15
+240,Jorge,RRHH,Madrid,2025-06-23,8,1,68.04
+241,Jorge,Finanzas,Buenos Aires,2025-06-09,5,4,66.05
+242,Pedro,Marketing,Bogotá,2025-10-05,5,2,85.86
+243,Luis,RRHH,Buenos Aires,2025-10-24,6,2,76.37
+244,Sofía,Ventas,Bogotá,2025-02-18,8,2,95.31
+245,Jorge,RRHH,México DF,2025-03-03,6,4,61.01
+246,Lucía,RRHH,Buenos Aires,2025-03-28,4,2,86.11
+247,Luis,Finanzas,Buenos Aires,2025-10-07,9,3,97.39
+248,Lucía,Finanzas,Santiago,2025-07-30,8,3,60.41
+249,Sofía,Ventas,Bogotá,2025-01-29,5,3,85.34
+250,Luis,Ventas,Santiago,2025-02-06,9,1,98.16
+251,Sofía,Finanzas,Buenos Aires,2025-09-27,7,2,77.93
+252,Sofía,RRHH,Santiago,2025-10-07,6,3,83.68
+253,Jorge,RRHH,Madrid,2025-06-02,6,3,86.79
+254,Pedro,IT,Lima,2025-03-20,8,4,67.45
+255,Sofía,Finanzas,Lima,2025-10-20,5,4,92.82
+256,María,Finanzas,Madrid,2025-02-23,9,2,69.65
+257,Ana,IT,Lima,2025-08-28,5,4,91.98
+258,Sofía,Ventas,México DF,2025-04-05,6,4,85.91
+259,María,RRHH,Bogotá,2025-09-03,7,1,73.12
+260,Lucía,Ventas,Lima,2025-06-25,4,1,84.38
+261,Jorge,Ventas,México DF,2025-03-31,4,3,72.01
+262,Sofía,Finanzas,Santiago,2025-07-26,5,4,60.14
+263,Pedro,Marketing,México DF,2025-08-13,9,3,87.08
+264,Jorge,Finanzas,México DF,2025-05-09,4,1,81.46
+265,Ana,Ventas,México DF,2025-01-17,6,3,67.43
+266,Lucía,Marketing,México DF,2025-04-07,7,1,79.47
+267,Ana,IT,Lima,2025-01-10,8,4,74.08
+268,Ana,IT,Lima,2025-03-26,9,1,81.91
+269,Sofía,RRHH,Bogotá,2025-01-30,6,2,70.76
+270,Luis,Marketing,México DF,2025-08-09,5,4,89.05
+271,Ana,Marketing,México DF,2025-01-27,8,3,62.05
+272,María,Ventas,Madrid,2025-02-07,7,1,79.08
+273,Pedro,Marketing,México DF,2025-08-28,4,2,66.25
+274,Luis,RRHH,Madrid,2025-04-01,6,1,66.17
+275,Ana,Marketing,Madrid,2025-03-10,7,2,97.78
+276,Pedro,Ventas,Lima,2025-03-07,6,3,92.66
+277,María,Marketing,Madrid,2025-02-01,4,3,67.9
+278,Lucía,RRHH,Madrid,2025-05-13,6,3,98.42
+279,María,IT,Buenos Aires,2025-09-25,9,1,97.52
+280,Pedro,Ventas,Lima,2025-01-10,6,2,63.22
+281,Lucía,Ventas,Madrid,2025-08-15,7,2,82.71
+282,Jorge,Marketing,Buenos Aires,2025-06-14,5,2,93.27
+283,Sofía,Ventas,Lima,2025-04-11,5,2,95.97
+284,Jorge,Finanzas,Lima,2025-03-06,8,4,89.74
+285,Pedro,Finanzas,Lima,2025-02-16,6,2,61.46
+286,Jorge,IT,Buenos Aires,2025-10-24,7,3,90.55
+287,Lucía,Ventas,Bogotá,2025-04-03,4,4,83.04
+288,Sofía,Ventas,Madrid,2025-01-22,5,2,73.65
+289,Jorge,RRHH,Lima,2025-09-12,7,4,71.58
+290,Lucía,Marketing,Bogotá,2025-08-28,4,1,66.9
+291,Pedro,Marketing,Buenos Aires,2025-08-22,4,3,63.12
+292,Pedro,Ventas,México DF,2025-02-04,8,3,82.83
+293,Jorge,IT,Madrid,2025-02-25,7,1,99.19
+294,Luis,RRHH,Madrid,2025-10-11,9,2,74.95
+295,Lucía,RRHH,Santiago,2025-05-08,6,4,87.25
+296,María,Marketing,Bogotá,2025-08-31,6,1,63.5
+297,Luis,Ventas,Santiago,2025-02-02,6,2,92.55
+298,Ana,Finanzas,Lima,2025-08-27,5,2,67.81
+299,María,Marketing,Lima,2025-07-13,8,4,93.55
+300,Ana,Marketing,Lima,2025-05-03,8,4,83.2

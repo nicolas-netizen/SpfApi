@@ -1,0 +1,501 @@
+ID,Nombre,Edad,Ciudad,Puntaje,Fecha
+1,Frank,25,Madrid,0.98,2024-01-01
+2,Charlie,54,Bogotá,22.15,2024-01-02
+3,Eve,34,Madrid,19.83,2024-01-03
+4,Charlie,25,Buenos Aires,43.86,2024-01-04
+5,Bob,64,Santiago,70.45,2024-01-05
+6,Diana,61,México DF,80.34,2024-01-06
+7,Charlie,47,México DF,86.63,2024-01-07
+8,Diana,60,México DF,42.29,2024-01-08
+9,Bob,60,Buenos Aires,47.73,2024-01-09
+10,Bob,33,Madrid,39.86,2024-01-10
+11,Alice,21,Buenos Aires,7.38,2024-01-11
+12,Bob,38,Madrid,27.78,2024-01-12
+13,Bob,51,Madrid,37.6,2024-01-13
+14,Alice,57,Buenos Aires,20.08,2024-01-14
+15,Alice,52,Madrid,61.16,2024-01-15
+16,Bob,30,Santiago,88.39,2024-01-16
+17,Diana,60,México DF,80.98,2024-01-17
+18,Frank,44,Madrid,56.85,2024-01-18
+19,Eve,25,Madrid,72.96,2024-01-19
+20,Alice,58,Lima,48.9,2024-01-20
+21,Alice,59,México DF,48.84,2024-01-21
+22,Eve,46,México DF,64.33,2024-01-22
+23,Bob,33,Bogotá,79.82,2024-01-23
+24,Diana,60,Lima,84.9,2024-01-24
+25,Charlie,63,México DF,82.83,2024-01-25
+26,Eve,22,Lima,39.39,2024-01-26
+27,Charlie,54,México DF,78.4,2024-01-27
+28,Eve,57,Bogotá,45.37,2024-01-28
+29,Alice,57,Buenos Aires,39.85,2024-01-29
+30,Frank,59,Lima,98.2,2024-01-30
+31,Alice,27,Lima,8.02,2024-01-31
+32,Bob,32,Bogotá,42.53,2024-02-01
+33,Diana,38,Madrid,94.59,2024-02-02
+34,Eve,51,Buenos Aires,72.09,2024-02-03
+35,Eve,39,Lima,44.95,2024-02-04
+36,Eve,39,Buenos Aires,27.7,2024-02-05
+37,Bob,26,Madrid,0.04,2024-02-06
+38,Frank,43,Santiago,59.54,2024-02-07
+39,Diana,30,Madrid,15.18,2024-02-08
+40,Charlie,35,Bogotá,30.95,2024-02-09
+41,Bob,18,Madrid,40.95,2024-02-10
+42,Eve,40,México DF,31.6,2024-02-11
+43,Alice,50,Madrid,70.23,2024-02-12
+44,Diana,64,Madrid,68.47,2024-02-13
+45,Charlie,48,Lima,49.26,2024-02-14
+46,Frank,38,Bogotá,54.62,2024-02-15
+47,Alice,40,México DF,86.53,2024-02-16
+48,Diana,33,Buenos Aires,74.9,2024-02-17
+49,Charlie,44,Bogotá,24.84,2024-02-18
+50,Charlie,54,Santiago,25.22,2024-02-19
+51,Charlie,55,México DF,49.75,2024-02-20
+52,Frank,31,México DF,39.71,2024-02-21
+53,Charlie,54,Lima,26.5,2024-02-22
+54,Eve,64,Lima,33.59,2024-02-23
+55,Diana,24,México DF,21.93,2024-02-24
+56,Diana,29,Buenos Aires,39.09,2024-02-25
+57,Frank,45,Buenos Aires,26.72,2024-02-26
+58,Eve,20,Buenos Aires,99.87,2024-02-27
+59,Eve,39,Santiago,2.32,2024-02-28
+60,Frank,38,Madrid,51.04,2024-02-29
+61,Diana,46,Bogotá,46.75,2024-03-01
+62,Charlie,37,Madrid,38.9,2024-03-02
+63,Alice,20,México DF,14.17,2024-03-03
+64,Eve,44,Buenos Aires,4.72,2024-03-04
+65,Diana,38,Santiago,98.98,2024-03-05
+66,Bob,58,Buenos Aires,78.72,2024-03-06
+67,Diana,50,México DF,43.98,2024-03-07
+68,Charlie,47,Bogotá,67.14,2024-03-08
+69,Frank,56,México DF,29.77,2024-03-09
+70,Bob,58,México DF,43.7,2024-03-10
+71,Charlie,26,Buenos Aires,85.08,2024-03-11
+72,Eve,55,Buenos Aires,57.54,2024-03-12
+73,Alice,40,Santiago,50.88,2024-03-13
+74,Bob,40,Bogotá,86.17,2024-03-14
+75,Eve,18,Lima,82.15,2024-03-15
+76,Charlie,38,Buenos Aires,4.82,2024-03-16
+77,Bob,49,Lima,41.21,2024-03-17
+78,Bob,62,Buenos Aires,87.78,2024-03-18
+79,Diana,43,Bogotá,52.48,2024-03-19
+80,Eve,50,Santiago,71.09,2024-03-20
+81,Frank,26,Santiago,99.0,2024-03-21
+82,Bob,34,Madrid,22.46,2024-03-22
+83,Alice,23,Buenos Aires,92.52,2024-03-23
+84,Alice,63,México DF,67.98,2024-03-24
+85,Diana,24,Bogotá,41.03,2024-03-25
+86,Bob,24,Lima,29.23,2024-03-26
+87,Diana,54,Buenos Aires,83.4,2024-03-27
+88,Diana,22,Madrid,19.34,2024-03-28
+89,Diana,50,Madrid,76.16,2024-03-29
+90,Frank,27,Madrid,41.66,2024-03-30
+91,Bob,34,Buenos Aires,92.2,2024-03-31
+92,Bob,57,Santiago,62.61,2024-04-01
+93,Charlie,45,Madrid,45.04,2024-04-02
+94,Diana,64,México DF,84.0,2024-04-03
+95,Diana,63,Lima,40.21,2024-04-04
+96,Diana,39,Santiago,63.36,2024-04-05
+97,Diana,38,Lima,58.98,2024-04-06
+98,Alice,64,México DF,84.26,2024-04-07
+99,Bob,49,Lima,20.57,2024-04-08
+100,Diana,49,Madrid,43.51,2024-04-09
+101,Bob,53,Madrid,88.37,2024-04-10
+102,Eve,48,México DF,72.87,2024-04-11
+103,Diana,23,Bogotá,60.25,2024-04-12
+104,Bob,38,México DF,70.63,2024-04-13
+105,Frank,52,México DF,28.64,2024-04-14
+106,Charlie,31,Buenos Aires,42.3,2024-04-15
+107,Diana,40,Buenos Aires,32.9,2024-04-16
+108,Eve,59,Bogotá,92.51,2024-04-17
+109,Diana,41,México DF,99.74,2024-04-18
+110,Bob,47,Buenos Aires,86.47,2024-04-19
+111,Frank,27,México DF,74.18,2024-04-20
+112,Alice,22,Bogotá,88.66,2024-04-21
+113,Frank,59,Buenos Aires,16.5,2024-04-22
+114,Alice,47,Buenos Aires,50.45,2024-04-23
+115,Frank,24,Lima,69.83,2024-04-24
+116,Diana,23,Santiago,7.68,2024-04-25
+117,Alice,25,Madrid,78.9,2024-04-26
+118,Bob,43,México DF,17.93,2024-04-27
+119,Frank,35,Bogotá,31.5,2024-04-28
+120,Bob,53,México DF,67.09,2024-04-29
+121,Alice,43,México DF,14.06,2024-04-30
+122,Diana,53,México DF,64.74,2024-05-01
+123,Frank,58,Bogotá,27.29,2024-05-02
+124,Bob,21,Madrid,75.69,2024-05-03
+125,Diana,30,México DF,43.26,2024-05-04
+126,Eve,41,Santiago,88.25,2024-05-05
+127,Frank,48,Buenos Aires,9.32,2024-05-06
+128,Eve,39,Lima,12.31,2024-05-07
+129,Bob,57,Madrid,0.96,2024-05-08
+130,Eve,35,Madrid,1.76,2024-05-09
+131,Eve,51,México DF,1.15,2024-05-10
+132,Diana,40,Bogotá,81.45,2024-05-11
+133,Eve,56,Madrid,52.77,2024-05-12
+134,Diana,64,Lima,46.74,2024-05-13
+135,Alice,54,Lima,68.61,2024-05-14
+136,Frank,64,Santiago,87.02,2024-05-15
+137,Eve,18,Santiago,88.16,2024-05-16
+138,Eve,59,Bogotá,11.56,2024-05-17
+139,Eve,37,México DF,50.05,2024-05-18
+140,Eve,64,Lima,93.88,2024-05-19
+141,Alice,42,Buenos Aires,2.11,2024-05-20
+142,Alice,23,Lima,20.77,2024-05-21
+143,Bob,47,Santiago,94.42,2024-05-22
+144,Alice,37,Madrid,67.56,2024-05-23
+145,Alice,26,México DF,81.09,2024-05-24
+146,Eve,35,Santiago,39.17,2024-05-25
+147,Charlie,57,Madrid,48.39,2024-05-26
+148,Charlie,20,Lima,82.26,2024-05-27
+149,Frank,53,Santiago,15.15,2024-05-28
+150,Frank,23,Santiago,74.2,2024-05-29
+151,Alice,61,Bogotá,38.79,2024-05-30
+152,Bob,55,Madrid,55.97,2024-05-31
+153,Alice,18,Santiago,30.84,2024-06-01
+154,Charlie,36,Madrid,20.76,2024-06-02
+155,Eve,55,Bogotá,68.65,2024-06-03
+156,Eve,45,Buenos Aires,47.2,2024-06-04
+157,Bob,64,Lima,53.14,2024-06-05
+158,Charlie,26,Bogotá,18.98,2024-06-06
+159,Diana,64,Bogotá,25.33,2024-06-07
+160,Bob,27,México DF,78.97,2024-06-08
+161,Frank,41,Madrid,27.81,2024-06-09
+162,Eve,43,Lima,82.83,2024-06-10
+163,Diana,25,Santiago,86.58,2024-06-11
+164,Bob,22,Santiago,10.71,2024-06-12
+165,Bob,30,Bogotá,29.68,2024-06-13
+166,Alice,39,Lima,52.09,2024-06-14
+167,Bob,51,Santiago,20.88,2024-06-15
+168,Diana,42,Madrid,23.76,2024-06-16
+169,Bob,40,Madrid,50.98,2024-06-17
+170,Alice,58,Lima,50.58,2024-06-18
+171,Frank,38,Santiago,6.87,2024-06-19
+172,Bob,20,Buenos Aires,9.04,2024-06-20
+173,Charlie,25,Buenos Aires,87.4,2024-06-21
+174,Frank,63,Santiago,20.99,2024-06-22
+175,Charlie,56,Santiago,48.54,2024-06-23
+176,Charlie,56,Santiago,46.7,2024-06-24
+177,Frank,39,Santiago,59.47,2024-06-25
+178,Bob,62,México DF,23.17,2024-06-26
+179,Diana,28,Lima,74.56,2024-06-27
+180,Charlie,40,Madrid,29.8,2024-06-28
+181,Diana,33,México DF,27.43,2024-06-29
+182,Bob,45,Bogotá,84.79,2024-06-30
+183,Bob,52,Madrid,39.54,2024-07-01
+184,Diana,59,México DF,9.44,2024-07-02
+185,Diana,46,Lima,44.94,2024-07-03
+186,Charlie,55,Santiago,66.19,2024-07-04
+187,Eve,23,Bogotá,28.56,2024-07-05
+188,Alice,31,Lima,98.8,2024-07-06
+189,Diana,46,Santiago,49.3,2024-07-07
+190,Charlie,45,Lima,34.01,2024-07-08
+191,Diana,27,Madrid,89.78,2024-07-09
+192,Frank,63,Santiago,78.39,2024-07-10
+193,Charlie,64,Santiago,47.85,2024-07-11
+194,Charlie,21,Buenos Aires,8.61,2024-07-12
+195,Diana,41,Bogotá,68.36,2024-07-13
+196,Bob,19,Madrid,44.9,2024-07-14
+197,Diana,63,Buenos Aires,25.13,2024-07-15
+198,Bob,46,Lima,12.14,2024-07-16
+199,Diana,42,Bogotá,98.87,2024-07-17
+200,Diana,48,Buenos Aires,5.73,2024-07-18
+201,Diana,64,Madrid,32.25,2024-07-19
+202,Frank,63,Bogotá,66.0,2024-07-20
+203,Diana,32,México DF,74.53,2024-07-21
+204,Alice,55,Santiago,95.61,2024-07-22
+205,Alice,50,Buenos Aires,43.85,2024-07-23
+206,Eve,25,México DF,98.11,2024-07-24
+207,Eve,57,Madrid,26.85,2024-07-25
+208,Frank,33,México DF,32.54,2024-07-26
+209,Alice,55,Santiago,12.67,2024-07-27
+210,Alice,61,Buenos Aires,5.06,2024-07-28
+211,Eve,58,Madrid,12.63,2024-07-29
+212,Bob,51,Madrid,0.21,2024-07-30
+213,Charlie,23,México DF,75.27,2024-07-31
+214,Frank,56,Bogotá,74.02,2024-08-01
+215,Bob,57,Bogotá,2.19,2024-08-02
+216,Frank,40,Santiago,65.99,2024-08-03
+217,Eve,38,Buenos Aires,23.16,2024-08-04
+218,Bob,52,Buenos Aires,55.46,2024-08-05
+219,Diana,64,Bogotá,15.88,2024-08-06
+220,Eve,46,Bogotá,72.42,2024-08-07
+221,Charlie,52,Bogotá,57.38,2024-08-08
+222,Charlie,19,Buenos Aires,92.83,2024-08-09
+223,Eve,50,Lima,79.67,2024-08-10
+224,Diana,43,Buenos Aires,65.17,2024-08-11
+225,Alice,61,Bogotá,39.31,2024-08-12
+226,Diana,49,Lima,93.31,2024-08-13
+227,Diana,35,Santiago,56.01,2024-08-14
+228,Charlie,51,Madrid,64.32,2024-08-15
+229,Frank,47,Buenos Aires,23.73,2024-08-16
+230,Bob,61,Buenos Aires,52.79,2024-08-17
+231,Frank,40,Bogotá,67.71,2024-08-18
+232,Bob,37,Santiago,41.59,2024-08-19
+233,Bob,63,Lima,6.34,2024-08-20
+234,Charlie,40,México DF,60.25,2024-08-21
+235,Charlie,57,Santiago,90.96,2024-08-22
+236,Frank,25,México DF,36.73,2024-08-23
+237,Charlie,31,Lima,38.36,2024-08-24
+238,Alice,40,México DF,82.61,2024-08-25
+239,Frank,63,Madrid,63.07,2024-08-26
+240,Alice,31,Santiago,86.14,2024-08-27
+241,Bob,19,Madrid,21.36,2024-08-28
+242,Diana,21,Buenos Aires,59.86,2024-08-29
+243,Diana,41,México DF,41.39,2024-08-30
+244,Diana,53,Bogotá,80.16,2024-08-31
+245,Bob,26,Buenos Aires,48.09,2024-09-01
+246,Diana,33,Lima,41.96,2024-09-02
+247,Bob,49,Madrid,46.47,2024-09-03
+248,Charlie,49,Bogotá,50.03,2024-09-04
+249,Eve,44,Bogotá,11.68,2024-09-05
+250,Frank,32,Lima,92.1,2024-09-06
+251,Bob,21,Buenos Aires,48.39,2024-09-07
+252,Alice,53,Buenos Aires,65.44,2024-09-08
+253,Bob,42,Santiago,8.86,2024-09-09
+254,Eve,32,Buenos Aires,24.54,2024-09-10
+255,Charlie,29,Lima,20.4,2024-09-11
+256,Alice,24,Lima,9.2,2024-09-12
+257,Frank,53,México DF,89.98,2024-09-13
+258,Bob,41,Buenos Aires,33.47,2024-09-14
+259,Charlie,23,Buenos Aires,27.17,2024-09-15
+260,Eve,58,Buenos Aires,13.57,2024-09-16
+261,Eve,62,Madrid,83.14,2024-09-17
+262,Eve,48,Madrid,24.28,2024-09-18
+263,Diana,38,Buenos Aires,20.73,2024-09-19
+264,Diana,28,Buenos Aires,2.22,2024-09-20
+265,Bob,33,Buenos Aires,80.0,2024-09-21
+266,Eve,31,Bogotá,22.16,2024-09-22
+267,Frank,42,Bogotá,54.66,2024-09-23
+268,Alice,31,Santiago,65.78,2024-09-24
+269,Frank,55,Buenos Aires,9.44,2024-09-25
+270,Eve,35,Lima,33.48,2024-09-26
+271,Frank,31,Buenos Aires,86.97,2024-09-27
+272,Alice,41,México DF,35.23,2024-09-28
+273,Alice,25,Bogotá,50.0,2024-09-29
+274,Alice,62,Madrid,77.7,2024-09-30
+275,Bob,42,Madrid,98.36,2024-10-01
+276,Alice,51,Lima,27.88,2024-10-02
+277,Eve,62,Santiago,10.19,2024-10-03
+278,Diana,61,Buenos Aires,29.21,2024-10-04
+279,Charlie,45,Buenos Aires,49.88,2024-10-05
+280,Frank,41,México DF,91.02,2024-10-06
+281,Eve,35,Madrid,2.07,2024-10-07
+282,Frank,51,Bogotá,32.48,2024-10-08
+283,Alice,59,Bogotá,57.86,2024-10-09
+284,Bob,20,Bogotá,55.79,2024-10-10
+285,Charlie,29,Santiago,76.13,2024-10-11
+286,Charlie,53,México DF,1.35,2024-10-12
+287,Charlie,22,Santiago,74.33,2024-10-13
+288,Charlie,36,México DF,40.87,2024-10-14
+289,Diana,29,Buenos Aires,81.25,2024-10-15
+290,Charlie,44,México DF,61.22,2024-10-16
+291,Bob,34,Bogotá,0.68,2024-10-17
+292,Alice,60,Buenos Aires,24.52,2024-10-18
+293,Eve,45,México DF,57.06,2024-10-19
+294,Bob,57,Santiago,13.56,2024-10-20
+295,Frank,39,Santiago,69.16,2024-10-21
+296,Frank,27,Lima,31.4,2024-10-22
+297,Bob,58,Bogotá,21.37,2024-10-23
+298,Charlie,23,Lima,94.01,2024-10-24
+299,Alice,34,Madrid,22.18,2024-10-25
+300,Diana,29,Lima,17.82,2024-10-26
+301,Bob,23,Bogotá,46.4,2024-10-27
+302,Diana,60,México DF,29.3,2024-10-28
+303,Frank,39,Bogotá,38.85,2024-10-29
+304,Diana,33,Buenos Aires,84.74,2024-10-30
+305,Frank,21,Buenos Aires,97.17,2024-10-31
+306,Diana,42,Madrid,16.43,2024-11-01
+307,Frank,50,Madrid,49.26,2024-11-02
+308,Bob,18,Bogotá,65.89,2024-11-03
+309,Frank,32,Lima,1.7,2024-11-04
+310,Bob,34,Lima,73.74,2024-11-05
+311,Bob,60,Lima,41.85,2024-11-06
+312,Diana,36,Santiago,64.39,2024-11-07
+313,Frank,36,Lima,63.36,2024-11-08
+314,Bob,37,México DF,7.46,2024-11-09
+315,Bob,18,Madrid,76.47,2024-11-10
+316,Frank,40,Lima,23.36,2024-11-11
+317,Frank,33,Buenos Aires,85.15,2024-11-12
+318,Charlie,41,Buenos Aires,70.94,2024-11-13
+319,Frank,37,Bogotá,76.67,2024-11-14
+320,Bob,32,Bogotá,91.55,2024-11-15
+321,Frank,41,Madrid,30.19,2024-11-16
+322,Alice,54,Buenos Aires,11.24,2024-11-17
+323,Alice,58,Lima,9.89,2024-11-18
+324,Eve,50,México DF,11.5,2024-11-19
+325,Charlie,49,Santiago,39.69,2024-11-20
+326,Diana,48,Bogotá,79.36,2024-11-21
+327,Alice,32,Santiago,64.06,2024-11-22
+328,Eve,18,México DF,88.92,2024-11-23
+329,Charlie,29,Santiago,69.31,2024-11-24
+330,Charlie,52,Bogotá,76.5,2024-11-25
+331,Frank,54,México DF,71.67,2024-11-26
+332,Bob,47,México DF,73.55,2024-11-27
+333,Alice,43,Santiago,56.02,2024-11-28
+334,Alice,28,Santiago,95.71,2024-11-29
+335,Charlie,49,Bogotá,29.93,2024-11-30
+336,Frank,19,Bogotá,67.07,2024-12-01
+337,Frank,27,Madrid,22.85,2024-12-02
+338,Frank,63,Lima,39.85,2024-12-03
+339,Eve,39,Santiago,5.68,2024-12-04
+340,Bob,26,Lima,31.86,2024-12-05
+341,Bob,47,Santiago,4.75,2024-12-06
+342,Frank,42,México DF,6.97,2024-12-07
+343,Diana,38,Madrid,46.11,2024-12-08
+344,Charlie,35,Bogotá,34.94,2024-12-09
+345,Eve,37,Bogotá,23.1,2024-12-10
+346,Charlie,57,México DF,31.37,2024-12-11
+347,Frank,33,Madrid,94.08,2024-12-12
+348,Bob,56,México DF,72.67,2024-12-13
+349,Alice,52,Lima,76.77,2024-12-14
+350,Diana,46,Bogotá,38.52,2024-12-15
+351,Bob,63,Madrid,65.48,2024-12-16
+352,Diana,47,Bogotá,64.79,2024-12-17
+353,Alice,20,México DF,44.08,2024-12-18
+354,Alice,49,Madrid,68.37,2024-12-19
+355,Frank,31,Santiago,31.3,2024-12-20
+356,Frank,43,Lima,49.51,2024-12-21
+357,Bob,22,Santiago,46.69,2024-12-22
+358,Eve,45,Madrid,94.5,2024-12-23
+359,Diana,25,México DF,99.16,2024-12-24
+360,Charlie,62,Bogotá,0.89,2024-12-25
+361,Charlie,50,México DF,62.8,2024-12-26
+362,Frank,53,Madrid,44.53,2024-12-27
+363,Alice,30,Santiago,0.74,2024-12-28
+364,Charlie,37,Madrid,60.71,2024-12-29
+365,Diana,35,Santiago,32.95,2024-12-30
+366,Charlie,37,México DF,70.16,2024-12-31
+367,Alice,60,Lima,65.84,2025-01-01
+368,Charlie,50,Lima,23.21,2025-01-02
+369,Bob,38,Buenos Aires,13.97,2025-01-03
+370,Alice,63,Buenos Aires,25.52,2025-01-04
+371,Diana,41,Santiago,12.83,2025-01-05
+372,Bob,45,Bogotá,58.65,2025-01-06
+373,Diana,22,Bogotá,61.95,2025-01-07
+374,Alice,47,Bogotá,3.88,2025-01-08
+375,Charlie,60,Bogotá,68.86,2025-01-09
+376,Diana,41,Buenos Aires,86.85,2025-01-10
+377,Frank,56,Lima,97.16,2025-01-11
+378,Diana,31,Santiago,26.29,2025-01-12
+379,Eve,53,Bogotá,75.29,2025-01-13
+380,Alice,53,Santiago,52.45,2025-01-14
+381,Frank,43,Buenos Aires,25.49,2025-01-15
+382,Frank,30,Lima,4.21,2025-01-16
+383,Alice,57,Lima,29.31,2025-01-17
+384,Alice,38,Lima,39.23,2025-01-18
+385,Diana,43,Santiago,94.47,2025-01-19
+386,Bob,51,Buenos Aires,28.87,2025-01-20
+387,Alice,57,Santiago,99.43,2025-01-21
+388,Charlie,31,Buenos Aires,91.48,2025-01-22
+389,Bob,38,México DF,39.99,2025-01-23
+390,Frank,60,México DF,18.4,2025-01-24
+391,Diana,64,Buenos Aires,74.79,2025-01-25
+392,Alice,36,Bogotá,76.0,2025-01-26
+393,Eve,29,Lima,19.95,2025-01-27
+394,Alice,53,México DF,29.18,2025-01-28
+395,Eve,47,México DF,82.69,2025-01-29
+396,Bob,61,Lima,69.03,2025-01-30
+397,Diana,50,México DF,49.58,2025-01-31
+398,Frank,61,Madrid,17.97,2025-02-01
+399,Bob,40,Madrid,96.45,2025-02-02
+400,Alice,58,México DF,76.61,2025-02-03
+401,Alice,30,Bogotá,6.87,2025-02-04
+402,Bob,45,Madrid,42.16,2025-02-05
+403,Eve,45,Bogotá,10.8,2025-02-06
+404,Bob,36,Buenos Aires,77.26,2025-02-07
+405,Frank,54,Lima,74.07,2025-02-08
+406,Eve,48,México DF,80.97,2025-02-09
+407,Diana,59,Madrid,8.52,2025-02-10
+408,Eve,56,Santiago,12.43,2025-02-11
+409,Alice,34,Bogotá,37.26,2025-02-12
+410,Alice,45,México DF,39.94,2025-02-13
+411,Eve,21,Buenos Aires,75.25,2025-02-14
+412,Alice,23,Buenos Aires,64.58,2025-02-15
+413,Diana,36,Madrid,71.44,2025-02-16
+414,Bob,40,México DF,76.43,2025-02-17
+415,Frank,57,México DF,76.68,2025-02-18
+416,Eve,62,Santiago,12.27,2025-02-19
+417,Charlie,59,México DF,50.93,2025-02-20
+418,Alice,23,Buenos Aires,60.81,2025-02-21
+419,Alice,41,Buenos Aires,35.32,2025-02-22
+420,Bob,39,Lima,61.11,2025-02-23
+421,Bob,38,Buenos Aires,23.17,2025-02-24
+422,Eve,31,Buenos Aires,92.24,2025-02-25
+423,Charlie,41,Lima,54.8,2025-02-26
+424,Frank,42,México DF,98.28,2025-02-27
+425,Diana,34,Buenos Aires,87.89,2025-02-28
+426,Frank,63,Lima,32.53,2025-03-01
+427,Frank,52,México DF,3.87,2025-03-02
+428,Charlie,34,Santiago,96.54,2025-03-03
+429,Charlie,45,Bogotá,42.18,2025-03-04
+430,Charlie,19,Lima,92.54,2025-03-05
+431,Diana,51,Lima,81.47,2025-03-06
+432,Bob,18,México DF,63.08,2025-03-07
+433,Diana,64,Madrid,34.08,2025-03-08
+434,Frank,20,Bogotá,77.47,2025-03-09
+435,Bob,39,Buenos Aires,52.45,2025-03-10
+436,Diana,59,Madrid,59.09,2025-03-11
+437,Charlie,21,México DF,42.99,2025-03-12
+438,Diana,32,México DF,3.11,2025-03-13
+439,Bob,53,México DF,33.18,2025-03-14
+440,Bob,56,Madrid,25.82,2025-03-15
+441,Frank,29,México DF,20.19,2025-03-16
+442,Alice,54,Bogotá,54.76,2025-03-17
+443,Alice,58,Madrid,17.45,2025-03-18
+444,Charlie,24,Santiago,21.25,2025-03-19
+445,Diana,48,Bogotá,23.37,2025-03-20
+446,Charlie,22,Santiago,47.25,2025-03-21
+447,Bob,44,Santiago,97.18,2025-03-22
+448,Diana,42,Bogotá,50.96,2025-03-23
+449,Charlie,34,México DF,32.29,2025-03-24
+450,Charlie,45,Bogotá,53.47,2025-03-25
+451,Bob,44,Madrid,62.5,2025-03-26
+452,Bob,43,México DF,62.07,2025-03-27
+453,Charlie,46,Buenos Aires,72.07,2025-03-28
+454,Eve,44,Lima,46.23,2025-03-29
+455,Frank,34,Buenos Aires,98.64,2025-03-30
+456,Eve,55,Madrid,18.33,2025-03-31
+457,Charlie,33,México DF,3.96,2025-04-01
+458,Diana,26,Madrid,36.65,2025-04-02
+459,Frank,49,México DF,47.6,2025-04-03
+460,Eve,18,Santiago,11.96,2025-04-04
+461,Alice,26,Lima,41.17,2025-04-05
+462,Charlie,24,Bogotá,0.61,2025-04-06
+463,Alice,61,Bogotá,5.9,2025-04-07
+464,Charlie,54,Bogotá,29.53,2025-04-08
+465,Eve,57,Santiago,84.34,2025-04-09
+466,Diana,62,Lima,84.19,2025-04-10
+467,Diana,23,Santiago,62.82,2025-04-11
+468,Alice,54,Madrid,29.79,2025-04-12
+469,Frank,56,Buenos Aires,48.27,2025-04-13
+470,Frank,21,Buenos Aires,92.98,2025-04-14
+471,Alice,54,Buenos Aires,7.81,2025-04-15
+472,Charlie,27,Lima,25.64,2025-04-16
+473,Alice,27,Madrid,5.56,2025-04-17
+474,Alice,52,Madrid,15.22,2025-04-18
+475,Eve,25,Madrid,15.89,2025-04-19
+476,Frank,40,Buenos Aires,33.63,2025-04-20
+477,Diana,24,Buenos Aires,70.35,2025-04-21
+478,Charlie,19,Buenos Aires,29.24,2025-04-22
+479,Eve,55,Buenos Aires,57.62,2025-04-23
+480,Diana,37,Lima,66.39,2025-04-24
+481,Diana,48,Buenos Aires,57.41,2025-04-25
+482,Bob,47,Madrid,2.94,2025-04-26
+483,Bob,42,Santiago,38.0,2025-04-27
+484,Alice,27,Madrid,10.72,2025-04-28
+485,Alice,34,Santiago,22.81,2025-04-29
+486,Bob,26,Madrid,66.87,2025-04-30
+487,Eve,60,México DF,60.26,2025-05-01
+488,Charlie,49,Madrid,24.04,2025-05-02
+489,Eve,41,Lima,28.04,2025-05-03
+490,Diana,33,Lima,18.68,2025-05-04
+491,Diana,63,Santiago,40.34,2025-05-05
+492,Eve,29,Buenos Aires,14.57,2025-05-06
+493,Alice,52,Madrid,84.38,2025-05-07
+494,Diana,60,Madrid,18.58,2025-05-08
+495,Eve,64,Santiago,13.68,2025-05-09
+496,Bob,63,Santiago,23.31,2025-05-10
+497,Charlie,34,Madrid,36.57,2025-05-11
+498,Eve,46,Lima,81.32,2025-05-12
+499,Frank,53,Lima,91.43,2025-05-13
+500,Charlie,52,Madrid,55.64,2025-05-14
