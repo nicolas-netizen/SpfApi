@@ -37,16 +37,16 @@ start_services() {
     echo -e "${YELLOW}🔧 Iniciando backend...${NC}"
     source venv/bin/activate
     cd backend
-    python -m uvicorn app:app --host 0.0.0.0 --port 8000 &
+    python3 -m uvicorn app:app --host 0.0.0.0 --port 8000 &
     BACKEND_PID=$!
     cd ..
     
     echo -e "${YELLOW}⏳ Esperando backend...${NC}"
     sleep 3
     
-    echo -e "${YELLOW} Iniciando frontend...${NC}"
+    echo -e "${YELLOW}🌐 Iniciando frontend...${NC}"
     cd frontend
-    npm run dev &
+    npm run dev -- --host 0.0.0.0 &
     FRONTEND_PID=$!
     cd ..
     
@@ -55,8 +55,18 @@ start_services() {
     echo $FRONTEND_PID > .frontend.pid
     
     echo -e "${GREEN}🎉 ¡Dashboard iniciado!${NC}"
-    echo -e "${BLUE}📍 Backend: http://localhost:8000${NC}"
-    echo -e "${BLUE}📍 Frontend: http://localhost:3000${NC}"
+    echo -e "${BLUE}📍 Backend: http://0.0.0.0:8000${NC}"
+    echo -e "${BLUE}📍 Frontend: http://0.0.0.0:3000${NC}"
+    echo -e "${YELLOW}💡 Para acceder desde Windows, usa tu IP de Ubuntu${NC}"
+}
+
+# Función para obtener IP
+get_ip() {
+    IP=$(hostname -I | awk '{print $1}')
+    echo -e "${BLUE}🌐 Tu IP de Ubuntu es: ${IP}${NC}"
+    echo -e "${GREEN}📍 URLs para acceder desde Windows:${NC}"
+    echo -e "${GREEN}   Backend: http://${IP}:8000${NC}"
+    echo -e "${GREEN}   Frontend: http://${IP}:3000${NC}"
 }
 
 # Menú principal
@@ -66,6 +76,7 @@ echo "2) Solo iniciar (si ya está instalado)"
 echo "3) Solo instalar dependencias"
 echo "4) Ver estado"
 echo "5) Detener todo"
+echo "6) Ver IP y URLs"
 echo
 
 read -p "Opción: " choice
@@ -75,9 +86,11 @@ case $choice in
         create_venv
         install_deps
         start_services
+        get_ip
         ;;
     2)
         start_services
+        get_ip
         ;;
     3)
         create_venv
@@ -95,6 +108,7 @@ case $choice in
         else
             echo -e "${RED}❌ Frontend detenido${NC}"
         fi
+        get_ip
         ;;
     5)
         echo -e "${RED}🛑 Deteniendo servicios...${NC}"
@@ -107,8 +121,11 @@ case $choice in
             rm .frontend.pid
         fi
         pkill -f "uvicorn" 2>/dev/null
-        pkill -f "npm run dev" 2>/dev/null
+        pkill -f "vite" 2>/dev/null
         echo -e "${GREEN}✅ Servicios detenidos${NC}"
+        ;;
+    6)
+        get_ip
         ;;
     *)
         echo -e "${RED}❌ Opción inválida${NC}"
