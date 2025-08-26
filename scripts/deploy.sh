@@ -22,7 +22,8 @@ create_venv() {
 install_deps() {
     echo -e "${BLUE}📦 Instalando dependencias de Python...${NC}"
     source venv/bin/activate
-    pip install -r backend/requirements.txt
+    echo -e "${YELLOW}⏳ Instalando Flask y dependencias...${NC}"
+    pip install flask==2.3.3 flask-cors==4.0.0 pandas==2.0.3 werkzeug==2.3.7
     
     echo -e "${BLUE}📦 Instalando dependencias de Node.js...${NC}"
     cd frontend
@@ -34,15 +35,31 @@ install_deps() {
 
 # Función para iniciar servicios
 start_services() {
-    echo -e "${YELLOW}🔧 Iniciando backend...${NC}"
+    echo -e "${YELLOW}🔧 Iniciando backend Flask...${NC}"
     source venv/bin/activate
     cd backend
-    python3 -m uvicorn app:app --host 0.0.0.0 --port 8000 &
+    
+    # Verificar que app.py existe
+    if [ ! -f "app.py" ]; then
+        echo -e "${RED}❌ Error: app.py no encontrado en backend/${NC}"
+        return 1
+    fi
+    
+    # Iniciar Flask en background
+    python3 app.py &
     BACKEND_PID=$!
     cd ..
     
-    echo -e "${YELLOW}⏳ Esperando backend...${NC}"
-    sleep 3
+    echo -e "${YELLOW}⏳ Esperando backend Flask...${NC}"
+    sleep 5
+    
+    # Verificar que el backend esté funcionando
+    if curl -s http://localhost:8000/ > /dev/null 2>&1; then
+        echo -e "${GREEN}✅ Backend Flask funcionando en puerto 8000${NC}"
+    else
+        echo -e "${RED}❌ Error: Backend no responde en puerto 8000${NC}"
+        return 1
+    fi
     
     echo -e "${YELLOW}🌐 Iniciando frontend...${NC}"
     cd frontend
@@ -55,7 +72,7 @@ start_services() {
     echo $FRONTEND_PID > .frontend.pid
     
     echo -e "${GREEN}🎉 ¡Dashboard iniciado!${NC}"
-    echo -e "${BLUE}📍 Backend: http://0.0.0.0:8000${NC}"
+    echo -e "${BLUE}📍 Backend Flask: http://0.0.0.0:8000${NC}"
     echo -e "${BLUE}📍 Frontend: http://0.0.0.0:3000${NC}"
     echo -e "${YELLOW}💡 Para acceder desde Windows, usa tu IP de Ubuntu${NC}"
 }
@@ -65,8 +82,82 @@ get_ip() {
     IP=$(hostname -I | awk '{print $1}')
     echo -e "${BLUE}🌐 Tu IP de Ubuntu es: ${IP}${NC}"
     echo -e "${GREEN}📍 URLs para acceder desde Windows:${NC}"
-    echo -e "${GREEN}   Backend: http://${IP}:8000${NC}"
+    echo -e "${GREEN}   Backend Flask: http://${IP}:8000${NC}"
     echo -e "${GREEN}   Frontend: http://${IP}:3000${NC}"
+    echo -e "${GREEN}   Admin Panel: http://${IP}:3000/admin.html${NC}"
+}
+
+# Función para verificar estado
+check_status() {
+    echo -e "${BLUE}📊 Estado del dashboard:${NC}"
+    
+    # Verificar backend
+    if [ -f .backend.pid ]; then
+        PID=$(cat .backend.pid)
+        if ps -p $PID > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Backend Flask ejecutándose (PID: $PID)${NC}"
+            if curl -s http://localhost:8000/ > /dev/null 2>&1; then
+                echo -e "${GREEN}   🌐 Backend responde en puerto 8000${NC}"
+            else
+                echo -e "${RED}   ❌ Backend no responde en puerto 8000${NC}"
+            fi
+        else
+            echo -e "${RED}❌ Backend no ejecutándose (PID inválido)${NC}"
+            rm .backend.pid
+        fi
+    else
+        echo -e "${RED}❌ Backend no ejecutándose${NC}"
+    fi
+    
+    # Verificar frontend
+    if [ -f .frontend.pid ]; then
+        PID=$(cat .frontend.pid)
+        if ps -p $PID > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Frontend ejecutándose (PID: $PID)${NC}"
+            if curl -s http://localhost:3000/ > /dev/null 2>&1; then
+                echo -e "${GREEN}   🌐 Frontend responde en puerto 3000${NC}"
+            else
+                echo -e "${RED}   ❌ Frontend no responde en puerto 3000${NC}"
+            fi
+        else
+            echo -e "${RED}❌ Frontend no ejecutándose (PID inválido)${NC}"
+            rm .frontend.pid
+        fi
+    else
+        echo -e "${RED}❌ Frontend no ejecutándose${NC}"
+    fi
+    
+    get_ip
+}
+
+# Función para detener servicios
+stop_services() {
+    echo -e "${RED}🛑 Deteniendo servicios...${NC}"
+    
+    # Detener por PID si existe
+    if [ -f .backend.pid ]; then
+        PID=$(cat .backend.pid)
+        if ps -p $PID > /dev/null 2>&1; then
+            kill $PID 2>/dev/null
+            echo -e "${GREEN}✅ Backend detenido${NC}"
+        fi
+        rm .backend.pid
+    fi
+    
+    if [ -f .frontend.pid ]; then
+        PID=$(cat .frontend.pid)
+        if ps -p $PID > /dev/null 2>&1; then
+            kill $PID 2>/dev/null
+            echo -e "${GREEN}✅ Frontend detenido${NC}"
+        fi
+        rm .frontend.pid
+    fi
+    
+    # Detener procesos por nombre como respaldo
+    pkill -f "python3 app.py" 2>/dev/null
+    pkill -f "vite" 2>/dev/null
+    
+    echo -e "${GREEN}✅ Servicios detenidos${NC}"
 }
 
 # Menú principal
@@ -86,43 +177,29 @@ case $choice in
         create_venv
         install_deps
         start_services
-        get_ip
+        if [ $? -eq 0 ]; then
+            get_ip
+        else
+            echo -e "${RED}❌ Error al iniciar servicios${NC}"
+        fi
         ;;
     2)
         start_services
-        get_ip
+        if [ $? -eq 0 ]; then
+            get_ip
+        else
+            echo -e "${RED}❌ Error al iniciar servicios${NC}"
+        fi
         ;;
     3)
         create_venv
         install_deps
         ;;
     4)
-        echo -e "${BLUE}📊 Estado del dashboard:${NC}"
-        if [ -f .backend.pid ]; then
-            echo -e "${GREEN}✅ Backend ejecutándose${NC}"
-        else
-            echo -e "${RED}❌ Backend detenido${NC}"
-        fi
-        if [ -f .frontend.pid ]; then
-            echo -e "${GREEN}✅ Frontend ejecutándose${NC}"
-        else
-            echo -e "${RED}❌ Frontend detenido${NC}"
-        fi
-        get_ip
+        check_status
         ;;
     5)
-        echo -e "${RED}🛑 Deteniendo servicios...${NC}"
-        if [ -f .backend.pid ]; then
-            kill $(cat .backend.pid) 2>/dev/null
-            rm .backend.pid
-        fi
-        if [ -f .frontend.pid ]; then
-            kill $(cat .frontend.pid) 2>/dev/null
-            rm .frontend.pid
-        fi
-        pkill -f "uvicorn" 2>/dev/null
-        pkill -f "vite" 2>/dev/null
-        echo -e "${GREEN}✅ Servicios detenidos${NC}"
+        stop_services
         ;;
     6)
         get_ip
