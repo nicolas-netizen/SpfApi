@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARKFOUND Admin - Panel de Administración</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="min-h-screen bg-black text-white">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-gray-900 to-gray-800 shadow-2xl border-b-4 border-blue-400">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="h-8 w-8 bg-blue-400 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">S</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">SPARKFOUND Admin</h1>
+                        <p class="text-gray-400 text-sm">Panel de Administración</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="refreshBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="refresh-cw" class="h-5 w-5"></i>
+                        <span>Actualizar</span>
+                    </button>
+                    <a href="index.html" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">
+                        Volver al Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Navigation Tabs -->
+        <div class="flex space-x-1 bg-gray-900 p-1 rounded-lg mb-6">
+            <button onclick="showTab('dashboard')" class="tab-btn active flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
+                <i data-lucide="bar-chart-3" class="h-5 w-5"></i>
+                <span>Dashboard</span>
+            </button>
+            
+            <button onclick="showTab('data')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
+                <i data-lucide="database" class="h-5 w-5"></i>
+                <span>Datos</span>
+            </button>
+            
+            <button onclick="showTab('settings')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
+                <i data-lucide="settings" class="h-5 w-5"></i>
+                <span>Configuración</span>
+            </button>
+            
+            <button onclick="showTab('users')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
+                <i data-lucide="users" class="h-5 w-5"></i>
+                <span>Usuarios</span>
+            </button>
+            
+            <button onclick="showTab('analytics')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
+                <i data-lucide="activity-square" class="h-5 w-5"></i>
+                <span>Analíticas</span>
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="dashboard" class="tab-content">
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-2xl text-white">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-100 text-sm">Total KPIs</p>
+                                <p class="text-3xl font-bold" id="totalKPIs">--</p>
+                            </div>
+                            <i data-lucide="bar-chart-3" class="h-12 w-12 text-blue-200"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 p-6 rounded-2xl text-white">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-green-100 text-sm">Usuarios Activos</p>
+                                <p class="text-3xl font-bold">12</p>
+                            </div>
+                            <i data-lucide="users" class="h-12 w-12 text-green-200"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-600 to-purple-700 p-6 rounded-2xl text-white">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-purple-100 text-sm">Última Actualización</p>
+                                <p class="text-3xl font-bold" id="lastUpdate">--</p>
+                            </div>
+                            <i data-lucide="refresh-cw" class="h-12 w-12 text-purple-200"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Actividad Reciente</h3>
+                    <div class="space-y-3" id="activityLog">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-800 rounded-lg">
+                            <i data-lucide="check-circle" class="h-5 w-5 text-green-400"></i>
+                            <div>
+                                <p class="text-white font-medium">Panel iniciado</p>
+                                <p class="text-gray-400 text-sm">Hace 1 minuto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="data" class="tab-content hidden">
+            <div class="space-y-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-white">Gestión de Datos KPI</h3>
+                    <button onclick="showNewKPIModal()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="plus" class="h-5 w-5"></i>
+                        <span>Nuevo KPI</span>
+                    </button>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <div class="flex space-x-4 mb-6">
+                        <div class="flex-1">
+                            <input type="text" id="searchInput" placeholder="Buscar KPIs..." class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none" onkeyup="filterKPIs()">
+                        </div>
+                        <select id="filterSelect" class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none" onchange="filterKPIs()">
+                            <option value="all">Todos</option>
+                            <option value="devices">Dispositivos</option>
+                            <option value="events">Eventos</option>
+                            <option value="reports">Reportes</option>
+                            <option value="incidents">Incidentes</option>
+                        </select>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-white">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4">Nombre</th>
+                                    <th class="text-left py-3 px-4">Valor</th>
+                                    <th class="text-left py-3 px-4">Tipo</th>
+                                    <th class="text-left py-3 px-4">Estado</th>
+                                    <th class="text-left py-3 px-4">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kpiTableBody">
+                                <!-- Los datos se cargarán dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings" class="tab-content hidden">
+            <div class="space-y-6">
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Configuración del Dashboard</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-white text-sm font-medium mb-2">
+                                Intervalo de Actualización (minutos)
+                            </label>
+                            <input type="number" id="refreshInterval" min="1" max="60" value="3" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-white text-sm font-medium mb-2">
+                                Tema del Dashboard
+                            </label>
+                            <select id="themeSelect" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                                <option value="dark">Oscuro</option>
+                                <option value="light">Claro</option>
+                                <option value="auto">Automático</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="autoRefresh" checked class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500">
+                            <label for="autoRefresh" class="text-white text-sm">
+                                Actualización automática habilitada
+                            </label>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="notifications" checked class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500">
+                            <label for="notifications" class="text-white text-sm">
+                                Notificaciones habilitadas
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex space-x-4">
+                        <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2">
+                            <i data-lucide="save" class="h-5 w-5"></i>
+                            <span>Guardar Cambios</span>
+                        </button>
+                        
+                        <button onclick="resetSettings()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2">
+                            <i data-lucide="refresh-cw" class="h-5 w-5"></i>
+                            <span>Restablecer</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="users" class="tab-content hidden">
+            <div class="space-y-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-white">Gestión de Usuarios</h3>
+                    <button onclick="showNewUserModal()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="plus" class="h-5 w-5"></i>
+                        <span>Nuevo Usuario</span>
+                    </button>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-white">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4">Usuario</th>
+                                    <th class="text-left py-3 px-4">Email</th>
+                                    <th class="text-left py-3 px-4">Rol</th>
+                                    <th class="text-left py-3 px-4">Estado</th>
+                                    <th class="text-left py-3 px-4">Último Acceso</th>
+                                    <th class="text-left py-3 px-4">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <tr class="border-b border-gray-800 hover:bg-gray-800">
+                                    <td class="py-3 px-4">admin</td>
+                                    <td class="py-3 px-4">admin@sparkfound.com</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-red-600 text-white px-2 py-1 rounded text-xs">Administrador</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">Activo</span>
+                                    </td>
+                                    <td class="py-3 px-4">Hace 5 min</td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button onclick="editUser('admin')" class="text-blue-400 hover:text-blue-300">
+                                                <i data-lucide="edit-3" class="h-4 w-4"></i>
+                                            </button>
+                                            <button onclick="deleteUser('admin')" class="text-red-400 hover:text-red-300">
+                                                <i data-lucide="trash-2" class="h-4 w-4"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="analytics" class="tab-content hidden">
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-900 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4">Tendencias de KPIs</h3>
+                        <div class="space-y-3" id="trendsContainer">
+                            <!-- Las tendencias se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4">Rendimiento del Sistema</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-300">CPU</span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-20 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-green-400 h-2 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                    <span class="text-white text-sm">65%</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-300">Memoria</span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-20 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-400 h-2 rounded-full" style="width: 78%"></div>
+                                    </div>
+                                    <span class="text-white text-sm">78%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar KPI -->
+    <div id="editKPIModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md">
+                <h3 class="text-xl font-bold text-white mb-4">Editar KPI</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-2">Nombre</label>
+                        <input type="text" id="editKPIName" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-2">Valor</label>
+                        <input type="text" id="editKPIValue" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <div class="flex space-x-4 mt-6">
+                    <button onclick="saveKPIEdit()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex-1">
+                        Guardar
+                    </button>
+                    <button onclick="closeEditKPIModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex-1">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para nuevo KPI -->
+    <div id="newKPIModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md">
+                <h3 class="text-xl font-bold text-white mb-4">Nuevo KPI</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-2">Nombre</label>
+                        <input type="text" id="newKPIName" placeholder="Nombre del KPI" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-2">Valor</label>
+                        <input type="text" id="newKPIValue" placeholder="Valor del KPI" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <div class="flex space-x-4 mt-6">
+                    <button onclick="saveNewKPI()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex-1">
+                        Crear
+                    </button>
+                    <button onclick="closeNewKPIModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex-1">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <div id="notifications" class="fixed top-4 right-4 space-y-2 z-50"></div>
+
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // Variables globales
+        let currentTab = 'dashboard';
+        let kpiData = null;
+        let editingKPI = null;
+        let originalKPIData = null;
+
+        // Función para mostrar pestañas
+        function showTab(tabName) {
+            // Ocultar todas las pestañas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-gray-800');
+            });
+            
+            // Mostrar pestaña seleccionada
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Marcar botón como activo
+            const activeButton = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+            if (activeButton) {
+                activeButton.classList.add('active', 'bg-blue-600', 'text-white');
+                activeButton.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-gray-800');
+            }
+            
+            currentTab = tabName;
+        }
+
+        // Función para cargar datos KPI
+        async function loadKPIData() {
+            try {
+                const response = await axios.get(`http://${window.location.hostname}:8000/data/KPISPF.csv`);
+                kpiData = response.data;
+                originalKPIData = JSON.parse(JSON.stringify(kpiData)); // Backup
+                updateKPITable();
+                updateDashboardStats();
+                addActivityLog('Datos KPI cargados exitosamente');
+                showNotification('Datos actualizados', 'success');
+            } catch (error) {
+                console.error('Error cargando datos KPI:', error);
+                showNotification('Error al cargar datos', 'error');
+                
+                // Datos de ejemplo si falla la API
+                kpiData = {
+                    data: [{
+                        'Dispositivos en SIEM': 362,
+                        'Super/Workers': 5,
+                        'Colectores': 29,
+                        'Unmanaged': 30,
+                        'Monitored Assets': 298,
+                        'Agentes': 160,
+                        'UEBA': 149,
+                        'Eventos Analizados': 7098200000,
+                        'Incidentes Detectados': 122400,
+                        'Total de Reportes': 6131,
+                        'Total Reportes Automáticos': 5249,
+                        'Total Reportes Manuales': 882,
+                        'Reportes Automáticos': 3055,
+                        'Remediaciones Automáticas': 2194,
+                        'Reportes Manuales': 594,
+                        'Remediaciones Manuales': 288,
+                        'Tenants': 21,
+                        'Clientes Activos': 15,
+                        'Cliente Interno': 2,
+                        'Bajas de Trial': 2,
+                        'Trial Activos': 2,
+                        'Eventos por Segundo': 18649,
+                        'MTTD Automático': 3,
+                        'MTTR Automático': 3,
+                        'MTTD Manual': 299,
+                        'MTTR Manual': 496
+                    }]
+                };
+                updateKPITable();
+                updateDashboardStats();
+            }
+        }
+
+        // Función para actualizar tabla KPI
+        function updateKPITable() {
+            if (!kpiData?.data?.[0]) return;
+            
+            const tbody = document.getElementById('kpiTableBody');
+            tbody.innerHTML = '';
+            
+            Object.entries(kpiData.data[0]).forEach(([key, value]) => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-800 hover:bg-gray-800';
+                row.innerHTML = `
+                    <td class="py-3 px-4">${key}</td>
+                    <td class="py-3 px-4">${value?.toLocaleString() || value}</td>
+                    <td class="py-3 px-4">
+                        <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs">KPI</span>
+                    </td>
+                    <td class="py-3 px-4">
+                        <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">Activo</span>
+                    </td>
+                    <td class="py-3 px-4">
+                        <div class="flex space-x-2">
+                            <button onclick="viewKPI('${key}')" class="text-blue-400 hover:text-blue-300 p-1 rounded hover:bg-gray-700">
+                                <i data-lucide="eye" class="h-4 w-4"></i>
+                            </button>
+                            <button onclick="editKPI('${key}')" class="text-yellow-400 hover:text-yellow-300 p-1 rounded hover:bg-gray-700">
+                                <i data-lucide="edit-3" class="h-4 w-4"></i>
+                            </button>
+                            <button onclick="deleteKPI('${key}')" class="text-red-400 hover:text-red-300 p-1 rounded hover:bg-gray-700">
+                                <i data-lucide="trash-2" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            // Recrear iconos en la nueva tabla
+            lucide.createIcons();
+        }
+
+        // Función para actualizar estadísticas del dashboard
+        function updateDashboardStats() {
+            if (kpiData?.data?.[0]) {
+                const totalKPIs = Object.keys(kpiData.data[0]).length;
+                document.getElementById('totalKPIs').textContent = totalKPIs;
+            }
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdate').textContent = timeString;
+        }
+
+        // Función para filtrar KPIs
+        function filterKPIs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filterType = document.getElementById('filterSelect').value;
+            
+            const rows = document.querySelectorAll('#kpiTableBody tr');
+            
+            rows.forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                const value = row.cells[1].textContent;
+                
+                let showRow = true;
+                
+                // Filtro por búsqueda
+                if (searchTerm && !name.includes(searchTerm)) {
+                    showRow = false;
+                }
+                
+                // Filtro por tipo
+                if (filterType !== 'all') {
+                    if (filterType === 'devices' && !name.includes('dispositivo') && !name.includes('agente') && !name.includes('colector')) {
+                        showRow = false;
+                    } else if (filterType === 'events' && !name.includes('evento')) {
+                        showRow = false;
+                    } else if (filterType === 'reports' && !name.includes('reporte')) {
+                        showRow = false;
+                    } else if (filterType === 'incidents' && !name.includes('incidente')) {
+                        showRow = false;
+                    }
+                }
+                
+                row.style.display = showRow ? '' : 'none';
+            });
+        }
+
+        // Función para ver KPI
+        function viewKPI(key) {
+            const value = kpiData.data[0][key];
+            showNotification(`${key}: ${value?.toLocaleString() || value}`, 'info');
+        }
+
+        // Función para editar KPI
+        function editKPI(key) {
+            editingKPI = key;
+            const value = kpiData.data[0][key];
+            
+            document.getElementById('editKPIName').value = key;
+            document.getElementById('editKPIValue').value = value;
+            
+            document.getElementById('editKPIModal').classList.remove('hidden');
+            
+            // Enfocar en el campo de valor
+            setTimeout(() => {
+                document.getElementById('editKPIValue').focus();
+            }, 100);
+        }
+
+        // Función para guardar edición de KPI
+        async function saveKPIEdit() {
+            const newValue = document.getElementById('editKPIValue').value.trim();
+            
+            if (editingKPI && newValue !== '') {
+                try {
+                    // Enviar al backend
+                    const response = await axios.post(`http://${window.location.hostname}:8000/api/update-kpi`, {
+                        name: editingKPI,
+                        value: newValue
+                    });
+                    
+                    if (response.data.success) {
+                        // Actualizar datos locales
+                        kpiData = response.data;
+                        originalKPIData = JSON.parse(JSON.stringify(kpiData));
+                        
+                        updateKPITable();
+                        closeEditKPIModal();
+                        addActivityLog(`KPI "${editingKPI}" modificado exitosamente`);
+                        showNotification('KPI actualizado exitosamente', 'success');
+                        
+                        editingKPI = null;
+                    } else {
+                        showNotification('Error al actualizar KPI', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error actualizando KPI:', error);
+                    showNotification('Error al actualizar KPI en el servidor', 'error');
+                }
+            } else {
+                showNotification('Por favor ingresa un valor válido', 'error');
+            }
+        }
+
+        // Función para cerrar modal de edición
+        function closeEditKPIModal() {
+            document.getElementById('editKPIModal').classList.add('hidden');
+            editingKPI = null;
+        }
+
+        // Función para eliminar KPI
+        async function deleteKPI(key) {
+            if (confirm(`¿Estás seguro de que quieres eliminar el KPI "${key}"?\n\nValor actual: ${kpiData.data[0][key]?.toLocaleString() || kpiData.data[0][key]}`)) {
+                try {
+                    // Enviar al backend
+                    const response = await axios.delete(`http://${window.location.hostname}:8000/api/delete-kpi`, {
+                        data: { name: key }
+                    });
+                    
+                    if (response.data.success) {
+                        // Recargar datos del backend
+                        await loadKPIData();
+                        addActivityLog(`KPI "${key}" eliminado exitosamente`);
+                        showNotification('KPI eliminado exitosamente', 'success');
+                    } else {
+                        showNotification('Error al eliminar KPI', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error eliminando KPI:', error);
+                    showNotification('Error al eliminar KPI en el servidor', 'error');
+                }
+            }
+        }
+
+        // Función para mostrar modal de nuevo KPI
+        function showNewKPIModal() {
+            document.getElementById('newKPIName').value = '';
+            document.getElementById('newKPIValue').value = '';
+            document.getElementById('newKPIModal').classList.remove('hidden');
+            
+            // Enfocar en el primer campo
+            setTimeout(() => {
+                document.getElementById('newKPIName').focus();
+            }, 100);
+        }
+
+        // Función para guardar nuevo KPI
+        async function saveNewKPI() {
+            const name = document.getElementById('newKPIName').value.trim();
+            const value = document.getElementById('newKPIValue').value.trim();
+            
+            if (name && value !== '') {
+                try {
+                    // Enviar al backend
+                    const response = await axios.post(`http://${window.location.hostname}:8000/api/create-kpi`, {
+                        name: name,
+                        value: value
+                    });
+                    
+                    if (response.data.success) {
+                        // Recargar datos del backend
+                        await loadKPIData();
+                        closeNewKPIModal();
+                        addActivityLog(`Nuevo KPI "${name}" creado exitosamente`);
+                        showNotification('Nuevo KPI creado exitosamente', 'success');
+                    } else {
+                        showNotification('Error al crear KPI', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error creando KPI:', error);
+                    if (error.response?.status === 409) {
+                        showNotification('Ya existe un KPI con ese nombre', 'error');
+                    } else {
+                        showNotification('Error al crear KPI en el servidor', 'error');
+                    }
+                }
+            } else {
+                showNotification('Por favor completa todos los campos', 'error');
+            }
+        }
+
+        // Función para cerrar modal de nuevo KPI
+        function closeNewKPIModal() {
+            document.getElementById('newKPIModal').classList.add('hidden');
+        }
+
+        // Función para guardar configuración
+        function saveSettings() {
+            const refreshInterval = document.getElementById('refreshInterval').value;
+            const theme = document.getElementById('themeSelect').value;
+            const autoRefresh = document.getElementById('autoRefresh').checked;
+            const notifications = document.getElementById('notifications').checked;
+            
+            // Guardar en localStorage
+            localStorage.setItem('adminSettings', JSON.stringify({
+                refreshInterval,
+                theme,
+                autoRefresh,
+                notifications
+            }));
+            
+            addActivityLog('Configuración guardada');
+            showNotification('Configuración guardada exitosamente', 'success');
+        }
+
+        // Función para restablecer configuración
+        function resetSettings() {
+            document.getElementById('refreshInterval').value = 3;
+            document.getElementById('themeSelect').value = 'dark';
+            document.getElementById('autoRefresh').checked = true;
+            document.getElementById('notifications').checked = true;
+            
+            showNotification('Configuración restablecida', 'info');
+        }
+
+        // Función para agregar log de actividad
+        function addActivityLog(message) {
+            const activityLog = document.getElementById('activityLog');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'flex items-center space-x-3 p-3 bg-gray-800 rounded-lg';
+            logEntry.innerHTML = `
+                <i data-lucide="check-circle" class="h-5 w-5 text-green-400"></i>
+                <div>
+                    <p class="text-white font-medium">${message}</p>
+                    <p class="text-gray-400 text-sm">${timeString}</p>
+                </div>
+            `;
+            
+            activityLog.insertBefore(logEntry, activityLog.firstChild);
+            
+            // Limitar a 5 entradas
+            if (activityLog.children.length > 5) {
+                activityLog.removeChild(activityLog.lastChild);
+            }
+            
+            // Recrear iconos
+            lucide.createIcons();
+        }
+
+        // Función para mostrar notificaciones
+        function showNotification(message, type = 'info') {
+            const notifications = document.getElementById('notifications');
+            const notification = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-green-600' : 
+                           type === 'error' ? 'bg-red-600' : 
+                           type === 'warning' ? 'bg-yellow-600' : 'bg-blue-600';
+            
+            notification.className = `${bgColor} text-white p-4 rounded-lg shadow-lg max-w-sm`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="font-medium">${message}</span>
+                </div>
+            `;
+            
+            notifications.appendChild(notification);
+            
+            // Auto-remover después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
+        }
+
+        // Función para editar usuario
+        function editUser(username) {
+            showNotification(`Editando usuario: ${username}`, 'info');
+        }
+
+        // Función para eliminar usuario
+        function deleteUser(username) {
+            if (confirm(`¿Estás seguro de que quieres eliminar el usuario "${username}"?`)) {
+                showNotification(`Usuario ${username} eliminado`, 'success');
+            }
+        }
+
+        // Función para mostrar modal de nuevo usuario
+        function showNewUserModal() {
+            showNotification('Funcionalidad de nuevo usuario en desarrollo', 'info');
+        }
+
+        // Event listeners
+        document.getElementById('refreshBtn').addEventListener('click', loadKPIData);
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadKPIData();
+            addActivityLog('Panel de administración iniciado');
+            
+            // Cargar configuración guardada
+            const savedSettings = localStorage.getItem('adminSettings');
+            if (savedSettings) {
+                try {
+                    const settings = JSON.parse(savedSettings);
+                    document.getElementById('refreshInterval').value = settings.refreshInterval || 3;
+                    document.getElementById('themeSelect').value = settings.theme || 'dark';
+                    document.getElementById('autoRefresh').checked = settings.autoRefresh !== false;
+                    document.getElementById('notifications').checked = settings.notifications !== false;
+                } catch (e) {
+                    console.error('Error cargando configuración:', e);
+                }
+            }
+        });
+
+        // Cerrar modales con Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeEditKPIModal();
+                closeNewKPIModal();
+            }
+        });
+
+        // Cerrar modales haciendo clic fuera
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'editKPIModal') {
+                closeEditKPIModal();
+            }
+            if (e.target.id === 'newKPIModal') {
+                closeNewKPIModal();
+            }
+        });
+    </script>
+</body>
+</html>
