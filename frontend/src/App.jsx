@@ -237,7 +237,7 @@ function App() {
       <div className="bg-gradient-to-r from-gray-900 to-gray-800 shadow-2xl border-b-4 border-blue-400">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-center">
-            <img src="/SPF.png" alt="SPARKFOUND" className="h-32" />
+            <img src="public/SPF.png" alt="SPARKFOUND" className="h-32" />
           </div>
           <div className="flex justify-center mt-2">
             <a

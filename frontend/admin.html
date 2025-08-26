@@ -27,6 +27,10 @@
                         <i data-lucide="refresh-cw" class="h-5 w-5"></i>
                         <span>Actualizar</span>
                     </button>
+                    <button onclick="openDashboard()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="bar-chart-3" class="h-5 w-5"></i>
+                        <span>Ver Dashboard</span>
+                    </button>
                     <a href="index.html" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">
                         Volver al Dashboard
                     </a>
@@ -47,27 +51,12 @@
                 <i data-lucide="database" class="h-5 w-5"></i>
                 <span>Datos</span>
             </button>
-            
-            <button onclick="showTab('settings')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
-                <i data-lucide="settings" class="h-5 w-5"></i>
-                <span>Configuración</span>
-            </button>
-            
-            <button onclick="showTab('users')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
-                <i data-lucide="users" class="h-5 w-5"></i>
-                <span>Usuarios</span>
-            </button>
-            
-            <button onclick="showTab('analytics')" class="tab-btn flex items-center space-x-2 px-4 py-2 rounded-md transition-colors">
-                <i data-lucide="activity-square" class="h-5 w-5"></i>
-                <span>Analíticas</span>
-            </button>
         </div>
 
         <!-- Tab Content -->
         <div id="dashboard" class="tab-content">
             <div class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-2xl text-white">
                         <div class="flex items-center justify-between">
                             <div>
@@ -75,16 +64,6 @@
                                 <p class="text-3xl font-bold" id="totalKPIs">--</p>
                             </div>
                             <i data-lucide="bar-chart-3" class="h-12 w-12 text-blue-200"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-green-600 to-green-700 p-6 rounded-2xl text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-green-100 text-sm">Usuarios Activos</p>
-                                <p class="text-3xl font-bold">12</p>
-                            </div>
-                            <i data-lucide="users" class="h-12 w-12 text-green-200"></i>
                         </div>
                     </div>
                     
@@ -118,10 +97,17 @@
             <div class="space-y-6">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-bold text-white">Gestión de Datos KPI</h3>
-                    <button onclick="showNewKPIModal()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
-                        <i data-lucide="plus" class="h-5 w-5"></i>
-                        <span>Nuevo KPI</span>
-                    </button>
+                </div>
+
+                <!-- Mensaje informativo -->
+                <div class="bg-blue-900 border border-blue-400 rounded-lg p-4">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="info" class="h-5 w-5 text-blue-300"></i>
+                        <div>
+                            <p class="text-blue-200 font-medium">Información importante:</p>
+                            <p class="text-blue-300 text-sm">Los cambios en los KPIs se guardan automáticamente en el backend. Para ver los cambios en el dashboard principal, usa el botón "Ver Dashboard" en el header.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-gray-900 p-6 rounded-2xl">
@@ -158,151 +144,7 @@
             </div>
         </div>
 
-        <div id="settings" class="tab-content hidden">
-            <div class="space-y-6">
-                <div class="bg-gray-900 p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold text-white mb-4">Configuración del Dashboard</h3>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-white text-sm font-medium mb-2">
-                                Intervalo de Actualización (minutos)
-                            </label>
-                            <input type="number" id="refreshInterval" min="1" max="60" value="3" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-                        </div>
-
-                        <div>
-                            <label class="block text-white text-sm font-medium mb-2">
-                                Tema del Dashboard
-                            </label>
-                            <select id="themeSelect" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-                                <option value="dark">Oscuro</option>
-                                <option value="light">Claro</option>
-                                <option value="auto">Automático</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center space-x-3">
-                            <input type="checkbox" id="autoRefresh" checked class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500">
-                            <label for="autoRefresh" class="text-white text-sm">
-                                Actualización automática habilitada
-                            </label>
-                        </div>
-
-                        <div class="flex items-center space-x-3">
-                            <input type="checkbox" id="notifications" checked class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500">
-                            <label for="notifications" class="text-white text-sm">
-                                Notificaciones habilitadas
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex space-x-4">
-                        <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2">
-                            <i data-lucide="save" class="h-5 w-5"></i>
-                            <span>Guardar Cambios</span>
-                        </button>
-                        
-                        <button onclick="resetSettings()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2">
-                            <i data-lucide="refresh-cw" class="h-5 w-5"></i>
-                            <span>Restablecer</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="users" class="tab-content hidden">
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-xl font-bold text-white">Gestión de Usuarios</h3>
-                    <button onclick="showNewUserModal()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
-                        <i data-lucide="plus" class="h-5 w-5"></i>
-                        <span>Nuevo Usuario</span>
-                    </button>
-                </div>
-
-                <div class="bg-gray-900 p-6 rounded-2xl">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-white">
-                            <thead>
-                                <tr class="border-b border-gray-700">
-                                    <th class="text-left py-3 px-4">Usuario</th>
-                                    <th class="text-left py-3 px-4">Email</th>
-                                    <th class="text-left py-3 px-4">Rol</th>
-                                    <th class="text-left py-3 px-4">Estado</th>
-                                    <th class="text-left py-3 px-4">Último Acceso</th>
-                                    <th class="text-left py-3 px-4">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="usersTableBody">
-                                <tr class="border-b border-gray-800 hover:bg-gray-800">
-                                    <td class="py-3 px-4">admin</td>
-                                    <td class="py-3 px-4">admin@sparkfound.com</td>
-                                    <td class="py-3 px-4">
-                                        <span class="bg-red-600 text-white px-2 py-1 rounded text-xs">Administrador</span>
-                                    </td>
-                                    <td class="py-3 px-4">
-                                        <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">Activo</span>
-                                    </td>
-                                    <td class="py-3 px-4">Hace 5 min</td>
-                                    <td class="py-3 px-4">
-                                        <div class="flex space-x-2">
-                                            <button onclick="editUser('admin')" class="text-blue-400 hover:text-blue-300">
-                                                <i data-lucide="edit-3" class="h-4 w-4"></i>
-                                            </button>
-                                            <button onclick="deleteUser('admin')" class="text-red-400 hover:text-red-300">
-                                                <i data-lucide="trash-2" class="h-4 w-4"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="analytics" class="tab-content hidden">
-            <div class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-gray-900 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-4">Tendencias de KPIs</h3>
-                        <div class="space-y-3" id="trendsContainer">
-                            <!-- Las tendencias se cargarán dinámicamente -->
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-4">Rendimiento del Sistema</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-300">CPU</span>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="bg-green-400 h-2 rounded-full" style="width: 65%"></div>
-                                    </div>
-                                    <span class="text-white text-sm">65%</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-300">Memoria</span>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="bg-yellow-400 h-2 rounded-full" style="width: 78%"></div>
-                                    </div>
-                                    <span class="text-white text-sm">78%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para editar KPI -->
+        <!-- Modal para editar KPI -->
     <div id="editKPIModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md">
@@ -322,33 +164,6 @@
                         Guardar
                     </button>
                     <button onclick="closeEditKPIModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex-1">
-                        Cancelar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para nuevo KPI -->
-    <div id="newKPIModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md">
-                <h3 class="text-xl font-bold text-white mb-4">Nuevo KPI</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-white text-sm font-medium mb-2">Nombre</label>
-                        <input type="text" id="newKPIName" placeholder="Nombre del KPI" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-white text-sm font-medium mb-2">Valor</label>
-                        <input type="text" id="newKPIValue" placeholder="Valor del KPI" class="w-full bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-                    </div>
-                </div>
-                <div class="flex space-x-4 mt-6">
-                    <button onclick="saveNewKPI()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex-1">
-                        Crear
-                    </button>
-                    <button onclick="closeNewKPIModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex-1">
                         Cancelar
                     </button>
                 </div>
@@ -619,85 +434,68 @@
             }
         }
 
-        // Función para mostrar modal de nuevo KPI
-        function showNewKPIModal() {
-            document.getElementById('newKPIName').value = '';
-            document.getElementById('newKPIValue').value = '';
-            document.getElementById('newKPIModal').classList.remove('hidden');
+        // Función para agregar log de actividad
+        function addActivityLog(message) {
+            const activityLog = document.getElementById('activityLog');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
             
-            // Enfocar en el primer campo
-            setTimeout(() => {
-                document.getElementById('newKPIName').focus();
-            }, 100);
-        }
-
-        // Función para guardar nuevo KPI
-        async function saveNewKPI() {
-            const name = document.getElementById('newKPIName').value.trim();
-            const value = document.getElementById('newKPIValue').value.trim();
+            const logEntry = document.createElement('div');
+            logEntry.className = 'flex items-center space-x-3 p-3 bg-gray-800 rounded-lg';
+            logEntry.innerHTML = `
+                <i data-lucide="check-circle" class="h-5 w-5 text-green-400"></i>
+                <div>
+                    <p class="text-white font-medium">${message}</p>
+                    <p class="text-gray-400 text-sm">${timeString}</p>
+                </div>
+            `;
             
-            if (name && value !== '') {
-                try {
-                    // Enviar al backend
-                    const response = await axios.post(`http://${window.location.hostname}:8000/api/create-kpi`, {
-                        name: name,
-                        value: value
-                    });
-                    
-                    if (response.data.success) {
-                        // Recargar datos del backend
-                        await loadKPIData();
-                        closeNewKPIModal();
-                        addActivityLog(`Nuevo KPI "${name}" creado exitosamente`);
-                        showNotification('Nuevo KPI creado exitosamente', 'success');
-                    } else {
-                        showNotification('Error al crear KPI', 'error');
-                    }
-                } catch (error) {
-                    console.error('Error creando KPI:', error);
-                    if (error.response?.status === 409) {
-                        showNotification('Ya existe un KPI con ese nombre', 'error');
-                    } else {
-                        showNotification('Error al crear KPI en el servidor', 'error');
-                    }
-                }
-            } else {
-                showNotification('Por favor completa todos los campos', 'error');
+            activityLog.insertBefore(logEntry, activityLog.firstChild);
+            
+            // Limitar a 5 entradas
+            if (activityLog.children.length > 5) {
+                activityLog.removeChild(activityLog.lastChild);
             }
+            
+            // Recrear iconos
+            lucide.createIcons();
         }
 
-        // Función para cerrar modal de nuevo KPI
-        function closeNewKPIModal() {
-            document.getElementById('newKPIModal').classList.add('hidden');
+        // Función para mostrar notificaciones
+        function showNotification(message, type = 'info') {
+            const notifications = document.getElementById('notifications');
+            const notification = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-green-600' : 
+                           type === 'error' ? 'bg-red-600' : 
+                           type === 'warning' ? 'bg-yellow-600' : 'bg-blue-600';
+            
+            notification.className = `${bgColor} text-white p-4 rounded-lg shadow-lg max-w-sm`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="font-medium">${message}</span>
+                </div>
+            `;
+            
+            notifications.appendChild(notification);
+            
+            // Auto-remover después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
         }
 
-        // Función para guardar configuración
-        function saveSettings() {
-            const refreshInterval = document.getElementById('refreshInterval').value;
-            const theme = document.getElementById('themeSelect').value;
-            const autoRefresh = document.getElementById('autoRefresh').checked;
-            const notifications = document.getElementById('notifications').checked;
-            
-            // Guardar en localStorage
-            localStorage.setItem('adminSettings', JSON.stringify({
-                refreshInterval,
-                theme,
-                autoRefresh,
-                notifications
-            }));
-            
-            addActivityLog('Configuración guardada');
-            showNotification('Configuración guardada exitosamente', 'success');
-        }
-
-        // Función para restablecer configuración
-        function resetSettings() {
-            document.getElementById('refreshInterval').value = 3;
-            document.getElementById('themeSelect').value = 'dark';
-            document.getElementById('autoRefresh').checked = true;
-            document.getElementById('notifications').checked = true;
-            
-            showNotification('Configuración restablecida', 'info');
+        // Función para abrir el dashboard principal
+        function openDashboard() {
+            // Si ya estamos en el dashboard, recargar la página
+            if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+                window.location.reload();
+            } else {
+                // Si no estamos en el dashboard, abrirlo
+                window.location.href = 'index.html';
+            }
         }
 
         // Función para agregar log de actividad
@@ -753,23 +551,6 @@
             }, 5000);
         }
 
-        // Función para editar usuario
-        function editUser(username) {
-            showNotification(`Editando usuario: ${username}`, 'info');
-        }
-
-        // Función para eliminar usuario
-        function deleteUser(username) {
-            if (confirm(`¿Estás seguro de que quieres eliminar el usuario "${username}"?`)) {
-                showNotification(`Usuario ${username} eliminado`, 'success');
-            }
-        }
-
-        // Función para mostrar modal de nuevo usuario
-        function showNewUserModal() {
-            showNotification('Funcionalidad de nuevo usuario en desarrollo', 'info');
-        }
-
         // Event listeners
         document.getElementById('refreshBtn').addEventListener('click', loadKPIData);
 
@@ -777,27 +558,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadKPIData();
             addActivityLog('Panel de administración iniciado');
-            
-            // Cargar configuración guardada
-            const savedSettings = localStorage.getItem('adminSettings');
-            if (savedSettings) {
-                try {
-                    const settings = JSON.parse(savedSettings);
-                    document.getElementById('refreshInterval').value = settings.refreshInterval || 3;
-                    document.getElementById('themeSelect').value = settings.theme || 'dark';
-                    document.getElementById('autoRefresh').checked = settings.autoRefresh !== false;
-                    document.getElementById('notifications').checked = settings.notifications !== false;
-                } catch (e) {
-                    console.error('Error cargando configuración:', e);
-                }
-            }
         });
 
         // Cerrar modales con Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeEditKPIModal();
-                closeNewKPIModal();
             }
         });
 
@@ -805,9 +571,6 @@
         document.addEventListener('click', (e) => {
             if (e.target.id === 'editKPIModal') {
                 closeEditKPIModal();
-            }
-            if (e.target.id === 'newKPIModal') {
-                closeNewKPIModal();
             }
         });
     </script>
