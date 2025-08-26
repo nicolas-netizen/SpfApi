@@ -1,0 +1,219 @@
+===========================================
+📚 COMANDOS GIT COMPLETOS - SpfApi
+===========================================
+
+🌐 CONFIGURACIÓN INICIAL
+===========================================
+# Ver configuración actual
+git config --list
+
+# Configurar usuario y email (si no lo has hecho)
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"
+
+# Ver remotos configurados
+git remote -v
+
+# Agregar remoto (si no existe)
+git remote add origin https://github.com/nicolas-netizen/SpfApi.git
+
+# Cambiar URL del remoto (si está mal)
+git remote set-url origin https://github.com/nicolas-netizen/SpfApi.git
+
+📥 BAJAR CAMBIOS DESDE GITHUB
+===========================================
+# Ver estado actual
+git status
+
+# Ver en qué rama estás
+git branch
+
+# Ver todas las ramas (locales y remotas)
+git branch -a
+
+# Bajar cambios más recientes
+git pull origin master
+# O si tu rama principal se llama 'main':
+git pull origin main
+
+# Bajar cambios sin hacer merge (solo descargar)
+git fetch origin
+
+# Ver diferencias con el remoto
+git diff HEAD origin/master
+
+# Ver commits más recientes
+git log --oneline -5
+
+🗑️ DESCARTAR CAMBIOS LOCALES
+===========================================
+# Descartar cambios en archivos rastreados
+git reset --hard HEAD
+
+# Eliminar archivos no rastreados
+git clean -fd
+
+# Descartar cambios en un archivo específico
+git checkout -- nombre_archivo.jsx
+
+# Descartar cambios y bajar del remoto (todo en uno)
+git reset --hard HEAD && git clean -fd && git pull origin master
+
+📤 SUBIR CAMBIOS A GITHUB
+===========================================
+# Ver qué archivos han cambiado
+git status
+
+# Agregar archivos al staging
+git add .                    # Agregar todos los cambios
+git add nombre_archivo.jsx   # Agregar archivo específico
+
+# Ver qué está en staging
+git diff --cached
+
+# Hacer commit de los cambios
+git commit -m "Descripción de los cambios"
+
+# Subir cambios al remoto
+git push origin master
+# O si tu rama principal se llama 'main':
+git push origin main
+
+# Subir y crear rama remota (si es nueva)
+git push -u origin master
+
+🔍 VERIFICAR ESTADO Y CAMBIOS
+===========================================
+# Estado completo del repositorio
+git status
+
+# Ver historial de commits
+git log --oneline -10
+
+# Ver cambios en el último commit
+git show HEAD
+
+# Ver diferencias entre commits
+git diff HEAD~1 HEAD
+
+# Ver cambios en un archivo específico
+git diff HEAD~1 frontend/src/App.jsx
+
+# Ver qué archivos cambiaron en el último commit
+git diff --name-only HEAD~1 HEAD
+
+# Ver el hash del commit actual vs remoto
+git rev-parse HEAD
+git rev-parse origin/master
+
+🔄 GESTIONAR RAMAS
+===========================================
+# Crear nueva rama
+git checkout -b nombre_nueva_rama
+
+# Cambiar de rama
+git checkout nombre_rama
+
+# Ver todas las ramas
+git branch -a
+
+# Eliminar rama local
+git branch -d nombre_rama
+
+# Eliminar rama remota
+git push origin --delete nombre_rama
+
+🚨 SOLUCIONAR PROBLEMAS
+===========================================
+# Si hay conflictos en el pull
+git stash                    # Guardar cambios temporales
+git pull origin master       # Bajar cambios
+git stash pop                # Recuperar cambios
+
+# Forzar actualización desde remoto (CUIDADO: sobrescribe cambios locales)
+git fetch origin
+git reset --hard origin/master
+
+# Ver logs detallados de Git
+git log --graph --oneline --all
+
+# Limpiar repositorio
+git gc
+git prune
+
+💻 COMANDOS ESPECÍFICOS PARA UBUNTU
+===========================================
+# Dar permisos de ejecución a scripts
+chmod +x scripts/deploy.sh
+
+# Ejecutar script de deployment
+./scripts/deploy.sh
+
+# O ejecutar directamente con bash
+bash scripts/deploy.sh
+
+# Ver permisos de archivos
+ls -la scripts/
+
+# Reiniciar servicios después de cambios
+pkill -f "uvicorn"
+pkill -f "vite"
+
+# Iniciar backend
+cd backend
+source venv/bin/activate
+python -m uvicorn app:app --host 0.0.0.0 --port 8000 &
+
+# Iniciar frontend
+cd frontend
+npm run dev -- --host 0.0.0.0 &
+
+📋 FLUJO DE TRABAJO TÍPICO
+===========================================
+# 1. Ver estado actual
+git status
+
+# 2. Bajar cambios más recientes
+git pull origin master
+
+# 3. Hacer cambios en tu código
+
+# 4. Agregar cambios
+git add .
+
+# 5. Hacer commit
+git commit -m "Descripción de cambios"
+
+# 6. Subir cambios
+git push origin master
+
+# 7. En otro lugar, bajar cambios
+git pull origin master
+
+🎯 COMANDOS RÁPIDOS PARA VERIFICAR
+===========================================
+# Estado completo y últimos commits
+git status && echo "---" && git log --oneline -3
+
+# Comparar con remoto
+git fetch && git diff HEAD origin/master --name-only
+
+# Ver si App.jsx tiene el tema oscuro
+cat frontend/src/App.jsx | grep "bg-black"
+
+# Ver cambios en el último commit
+git diff HEAD~1 frontend/src/App.jsx
+
+===========================================
+💡 CONSEJOS IMPORTANTES
+===========================================
+- Siempre usa 'git status' antes de hacer cambios
+- Usa 'git pull' antes de empezar a trabajar
+- Haz commits frecuentes con mensajes descriptivos
+- Si no estás seguro, usa 'git stash' para guardar cambios
+- Nunca uses 'git reset --hard' sin estar seguro
+- Verifica siempre la URL del remoto con 'git remote -v'
+
+===========================================
+🚀 ¡LISTO PARA USAR!
+===========================================
