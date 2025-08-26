@@ -293,8 +293,69 @@ function App() {
           </div>
         </div>
 
-        {/* Gráficos Circulares */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+
+
+
+        {/* Métricas Detalladas */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Métricas de Dispositivos */}
+          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-info">
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+              <Server className="h-5 w-5 mr-2 text-green-400" />
+              Métricas de Dispositivos
+            </h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">Monitored Assets:</span>
+                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Monitored Assets'] || '--'}</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">Agentes:</span>
+                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Agentes'] || '--'}</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">UEBA:</span>
+                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['UEBA'] || '--'}</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">Tenants:</span>
+                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Tenants'] || '--'}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Métricas de Tiempo */}
+          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-warning">
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+              <ActivitySquare className="h-5 w-5 mr-2 text-yellow-400" />
+              Métricas de Tiempo (MTTD/MTTR)
+            </h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">MTTD Automático:</span>
+                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Automático'] || '--'} min</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">MTTR Automático:</span>
+                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Automático'] || '--'} min</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">MTTD Manual:</span>
+                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Manual'] || '--'} min</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                <span className="text-gray-300">MTTR Manual:</span>
+                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Manual'] || '--'} min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        {/* Gráficos Circulares - MOVIDOS AQUÍ */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
           {/* Detecciones vs Reportes */}
           <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-cyan-400 min-h-[350px] transition-all duration-3000 ${currentHighlight === 4 ? 'ring-4 ring-cyan-400 ring-opacity-50 scale-105 shadow-cyan-500/30' : ''}`}>
             <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
@@ -431,7 +492,9 @@ function App() {
           </div>
         </div>
 
-        {/* Gráficos de Líneas y Barras */}
+
+
+        {/* Gráficos de Líneas y Barras - MOVIDOS ABAJO DE TODO */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Operación - Gráfico de Barras */}
           <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-purple-400 transition-all duration-3000 ${currentHighlight === 7 ? 'ring-4 ring-purple-400 ring-opacity-50 scale-105 shadow-purple-500/30' : ''}`}>
@@ -524,61 +587,6 @@ function App() {
                 </div>
               )}
             </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Métricas Detalladas */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Métricas de Dispositivos */}
-          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-info">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-              <Server className="h-5 w-5 mr-2 text-green-400" />
-              Métricas de Dispositivos
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Monitored Assets:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Monitored Assets'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Agentes:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Agentes'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">UEBA:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['UEBA'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Tenants:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Tenants'] || '--'}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Métricas de Tiempo */}
-          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-warning">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-              <ActivitySquare className="h-5 w-5 mr-2 text-yellow-400" />
-              Métricas de Tiempo (MTTD/MTTR)
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTD Automático:</span>
-                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Automático'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTR Automático:</span>
-                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Automático'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTD Manual:</span>
-                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Manual'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTR Manual:</span>
-                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Manual'] || '--'} min</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

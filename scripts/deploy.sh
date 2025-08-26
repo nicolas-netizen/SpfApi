@@ -23,7 +23,10 @@ install_deps() {
     echo -e "${BLUE}📦 Instalando dependencias de Python...${NC}"
     source venv/bin/activate
     echo -e "${YELLOW}⏳ Instalando Flask y dependencias...${NC}"
-    pip install flask==2.3.3 flask-cors==4.0.0 numpy==1.26.4 pandas==2.1.4 werkzeug==2.3.7
+    pip install flask>=2.3.0 flask-cors>=4.0.0 werkzeug>=2.3.0
+    
+    echo -e "${YELLOW}⏳ Instalando pandas y numpy (versiones estables)...${NC}"
+    pip install --only-binary=all pandas>=2.0.0 numpy>=1.24.0
     
     echo -e "${BLUE}📦 Instalando dependencias de Node.js...${NC}"
     cd frontend

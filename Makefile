@@ -1,4 +1,4 @@
-.PHONY: help install-dev run-backend run-frontend build build-frontend test clean deploy
+.PHONY: help install-dev run-backend run-frontend build build-frontend test clean deploy install-windows
 
 help: ## Mostrar ayuda
 	@echo "CSV Dashboard - Comandos disponibles:"
@@ -10,9 +10,19 @@ install-dev: ## Instalar dependencias de desarrollo
 	cd backend && pip3 install -r requirements.txt
 	cd frontend && npm install
 
+install-windows: ## Instalar dependencias en Windows (evita problemas de pandas)
+	@echo "Instalando dependencias para Windows..."
+	cd backend && pip install flask flask-cors werkzeug
+	cd backend && pip install --only-binary=all pandas numpy
+	cd frontend && npm install
+
 run-backend: ## Ejecutar backend en modo desarrollo
 	@echo "Ejecutando backend..."
 	cd backend && python3 -m uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
+run-backend-windows: ## Ejecutar backend en Windows
+	@echo "Ejecutando backend en Windows..."
+	cd backend && python app.py
 
 run-frontend: ## Ejecutar frontend en modo desarrollo
 	@echo "Ejecutando frontend..."
@@ -56,6 +66,11 @@ docker-logs: ## Ver logs de Docker Compose
 dev: install-dev ## Configurar entorno de desarrollo completo
 	@echo "Entorno de desarrollo configurado"
 	@echo "Ejecuta 'make run-backend' en una terminal"
+	@echo "Ejecuta 'make run-frontend' en otra terminal"
+
+dev-windows: install-windows ## Configurar entorno de desarrollo en Windows
+	@echo "Entorno de desarrollo en Windows configurado"
+	@echo "Ejecuta 'make run-backend-windows' en una terminal"
 	@echo "Ejecuta 'make run-frontend' en otra terminal"
 
 status: ## Ver estado de los servicios

@@ -1,0 +1,9 @@
+# Requirements específicos para Windows - Versiones precompiladas
+flask>=2.3.0
+flask-cors>=4.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+werkzeug>=2.3.0
+
+# Instalar pandas precompilado para evitar errores de compilación
+# pip install --only-binary=all pandas numpy
