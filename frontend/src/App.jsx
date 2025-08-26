@@ -126,17 +126,17 @@ function App() {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
   }
 
-  // Colores para el dashboard
-  const COLORS = {
-    primary: '#00D4FF',    // Cyan
-    secondary: '#FF6B35',  // Naranja
-    success: '#4ECDC4',    // Verde
-    warning: '#FFE66D',    // Amarillo
-    danger: '#FF8A80',     // Rojo
-    info: '#A8E6CF',       // Verde claro
-    purple: '#FFB3BA',     // Rosa
-    gold: '#FFD93D'        // Dorado
-  }
+     // Colores para el dashboard - Paleta naranja y azul
+   const COLORS = {
+     primary: '#00D4FF',    // Azul principal
+     secondary: '#FF6B35',  // Naranja principal
+     success: '#FF8A40',    // Naranja claro
+     warning: '#FFB366',    // Naranja suave
+     danger: '#FF4500',     // Naranja rojizo
+     info: '#1E90FF',       // Azul medio
+     purple: '#4169E1',     // Azul real
+     gold: '#FFA500'        // Naranja dorado
+   }
 
   // Preparar datos para gráficos
   const prepareChartData = () => {
@@ -160,7 +160,7 @@ function App() {
         { name: 'Manuales', value: parseInt(data['Remediaciones Manuales']), color: COLORS.danger }
       ],
       detecciones: [
-        { name: 'Reportes', value: parseInt(data['Total de Reportes']), color: COLORS.primary },
+        { name: 'Reportes', value: parseInt(data['Total de Reportes']), color: COLORS.secondary },
         { name: 'Incidentes', value: parseInt(data['Incidentes Detectados']), color: COLORS.warning }
       ],
       operacion: [
@@ -250,343 +250,463 @@ function App() {
       </div>
 
       <div className={`w-full px-2 py-4 transition-opacity duration-5000 ${kpiData ? 'opacity-100' : 'opacity-0'}`}>
-        {/* KPIs Principales */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className={`bg-gradient-to-br from-cyan-600 to-cyan-700 p-4 rounded-2xl text-white shadow-2xl border-l-4 border-cyan-300 transition-all duration-3000 ease-in-out hover:scale-105 ${isRefreshing ? 'animate-pulse' : ''} ${currentHighlight === 0 ? 'ring-4 ring-cyan-300 ring-opacity-50 scale-105 shadow-cyan-500/30' : ''}`} style={{animationDuration: '6s'}}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-cyan-100 text-sm font-medium">Dispositivos SIEM</p>
-                <p className="text-3xl font-bold transition-all duration-3000">{kpiData?.data?.[0]?.['Dispositivos en SIEM'] || '--'}</p>
-              </div>
-              <Server className="h-10 w-10 text-cyan-200" />
-            </div>
-          </div>
+        
 
-          <div className={`bg-gradient-to-br from-orange-500 to-orange-600 p-4 rounded-2xl text-white shadow-2xl border-l-4 border-orange-300 transition-all duration-3000 ease-in-out hover:scale-105 ${isRefreshing ? 'animate-pulse' : ''} ${currentHighlight === 1 ? 'ring-4 ring-orange-300 ring-opacity-50 scale-105 shadow-orange-500/30' : ''}`} style={{animationDuration: '6s'}}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-orange-100 text-sm font-medium">Eventos por Segundo</p>
-                <p className="text-3xl font-bold transition-all duration-3000">{kpiData?.data?.[0]?.['Eventos por Segundo']?.toLocaleString() || '--'}</p>
-              </div>
-              <ActivitySquare className="h-10 w-10 text-orange-200" />
-            </div>
-          </div>
+                 {/* KPIs Principales - Reorganizados según la imagen */}
+         <div className="mb-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* Lado Izquierdo - Métricas en filas */}
+                         <div className="space-y-6 flex flex-col flex-1">
+               <h3 className="text-2xl font-bold text-white mb-6 text-center border-b-2 border-cyan-400 pb-3 bg-gradient-to-r from-cyan-900/20 to-transparent px-6 py-3 rounded-xl">
+                 Dispositivos y Infraestructura
+               </h3>
+              
+                             {/* Primera Fila - Dispositivos */}
+               <div className="grid grid-cols-4 gap-4 flex-1">
+                 <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-8 rounded-3xl border-l-4 border-blue-300 shadow-2xl hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                   <div className="absolute top-0 right-0 w-20 h-20 bg-blue-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-300"></div>
+                   <div className="relative z-10">
+                     <div className="flex items-center justify-between mb-4">
+                       <Server className="h-10 w-10 text-blue-300" />
+                       <div className="w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
+                     </div>
+                     <p className="text-blue-100 text-lg font-semibold mb-3">Dispositivos en SIEM</p>
+                     <p className="text-5xl font-bold text-white mb-2">{kpiData?.data?.[0]?.['Dispositivos en SIEM'] || '--'}</p>
+                     <p className="text-blue-200 text-base opacity-75">Infraestructura Total</p>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800 p-5 rounded-2xl border-l-4 border-orange-300 shadow-2xl hover:shadow-orange-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                   <div className="absolute top-0 right-0 w-20 h-20 bg-orange-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-300"></div>
+                   <div className="relative z-10">
+                     <div className="flex items-center justify-between mb-3">
+                       <ActivitySquare className="h-6 w-6 text-orange-300" />
+                       <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                     </div>
+                     <p className="text-orange-100 text-sm font-semibold mb-2">Super/Workers</p>
+                     <p className="text-3xl font-bold text-white mb-1">{kpiData?.data?.[0]?.['Super/Workers'] || '--'}</p>
+                     <p className="text-orange-200 text-xs opacity-75">Procesadores</p>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 p-5 rounded-2xl border-l-4 border-blue-200 shadow-2xl hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                   <div className="absolute top-0 right-0 w-20 h-20 bg-blue-300/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-300"></div>
+                   <div className="relative z-10">
+                     <div className="flex items-center justify-between mb-3">
+                       <TrendingUp className="h-6 w-6 text-blue-200" />
+                       <div className="w-3 h-3 bg-blue-300 rounded-full animate-pulse"></div>
+                     </div>
+                     <p className="text-blue-100 text-sm font-semibold mb-2">Colectores</p>
+                     <p className="text-3xl font-bold text-white mb-1">{kpiData?.data?.[0]?.['Colectores'] || '--'}</p>
+                     <p className="text-blue-200 text-xs opacity-75">Recolectores</p>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 p-5 rounded-2xl border-l-4 border-orange-200 shadow-2xl hover:shadow-orange-500/30 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                   <div className="absolute top-0 right-0 w-20 h-20 bg-orange-300/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-300"></div>
+                   <div className="relative z-10">
+                     <div className="flex items-center justify-between mb-3">
+                       <AlertTriangle className="h-6 w-6 text-orange-200" />
+                       <div className="w-3 h-3 bg-orange-300 rounded-full animate-pulse"></div>
+                     </div>
+                     <p className="text-orange-100 text-sm font-semibold mb-2">Unmanaged</p>
+                     <p className="text-3xl font-bold text-white mb-1">{kpiData?.data?.[0]?.['Unmanaged'] || '--'}</p>
+                     <p className="text-orange-200 text-xs opacity-75">Sin Gestión</p>
+                   </div>
+                 </div>
+               </div>
 
-          <div className={`bg-gradient-to-br from-green-500 to-green-600 p-4 rounded-2xl text-white shadow-2xl border-l-4 border-green-300 transition-all duration-3000 ease-in-out hover:scale-105 ${isRefreshing ? 'animate-pulse' : ''} ${currentHighlight === 2 ? 'ring-4 ring-green-300 ring-opacity-50 scale-105 shadow-green-500/30' : ''}`} style={{animationDuration: '6s'}}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-green-100 text-sm font-medium">Total Reportes</p>
-                <p className="text-3xl font-bold transition-all duration-3000">{kpiData?.data?.[0]?.['Total de Reportes']?.toLocaleString() || '--'}</p>
+              {/* Segunda Fila - Eventos e Incidentes */}
+              <div className="grid grid-cols-3 gap-4 flex-1">
+                                 <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-2xl border-l-4 border-blue-300 shadow-xl hover:scale-105 transition-transform">
+                   <p className="text-blue-100 text-base font-semibold mb-2">Eventos Analizados</p>
+                   <p className="text-3xl font-bold text-white">{kpiData?.data?.[0]?.['Eventos Analizados']?.toLocaleString() || '--'}</p>
+                 </div>
+                                 <div className="bg-gradient-to-br from-red-600 to-red-700 p-6 rounded-2xl border-l-4 border-red-300 shadow-xl hover:scale-105 transition-transform">
+                   <p className="text-red-100 text-base font-semibold mb-2">Incidentes Detectados</p>
+                   <p className="text-3xl font-bold text-white">{kpiData?.data?.[0]?.['Incidentes Detectados']?.toLocaleString() || '--'}</p>
+                 </div>
+                <div className="bg-gradient-to-br from-purple-600 to-purple-700 p-6 rounded-2xl border-l-4 border-purple-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-purple-100 text-base font-semibold mb-2">Total de Reportes</p>
+                  <p className="text-3xl font-bold text-white">{kpiData?.data?.[0]?.['Total de Reportes']?.toLocaleString() || '--'}</p>
+                </div>
               </div>
-              <BarChart3 className="h-10 w-10 text-green-200" />
-            </div>
-          </div>
 
-          <div className={`bg-gradient-to-br from-red-500 to-red-600 p-4 rounded-2xl text-white shadow-2xl border-l-4 border-red-300 transition-all duration-3000 ease-in-out hover:scale-105 ${isRefreshing ? 'animate-pulse' : ''} ${currentHighlight === 3 ? 'ring-4 ring-red-300 ring-opacity-50 scale-105 shadow-red-500/30' : ''}`} style={{animationDuration: '6s'}}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-red-100 text-sm font-medium">Incidentes</p>
-                <p className="text-3xl font-bold transition-all duration-3000">{kpiData?.data?.[0]?.['Incidentes Detectados']?.toLocaleString() || '--'}</p>
+              {/* Tercera Fila - Tenants y Clientes */}
+              <div className="grid grid-cols-3 gap-4 flex-1">
+                <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 p-6 rounded-2xl border-l-4 border-indigo-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-indigo-100 text-lg font-semibold mb-3">Tenants</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Tenants'] || '--'}</p>
+                </div>
+                <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 p-6 rounded-2xl border-l-4 border-emerald-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-emerald-100 text-lg font-semibold mb-3">Clientes Activos</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Clientes Activos'] || '--'}</p>
+                </div>
+                <div className="bg-gradient-to-br from-pink-600 to-pink-700 p-6 rounded-2xl border-l-4 border-pink-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-pink-100 text-lg font-semibold mb-3">Cliente Interno</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Cliente Interno'] || '--'}</p>
+                </div>
               </div>
-              <AlertTriangle className="h-10 w-10 text-red-200" />
+
+              {/* Cuarta Fila - EPS y Trials */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-gradient-to-br from-amber-600 to-amber-700 p-6 rounded-2xl border-l-4 border-amber-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-amber-100 text-lg font-semibold mb-3">Eventos por Segundo</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Eventos por Segundo']?.toLocaleString() || '--'}</p>
+                </div>
+                <div className="bg-gradient-to-br from-rose-600 to-rose-700 p-6 rounded-2xl border-l-4 border-rose-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-rose-100 text-lg font-semibold mb-3">Bajas de Trial</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Bajas de Trial'] || '--'}</p>
+                </div>
+                <div className="bg-gradient-to-br from-violet-600 to-violet-700 p-6 rounded-2xl border-l-4 border-violet-300 shadow-xl hover:scale-105 transition-transform">
+                  <p className="text-violet-100 text-lg font-semibold mb-3">Trial Activos</p>
+                  <p className="text-4xl font-bold text-white">{kpiData?.data?.[0]?.['Trial Activos'] || '--'}</p>
+                </div>
+              </div>
+            </div>
+
+                         {/* Lado Derecho - Bloques de Reportes y Remediaciones */}
+             <div className="space-y-4 h-full flex flex-col">
+               <h3 className="text-2xl font-bold text-white mb-6 text-center border-b-2 border-blue-400 pb-3 bg-gradient-to-r from-blue-900/20 to-transparent px-6 py-3 rounded-xl">
+                 Gestión de Reportes y Remediaciones
+               </h3>
+               
+                               {/* Grid de 2 columnas para Reportes Automáticos y Manuales - Agrandados */}
+                <div className="grid grid-cols-2 gap-6 flex-1">
+                                    {/* Bloque Azul - Reportes Automáticos */}
+                   <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-8 rounded-3xl shadow-2xl border-l-4 border-blue-300 hover:shadow-blue-500/40 transition-all duration-500 h-full flex flex-col">
+                     <div className="flex-1">
+                       <h4 className="text-4xl font-bold text-white mb-10 text-center flex items-center justify-center">
+                         🤖 Automáticos
+                       </h4>
+                       <div className="space-y-6 text-lg">
+                         <div className="flex justify-between items-center p-6 bg-blue-800/30 rounded-2xl backdrop-blur-sm border border-blue-700/50 hover:bg-blue-800/50 hover:border-blue-600/50 transition-all duration-300 group/item">
+                           <span className="text-blue-100 font-semibold text-xl">
+                             Total:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Total Reportes Automáticos']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-blue-800/30 rounded-2xl backdrop-blur-sm border border-blue-700/50 hover:bg-blue-800/50 hover:border-blue-600/50 transition-all duration-300 group/item">
+                           <span className="text-blue-100 font-semibold text-xl">
+                             Reportes:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Reportes Automáticos']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-blue-800/30 rounded-2xl backdrop-blur-sm border border-blue-700/50 hover:bg-blue-800/50 hover:border-blue-600/50 transition-all duration-300 group/item">
+                           <span className="text-blue-100 font-semibold text-xl">
+                             Remediaciones:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Remediaciones Automáticas']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-blue-800/30 rounded-2xl backdrop-blur-sm border border-blue-700/50 hover:bg-blue-800/50 hover:border-blue-600/50 transition-all duration-300 group/item">
+                           <span className="text-blue-100 font-semibold text-xl">
+                             MTTD:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['MTTD Automático'] || '--'} min</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-blue-800/30 rounded-2xl backdrop-blur-sm border border-blue-700/50 hover:bg-blue-800/50 hover:border-blue-600/50 transition-all duration-300 group/item">
+                           <span className="text-blue-100 font-semibold text-xl">
+                             MTTR:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['MTTR Automático'] || '--'} min</span>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+
+                                    {/* Bloque Naranja - Reportes Manuales */}
+                   <div className="bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800 p-8 rounded-3xl shadow-2xl border-l-4 border-orange-300 hover:shadow-orange-500/40 transition-all duration-500 h-full flex flex-col">
+                     <div className="flex-1">
+                       <h4 className="text-4xl font-bold text-white mb-10 text-center flex items-center justify-center">
+                         👤 Manuales
+                       </h4>
+                       <div className="space-y-6 text-lg">
+                         <div className="flex justify-between items-center p-6 bg-orange-800/30 rounded-2xl backdrop-blur-sm border border-orange-700/50 hover:bg-orange-800/50 hover:border-orange-600/50 transition-all duration-300 group/item">
+                           <span className="text-orange-100 font-semibold text-xl">
+                             Total:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Total Reportes Manuales']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-orange-800/30 rounded-2xl backdrop-blur-sm border border-orange-700/50 hover:bg-orange-800/50 hover:border-orange-600/50 transition-all duration-300 group/item">
+                           <span className="text-orange-100 font-semibold text-xl">
+                             Reportes:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Reportes Manuales']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-orange-800/30 rounded-2xl backdrop-blur-sm border border-orange-700/50 hover:bg-orange-800/50 hover:border-orange-600/50 transition-all duration-300 group/item">
+                           <span className="text-orange-100 font-semibold text-xl">
+                             Remediaciones:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['Remediaciones Manuales']?.toLocaleString() || '--'}</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-orange-800/30 rounded-2xl backdrop-blur-sm border border-orange-700/50 hover:bg-orange-800/50 hover:border-orange-600/50 transition-all duration-300 group/item">
+                           <span className="text-orange-100 font-semibold text-xl">
+                             MTTD:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['MTTD Manual'] || '--'} min</span>
+                         </div>
+                         <div className="flex justify-between items-center p-6 bg-orange-800/30 rounded-2xl backdrop-blur-sm border border-orange-700/50 hover:bg-orange-800/50 hover:border-orange-600/50 transition-all duration-300 group/item">
+                           <span className="text-orange-100 font-semibold text-xl">
+                             MTTR:
+                           </span>
+                           <span className="text-white font-bold text-3xl">{kpiData?.data?.[0]?.['MTTR Manual'] || '--'} min</span>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        
+
+                 {/* Gráficos Circulares */}
+         <div className="mb-12">
+           <h2 className="text-3xl font-bold text-white mb-8 text-center border-b-4 border-blue-400 pb-4 bg-gradient-to-r from-blue-900/20 to-transparent px-8 py-4 rounded-2xl">
+             Análisis de Distribución y Proporciones
+           </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                         {/* Detecciones vs Reportes */}
+             <div className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-orange-400 min-h-[400px] transition-all duration-3000 hover:shadow-orange-500/30 ${currentHighlight === 4 ? 'ring-4 ring-orange-400 ring-opacity-50 scale-105 shadow-orange-500/30' : ''}`}>
+               <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
+                 <PieChartIcon className="h-6 w-6 mr-3 text-orange-400" />
+                 🔍 Detecciones vs Reportes
+               </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                {chartData ? (
+                  <PieChart>
+                                         <Pie
+                       data={chartData.detecciones}
+                       cx="50%"
+                       cy="50%"
+                       labelLine={false}
+                       label={({ name, percent }) => `${name}: ${Math.ceil(percent * 100)}%`}
+                       outerRadius={100}
+                       innerRadius={30}
+                       fill="#8884d8"
+                       dataKey="value"
+                       paddingAngle={5}
+                     >
+                      {chartData.detecciones.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: '#1F2937',
+                        border: '2px solid #FF6B35',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        fontSize: '14px'
+                      }}
+                    />
+                  </PieChart>
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                    <p className="text-lg">Cargando datos...</p>
+                  </div>
+                )}
+              </ResponsiveContainer>
+            </div>
+
+                         {/* Reportes */}
+             <div className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-orange-400 min-h-[400px] transition-all duration-3000 hover:shadow-orange-500/30 ${currentHighlight === 5 ? 'ring-4 ring-orange-400 ring-opacity-50 scale-105 shadow-orange-500/30' : ''}`}>
+               <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
+                 <PieChartIcon className="h-6 w-6 mr-3 text-orange-400" />
+                 📊 Distribución de Reportes
+               </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                {chartData ? (
+                  <PieChart>
+                                         <Pie
+                       data={chartData.reportes}
+                       cx="50%"
+                       cy="50%"
+                       labelLine={false}
+                       label={({ name, percent }) => `${name}: ${Math.ceil(percent * 100)}%`}
+                       outerRadius={100}
+                       innerRadius={30}
+                       fill="#8884d8"
+                       dataKey="value"
+                       paddingAngle={5}
+                     >
+                      {chartData.reportes.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: '#1F2937',
+                        border: '2px solid #4ECDC4',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        fontSize: '14px'
+                      }}
+                    />
+                  </PieChart>
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                    <p className="text-lg">Cargando datos...</p>
+                  </div>
+                )}
+              </ResponsiveContainer>
+            </div>
+
+                         {/* Remediaciones */}
+             <div className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-blue-500 min-h-[400px] transition-all duration-3000 hover:shadow-blue-500/30 ${currentHighlight === 6 ? 'ring-4 ring-blue-500 ring-opacity-50 scale-105 shadow-blue-500/30' : ''}`}>
+               <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
+                 <PieChartIcon className="h-6 w-6 mr-3 text-blue-500" />
+                 🛠️ Remediaciones
+               </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                {chartData ? (
+                  <PieChart>
+                                         <Pie
+                       data={chartData.remediaciones}
+                       cx="50%"
+                       cy="50%"
+                       labelLine={false}
+                       label={({ name, percent }) => `${name}: ${Math.ceil(percent * 100)}%`}
+                       outerRadius={100}
+                       innerRadius={30}
+                       fill="#8884d8"
+                       dataKey="value"
+                       paddingAngle={5}
+                     >
+                      {chartData.remediaciones.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: '#1F2937',
+                        border: '2px solid #FF6B35',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        fontSize: '14px'
+                      }}
+                    />
+                  </PieChart>
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                    <p className="text-lg">Cargando datos...</p>
+                  </div>
+                )}
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
 
-
-
-
-
-        {/* Métricas Detalladas */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Métricas de Dispositivos */}
-          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-info">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-              <Server className="h-5 w-5 mr-2 text-green-400" />
-              Métricas de Dispositivos
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Monitored Assets:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Monitored Assets'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Agentes:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Agentes'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">UEBA:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['UEBA'] || '--'}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">Tenants:</span>
-                <span className="text-white font-semibold">{kpiData?.data?.[0]?.['Tenants'] || '--'}</span>
-              </div>
+                 {/* Gráficos de Líneas y Barras */}
+         <div className="mb-12">
+           <h2 className="text-3xl font-bold text-white mb-8 text-center border-b-4 border-orange-400 pb-4 bg-gradient-to-r from-orange-900/20 to-transparent px-8 py-4 rounded-2xl">
+            📈 Análisis de Tendencias y Operación
+           </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                         {/* Operación - Gráfico de Barras */}
+             <div className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-blue-500 transition-all duration-3000 hover:shadow-blue-500/30 ${currentHighlight === 7 ? 'ring-4 ring-blue-500 ring-opacity-50 scale-105 shadow-blue-500/30' : ''}`}>
+               <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+                 <BarChart className="h-6 w-6 mr-3 text-blue-500" />
+                 Operación Mensual
+               </h3>
+              <ResponsiveContainer width="100%" height={350}>
+                {chartData ? (
+                  <BarChart data={chartData.operacion}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                                         <XAxis 
+                       dataKey="mes" 
+                       tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                       tickLine={false}
+                       axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                     />
+                     <YAxis 
+                       tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                       tickLine={false}
+                       axisLine={{ stroke: '#FF6B35', strokeWidth: 2 }}
+                     />
+                     <Tooltip 
+                       contentStyle={{
+                         backgroundColor: '#1F2937',
+                         border: '2px solid #FF6B35',
+                         borderRadius: '12px',
+                         boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                         color: 'white'
+                       }}
+                     />
+                    <Legend />
+                    <Bar dataKey="incidentes" fill={COLORS.warning} radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="reportes" fill={COLORS.primary} radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="automaticos" fill={COLORS.success} radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="manuales" fill={COLORS.danger} radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    <BarChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                    <p className="text-lg">Cargando datos...</p>
+                  </div>
+                )}
+              </ResponsiveContainer>
             </div>
-          </div>
 
-          {/* Métricas de Tiempo */}
-          <div className="bg-gray-900 p-4 rounded-2xl shadow-2xl border-l-4 border-warning">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-              <ActivitySquare className="h-5 w-5 mr-2 text-yellow-400" />
-              Métricas de Tiempo (MTTD/MTTR)
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTD Automático:</span>
-                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Automático'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTR Automático:</span>
-                <span className="text-green-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Automático'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTD Manual:</span>
-                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTD Manual'] || '--'} min</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
-                <span className="text-gray-300">MTTR Manual:</span>
-                <span className="text-red-400 font-semibold">{kpiData?.data?.[0]?.['MTTR Manual'] || '--'} min</span>
-              </div>
+                         {/* EPS - Gráfico de Líneas */}
+             <div className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-orange-500 transition-all duration-3000 hover:shadow-orange-500/30 ${currentHighlight === 8 ? 'ring-4 ring-orange-500 ring-opacity-50 scale-105 shadow-orange-500/30' : ''}`}>
+               <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+                 <LineChart className="h-6 w-6 mr-3 text-orange-500" />
+                 ⚡ Eventos por Segundo (EPS)
+               </h3>
+              <ResponsiveContainer width="100%" height={350}>
+                {chartData ? (
+                  <LineChart data={chartData.eps}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                                         <XAxis 
+                       dataKey="mes" 
+                       tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                       tickLine={false}
+                       axisLine={{ stroke: '#FFA500', strokeWidth: 2 }}
+                     />
+                     <YAxis 
+                       tick={{ fontSize: 12, fill: '#9CA3AF' }}
+                       tickLine={false}
+                       axisLine={{ stroke: '#FFA500', strokeWidth: 2 }}
+                     />
+                     <Tooltip 
+                       contentStyle={{
+                         backgroundColor: '#1F2937',
+                         border: '2px solid #FFA500',
+                         borderRadius: '12px',
+                         boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                         color: 'white'
+                       }}
+                     />
+                    <Legend />
+                                         <Line 
+                       type="monotone" 
+                       dataKey="eps" 
+                       stroke={COLORS.secondary} 
+                       strokeWidth={4}
+                       dot={{ fill: COLORS.secondary, strokeWidth: 2, r: 6 }}
+                       activeDot={{ r: 8, stroke: COLORS.secondary, strokeWidth: 3 }}
+                       name="Eventos por Segundo"
+                     />
+                  </LineChart>
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-400">
+                    <LineChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
+                    <p className="text-lg">Cargando datos...</p>
+                  </div>
+                )}
+              </ResponsiveContainer>
             </div>
-          </div>
-        </div>
-
-
-
-        {/* Gráficos Circulares - MOVIDOS AQUÍ */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-          {/* Detecciones vs Reportes */}
-          <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-cyan-400 min-h-[350px] transition-all duration-3000 ${currentHighlight === 4 ? 'ring-4 ring-cyan-400 ring-opacity-50 scale-105 shadow-cyan-500/30' : ''}`}>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
-              <PieChartIcon className="h-6 w-6 mr-3 text-cyan-400" />
-              Detecciones vs Reportes
-            </h3>
-            <ResponsiveContainer width="100%" height={280}>
-              {chartData ? (
-                <PieChart>
-                  <Pie
-                    data={chartData.detecciones}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
-                    outerRadius={100}
-                    innerRadius={30}
-                    fill="#8884d8"
-                    dataKey="value"
-                    paddingAngle={5}
-                  >
-                    {chartData.detecciones.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
-                    ))}
-                  </Pie>
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1F2937',
-                      border: '2px solid #00D4FF',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                      color: 'white',
-                      fontSize: '14px'
-                    }}
-                  />
-                </PieChart>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
-                  <p className="text-lg">Cargando datos...</p>
-                </div>
-              )}
-            </ResponsiveContainer>
-          </div>
-
-          {/* Reportes */}
-          <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-green-400 min-h-[350px] transition-all duration-3000 ${currentHighlight === 5 ? 'ring-4 ring-green-400 ring-opacity-50 scale-105 shadow-green-500/30' : ''}`}>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
-              <PieChartIcon className="h-6 w-6 mr-3 text-green-400" />
-              Distribución de Reportes
-            </h3>
-            <ResponsiveContainer width="100%" height={280}>
-              {chartData ? (
-                <PieChart>
-                  <Pie
-                    data={chartData.reportes}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
-                    outerRadius={100}
-                    innerRadius={30}
-                    fill="#8884d8"
-                    dataKey="value"
-                    paddingAngle={5}
-                  >
-                    {chartData.reportes.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
-                    ))}
-                  </Pie>
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1F2937',
-                      border: '2px solid #4ECDC4',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                      color: 'white',
-                      fontSize: '14px'
-                    }}
-                  />
-                </PieChart>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
-                  <p className="text-lg">Cargando datos...</p>
-                </div>
-              )}
-            </ResponsiveContainer>
-          </div>
-
-          {/* Remediaciones */}
-          <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-orange-400 min-h-[350px] transition-all duration-3000 ${currentHighlight === 6 ? 'ring-4 ring-orange-400 ring-opacity-50 scale-105 shadow-orange-500/30' : ''}`}>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-center">
-              <PieChartIcon className="h-6 w-6 mr-3 text-orange-400" />
-              Remediaciones
-            </h3>
-            <ResponsiveContainer width="100%" height={280}>
-              {chartData ? (
-                <PieChart>
-                  <Pie
-                    data={chartData.remediaciones}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
-                    outerRadius={100}
-                    innerRadius={30}
-                    fill="#8884d8"
-                    dataKey="value"
-                    paddingAngle={5}
-                  >
-                    {chartData.remediaciones.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} stroke="#1F2937" strokeWidth={4} />
-                    ))}
-                  </Pie>
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1F2937',
-                      border: '2px solid #FF6B35',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                      color: 'white',
-                      fontSize: '14px'
-                    }}
-                  />
-                </PieChart>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  <PieChartIcon className="h-16 w-16 mx-auto mb-4 text-gray-500" />
-                  <p className="text-lg">Cargando datos...</p>
-                </div>
-              )}
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-
-
-        {/* Gráficos de Líneas y Barras - MOVIDOS ABAJO DE TODO */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Operación - Gráfico de Barras */}
-          <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-purple-400 transition-all duration-3000 ${currentHighlight === 7 ? 'ring-4 ring-purple-400 ring-opacity-50 scale-105 shadow-purple-500/30' : ''}`}>
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-              <BarChart className="h-6 w-6 mr-3 text-purple-400" />
-              Operación Mensual
-            </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              {chartData ? (
-                <BarChart data={chartData.operacion}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="mes" 
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
-                    tickLine={false}
-                    axisLine={{ stroke: '#FFB3BA', strokeWidth: 2 }}
-                  />
-                  <YAxis 
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
-                    tickLine={false}
-                    axisLine={{ stroke: '#FFB3BA', strokeWidth: 2 }}
-                  />
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1F2937',
-                      border: '2px solid #FFB3BA',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                      color: 'white'
-                    }}
-                  />
-                  <Legend />
-                  <Bar dataKey="incidentes" fill={COLORS.warning} radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="reportes" fill={COLORS.primary} radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="automaticos" fill={COLORS.success} radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="manuales" fill={COLORS.danger} radius={[4, 4, 0, 0]} />
-                </BarChart>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  <BarChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
-                </div>
-              )}
-            </ResponsiveContainer>
-          </div>
-
-          {/* EPS - Gráfico de Líneas */}
-          <div className={`bg-gray-900 p-6 rounded-2xl shadow-2xl border-l-4 border-gold transition-all duration-3000 ${currentHighlight === 8 ? 'ring-4 ring-yellow-400 ring-opacity-50 scale-105 shadow-yellow-500/30' : ''}`}>
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-              <LineChart className="h-6 w-6 mr-3 text-yellow-400" />
-              Eventos por Segundo (EPS)
-            </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              {chartData ? (
-                <LineChart data={chartData.eps}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="mes" 
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
-                    tickLine={false}
-                    axisLine={{ stroke: '#FFD93D', strokeWidth: 2 }}
-                  />
-                  <YAxis 
-                    tick={{ fontSize: 12, fill: '#9CA3AF' }}
-                    tickLine={false}
-                    axisLine={{ stroke: '#FFD93D', strokeWidth: 2 }}
-                  />
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1F2937',
-                      border: '2px solid #FFD93D',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                      color: 'white'
-                    }}
-                  />
-                  <Legend />
-                  <Line 
-                    type="monotone" 
-                    dataKey="eps" 
-                    stroke={COLORS.gold} 
-                    strokeWidth={4}
-                    dot={{ fill: COLORS.gold, strokeWidth: 2, r: 6 }}
-                    activeDot={{ r: 8, stroke: COLORS.gold, strokeWidth: 3 }}
-                    name="Eventos por Segundo"
-                  />
-                </LineChart>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">
-                  <LineChart className="h-16 w-16 mx-auto mb-4 text-gray-500" />
-                </div>
-              )}
-            </ResponsiveContainer>
           </div>
         </div>
       </div>
