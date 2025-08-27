@@ -35,6 +35,7 @@ def get_csv_files():
                     'size': file_stat.st_size,
                     'upload_date': pd.Timestamp.fromtimestamp(file_stat.st_mtime).strftime('%Y-%m-%d %H:%M'),
                     'is_main': is_main
+    
                 })
     
     return files
