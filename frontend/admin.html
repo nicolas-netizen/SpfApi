@@ -97,6 +97,16 @@
             <div class="space-y-6">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-bold text-white">Gestión de Datos KPI</h3>
+                    <div class="flex space-x-2">
+                        <button onclick="debugData()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                            <i data-lucide="bug" class="h-5 w-5"></i>
+                            <span>Debug</span>
+                        </button>
+                        <button onclick="refreshDataAfterChange()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                            <i data-lucide="refresh-cw" class="h-5 w-5"></i>
+                            <span>Sincronizar</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Mensaje informativo -->
@@ -213,13 +223,24 @@
         // Función para cargar datos KPI
         async function loadKPIData() {
             try {
+                console.log('Cargando datos KPI...');
                 const response = await axios.get(`http://${window.location.hostname}:8000/data/KPISPF.csv`);
+                console.log('Respuesta del backend:', response.data);
+                
                 kpiData = response.data;
                 originalKPIData = JSON.parse(JSON.stringify(kpiData)); // Backup
+                
+                // Actualizar la interfaz
                 updateKPITable();
                 updateDashboardStats();
+                
+                console.log('Datos KPI actualizados en frontend:', kpiData);
                 addActivityLog('Datos KPI cargados exitosamente');
-                showNotification('Datos actualizados', 'success');
+                
+                // Solo mostrar notificación si no es una recarga automática
+                if (!editingKPI) {
+                    showNotification('Datos actualizados', 'success');
+                }
             } catch (error) {
                 console.error('Error cargando datos KPI:', error);
                 showNotification('Error al cargar datos', 'error');
@@ -260,9 +281,54 @@
             }
         }
 
+        // Función para sincronizar automáticamente cada 30 segundos
+        function startAutoSync() {
+            setInterval(async () => {
+                if (!editingKPI) { // Solo sincronizar si no se está editando
+                    await loadKPIData();
+                    addActivityLog('Sincronización automática realizada');
+                }
+            }, 30000); // 30 segundos
+        }
+
+        // Función para refrescar datos después de cambios
+        async function refreshDataAfterChange() {
+            await loadKPIData();
+        }
+
+        // Función para debug de datos
+        function debugData() {
+            console.log('=== DEBUG DATOS KPI ===');
+            console.log('kpiData actual:', kpiData);
+            console.log('originalKPIData:', originalKPIData);
+            console.log('editingKPI:', editingKPI);
+            
+            if (kpiData?.data?.[0]) {
+                console.log('KPIs disponibles:', Object.keys(kpiData.data[0]));
+                console.log('Valores actuales:', kpiData.data[0]);
+            } else {
+                console.log('No hay datos KPI disponibles');
+            }
+            
+            // Mostrar en pantalla también
+            const debugInfo = `
+                <strong>Debug Info:</strong><br>
+                kpiData: ${JSON.stringify(kpiData, null, 2)}<br>
+                Total KPIs: ${kpiData?.data?.[0] ? Object.keys(kpiData.data[0]).length : 0}<br>
+                editingKPI: ${editingKPI || 'ninguno'}
+            `;
+            
+            showNotification(debugInfo, 'info');
+        }
+
         // Función para actualizar tabla KPI
         function updateKPITable() {
-            if (!kpiData?.data?.[0]) return;
+            console.log('Actualizando tabla KPI con datos:', kpiData);
+            
+            if (!kpiData?.data?.[0]) {
+                console.log('No hay datos KPI para mostrar');
+                return;
+            }
             
             const tbody = document.getElementById('kpiTableBody');
             tbody.innerHTML = '';
@@ -295,6 +361,8 @@
                 `;
                 tbody.appendChild(row);
             });
+            
+            console.log('Tabla KPI actualizada con', Object.keys(kpiData.data[0]).length, 'KPIs');
             
             // Recrear iconos en la nueva tabla
             lucide.createIcons();
@@ -382,11 +450,8 @@
                     });
                     
                     if (response.data.success) {
-                        // Actualizar datos locales
-                        kpiData = response.data;
-                        originalKPIData = JSON.parse(JSON.stringify(kpiData));
-                        
-                        updateKPITable();
+                        // Recargar completamente los datos del backend para asegurar sincronización
+                        await loadKPIData();
                         closeEditKPIModal();
                         addActivityLog(`KPI "${editingKPI}" modificado exitosamente`);
                         showNotification('KPI actualizado exitosamente', 'success');
@@ -420,7 +485,7 @@
                     });
                     
                     if (response.data.success) {
-                        // Recargar datos del backend
+                        // Recargar datos del backend para asegurar sincronización
                         await loadKPIData();
                         addActivityLog(`KPI "${key}" eliminado exitosamente`);
                         showNotification('KPI eliminado exitosamente', 'success');
@@ -558,6 +623,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadKPIData();
             addActivityLog('Panel de administración iniciado');
+            startAutoSync(); // Iniciar sincronización automática
         });
 
         // Cerrar modales con Escape

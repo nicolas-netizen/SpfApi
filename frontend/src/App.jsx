@@ -22,7 +22,10 @@ import {
   TrendingUp,
   Database,
   Monitor,
-  Zap
+  Zap,
+  UserCheck,
+  UserCog,
+  User
 } from 'lucide-react';
 
 const App = () => {
@@ -30,33 +33,104 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simular carga de datos - en producción esto vendría de una API
-    const mockData = {
-      dispositivosSIEM: 362,
-      superWorkers: 5,
-      colectores: 29,
-      unmanaged: 30,
-      monitoredAssets: 298,
-      agentes: 160,
-      ueba: 149,
-      eventosAnalizados: 7098200000,
-      incidentesDetectados: 122400,
-      totalReportes: 6131,
-      reportesAutomaticos: 5249,
-      reportesManuales: 882,
-      remediacionesAutomaticas: 3055,
-      remediacionesManuales: 2194,
-      tenants: 21,
-      clientesActivos: 15,
-      eventosPorSegundo: 2,
-      mttdAutomatico: 3,
-      mttrAutomatico: 3,
-      mttdManual: 299,
-      mttrManual: 496
+    // Cargar datos desde el backend
+    const loadData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/data/KPISPF.csv');
+        const csvData = await response.json();
+        
+        if (csvData.success && csvData.data && csvData.data[0]) {
+          const kpiData = csvData.data[0];
+          
+          // Mapear los datos del CSV a la estructura del dashboard
+          const mappedData = {
+            dispositivosSIEM: kpiData['Dispositivos en SIEM'] || 362,
+            superWorkers: kpiData['Super/Workers'] || 5,
+            colectores: kpiData['Colectores'] || 29,
+            unmanaged: kpiData['Unmanaged'] || 30,
+            monitoredAssets: kpiData['Monitored Assets'] || 298,
+            agentes: kpiData['Agentes'] || 160,
+            ueba: kpiData['UEBA'] || 149,
+            eventosAnalizados: kpiData['Eventos Analizados'] || 7098200000,
+            incidentesDetectados: kpiData['Incidentes Detectados'] || 122400,
+            totalReportes: kpiData['Total de Reportes'] || 6131,
+            reportesAutomaticos: kpiData['Total Reportes Automáticos'] || 5249,
+            reportesManuales: kpiData['Total Reportes Manuales'] || 882,
+            remediacionesAutomaticas: kpiData['Remediaciones Automáticas'] || 2194,
+            remediacionesManuales: kpiData['Remediaciones Manuales'] || 288,
+            tenants: kpiData['Tenants'] || 21,
+            clientesActivos: kpiData['Clientes Activos'] || 15,
+            eventosPorSegundo: kpiData['Eventos por Segundo'] || 18649,
+            mttdAutomatico: kpiData['MTTD Automático'] || 3,
+            mttrAutomatico: kpiData['MTTR Automático'] || 3,
+            mttdManual: kpiData['MTTD Manual'] || 299,
+            mttrManual: kpiData['MTTR Manual'] || 496
+          };
+          
+          setData(mappedData);
+        } else {
+          // Datos de respaldo si falla la API
+          setData({
+            dispositivosSIEM: 362,
+            superWorkers: 5,
+            colectores: 29,
+            unmanaged: 30,
+            monitoredAssets: 298,
+            agentes: 160,
+            ueba: 149,
+            eventosAnalizados: 7098200000,
+            incidentesDetectados: 122400,
+            totalReportes: 6131,
+            reportesAutomaticos: 5249,
+            reportesManuales: 882,
+            remediacionesAutomaticas: 3055,
+            remediacionesManuales: 2194,
+            tenants: 21,
+            clientesActivos: 15,
+            eventosPorSegundo: 18649,
+            mttdAutomatico: 3,
+            mttrAutomatico: 3,
+            mttdManual: 299,
+            mttrManual: 496
+          });
+        }
+      } catch (error) {
+        console.error('Error cargando datos:', error);
+        // Datos de respaldo en caso de error
+        setData({
+          dispositivosSIEM: 362,
+          superWorkers: 5,
+          colectores: 29,
+          unmanaged: 30,
+          monitoredAssets: 298,
+          agentes: 160,
+          ueba: 149,
+          eventosAnalizados: 7098200000,
+          incidentesDetectados: 122400,
+          totalReportes: 6131,
+          reportesAutomaticos: 5249,
+          reportesManuales: 882,
+          remediacionesAutomaticas: 3055,
+          remediacionesManuales: 2194,
+          tenants: 21,
+          clientesActivos: 15,
+          eventosPorSegundo: 18649,
+          mttdAutomatico: 3,
+          mttrAutomatico: 3,
+          mttdManual: 299,
+          mttrManual: 496
+        });
+      } finally {
+        setLoading(false);
+      }
     };
     
-    setData(mockData);
-    setLoading(false);
+    loadData();
+    
+    // Recargar datos cada 30 segundos para mantener sincronización
+    const interval = setInterval(loadData, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) {
@@ -85,7 +159,7 @@ const App = () => {
     { name: 'Unmanaged', value: data.unmanaged, color: '#E879F9' }
   ];
 
-  const StatCard = ({ title, value, icon: Icon, color, subtitle }) => (
+  const StatCard = ({ title, value, icon: Icon, color, subtitle, customIcon, customIconContent }) => (
     <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-4 lg:p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 h-32 lg:h-36">
       <div className="flex items-start justify-between h-full">
         <div className="flex-1 min-w-0 pr-3">
@@ -93,9 +167,15 @@ const App = () => {
           <p className="text-lg lg:text-2xl font-bold text-white mb-2 leading-tight">{value.toLocaleString()}</p>
           {subtitle && <p className="text-purple-300 text-sm truncate leading-tight">{subtitle}</p>}
         </div>
-                 <div className={`p-1.5 lg:p-2 rounded-lg bg-gradient-to-br ${color} flex-shrink-0`}>
-           <Icon className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
-         </div>
+        <div className={`p-1.5 lg:p-2 rounded-lg bg-gradient-to-br ${color} flex-shrink-0`}>
+          {customIconContent ? (
+            customIconContent
+          ) : customIcon ? (
+            <img src={customIcon} alt={title} className="w-3 h-3 lg:w-4 lg:h-4 object-contain" />
+          ) : (
+            <Icon className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -140,14 +220,15 @@ const App = () => {
             title="Automáticos"
             value={data.reportesAutomaticos}
             icon={FileText}
-            color="from-indigo-500 to-indigo-600"
+            color="from-purple-600 to-purple-700"
             subtitle="Generados automáticamente"
+            customIcon="/Soar.png"
           />
-          <StatCard
+                    <StatCard
             title="Manuales"
             value={data.reportesManuales}
-            icon={FileText}
-            color="from-indigo-600 to-indigo-700"
+            icon={UserCheck}
+            color="from-purple-600 to-purple-700"
             subtitle="Generados manualmente"
           />
           <StatCard
