@@ -224,7 +224,7 @@
         async function loadKPIData() {
             try {
                 console.log('Cargando datos KPI...');
-                const response = await axios.get(`http://${window.location.hostname}:8000/data/KPISPF.csv`);
+                const response = await axios.get(`http://172.16.40.190:8000/data/KPISPF.csv`);
                 console.log('Respuesta del backend:', response.data);
                 
                 kpiData = response.data;
@@ -444,7 +444,7 @@
             if (editingKPI && newValue !== '') {
                 try {
                     // Enviar al backend
-                    const response = await axios.post(`http://${window.location.hostname}:8000/api/update-kpi`, {
+                    const response = await axios.post(`http://172.16.40.190:8000/api/update-kpi`, {
                         name: editingKPI,
                         value: newValue
                     });
@@ -480,7 +480,7 @@
             if (confirm(`¿Estás seguro de que quieres eliminar el KPI "${key}"?\n\nValor actual: ${kpiData.data[0][key]?.toLocaleString() || kpiData.data[0][key]}`)) {
                 try {
                     // Enviar al backend
-                    const response = await axios.delete(`http://${window.location.hostname}:8000/api/delete-kpi`, {
+                    const response = await axios.delete(`http://172.16.40.190:8000/api/delete-kpi`, {
                         data: { name: key }
                     });
                     
