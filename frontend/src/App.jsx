@@ -36,11 +36,11 @@ const App = () => {
     // Cargar datos desde el backend
     const loadData = async () => {
       try {
-        const response = await fetch('/api/data/KPISPF.csv');
-        const csvData = await response.json();
+        const response = await fetch('/api/get-kpi');
+        const jsonData = await response.json();
         
-        if (csvData.success && csvData.data && csvData.data[0]) {
-          const kpiData = csvData.data[0];
+        if (jsonData.success && jsonData.data && jsonData.data[0]) {
+          const kpiData = jsonData.data[0];
           
           // Mapear los datos del CSV a la estructura del dashboard
           const mappedData = {

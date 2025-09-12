@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
@@ -11,6 +12,7 @@ CORS(app)
 UPLOAD_FOLDER = 'data'
 ALLOWED_EXTENSIONS = {'csv'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+KPI_JSON_FILE = os.path.join(UPLOAD_FOLDER, 'kpi.json')
 
 # Asegurar que el directorio de datos existe
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -40,9 +42,50 @@ def get_csv_files():
     
     return files
 
+def load_kpi_store():
+    """Carga los KPIs desde JSON si existe; si no, intenta migrar desde CSV principal."""
+    try:
+        if os.path.exists(KPI_JSON_FILE):
+            with open(KPI_JSON_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if isinstance(data, dict):
+                    return data
+                if isinstance(data, list) and data:
+                    return data[0]
+                return {}
+        # Fallback: migrar desde CSV principal si existe
+        csv_path = os.path.join(app.config['UPLOAD_FOLDER'], 'KPISPF.csv')
+        if os.path.exists(csv_path):
+            df = pd.read_csv(csv_path)
+            records = df.to_dict('records')
+            store = records[0] if len(records) > 0 else {}
+            # Persistir a JSON para futuras lecturas
+            save_kpi_store(store)
+            return store
+        return {}
+    except Exception:
+        return {}
+
+def save_kpi_store(store):
+    """Guarda los KPIs en JSON."""
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    with open(KPI_JSON_FILE, 'w', encoding='utf-8') as f:
+        json.dump(store, f, ensure_ascii=False)
+
 @app.route('/')
 def index():
     return "SPARKFOUND API - Backend funcionando"
+
+@app.route('/api/get-kpi', methods=['GET'])
+def get_kpi():
+    try:
+        store = load_kpi_store()
+        return jsonify({
+            'success': True,
+            'data': [store]
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 @app.route('/data/<filename>')
 def get_data(filename):
@@ -72,26 +115,13 @@ def update_kpi():
         
         if not kpi_name or new_value is None:
             return jsonify({'success': False, 'error': 'Nombre y valor del KPI son requeridos'}), 400
-        
-        # Leer el archivo CSV principal
-        csv_path = os.path.join(app.config['UPLOAD_FOLDER'], 'KPISPF.csv')
-        if not os.path.exists(csv_path):
-            return jsonify({'success': False, 'error': 'Archivo CSV principal no encontrado'}), 404
-        
-        df = pd.read_csv(csv_path)
-        
-        # Verificar que la columna existe
-        if kpi_name not in df.columns:
+        # Actualizar en JSON store
+        store = load_kpi_store()
+        if kpi_name not in store:
             return jsonify({'success': False, 'error': f'KPI "{kpi_name}" no encontrado'}), 404
-        
-        # Actualizar el valor
-        df.loc[0, kpi_name] = new_value
-        
-        # Guardar el archivo
-        df.to_csv(csv_path, index=False)
-        
-        # Retornar los datos actualizados
-        updated_data = df.to_dict('records')[0]
+        store[kpi_name] = new_value
+        save_kpi_store(store)
+        updated_data = store
         return jsonify({
             'success': True,
             'message': f'KPI "{kpi_name}" actualizado exitosamente',
@@ -110,26 +140,12 @@ def create_kpi():
         
         if not kpi_name or kpi_value is None:
             return jsonify({'success': False, 'error': 'Nombre y valor del KPI son requeridos'}), 400
-        
-        # Leer el archivo CSV principal
-        csv_path = os.path.join(app.config['UPLOAD_FOLDER'], 'KPISPF.csv')
-        if not os.path.exists(csv_path):
-            return jsonify({'success': False, 'error': 'Archivo CSV principal no encontrado'}), 404
-        
-        df = pd.read_csv(csv_path)
-        
-        # Verificar que la columna no existe
-        if kpi_name in df.columns:
+        store = load_kpi_store()
+        if kpi_name in store:
             return jsonify({'success': False, 'error': f'KPI "{kpi_name}" ya existe'}), 409
-        
-        # Agregar nueva columna
-        df[kpi_name] = kpi_value
-        
-        # Guardar el archivo
-        df.to_csv(csv_path, index=False)
-        
-        # Retornar los datos actualizados
-        updated_data = df.to_dict('records')[0]
+        store[kpi_name] = kpi_value
+        save_kpi_store(store)
+        updated_data = store
         return jsonify({
             'success': True,
             'message': f'KPI "{kpi_name}" creado exitosamente',
@@ -147,28 +163,12 @@ def delete_kpi():
         
         if not kpi_name:
             return jsonify({'success': False, 'error': 'Nombre del KPI es requerido'}), 400
-        
-        # Leer el archivo CSV principal
-        csv_path = os.path.join(app.config['UPLOAD_FOLDER'], 'KPISPF.csv')
-        if not os.path.exists(csv_path):
-            return jsonify({'success': False, 'error': 'Archivo CSV principal no encontrado'}), 404
-        
-        df = pd.read_csv(csv_path)
-        
-        # Verificar que la columna existe
-        if kpi_name not in df.columns:
+        store = load_kpi_store()
+        if kpi_name not in store:
             return jsonify({'success': False, 'error': f'KPI "{kpi_name}" no encontrado'}), 404
-        
-        # Eliminar la columna
-        df = df.drop(columns=[kpi_name])
-        
-        # Guardar el archivo
-        df.to_csv(csv_path, index=False)
-        
-        return jsonify({
-            'success': True,
-            'message': f'KPI "{kpi_name}" eliminado exitosamente'
-        })
+        store.pop(kpi_name)
+        save_kpi_store(store)
+        return jsonify({'success': True, 'message': f'KPI "{kpi_name}" eliminado exitosamente'})
         
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
