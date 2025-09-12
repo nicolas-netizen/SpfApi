@@ -36,7 +36,7 @@ const App = () => {
     // Cargar datos desde el backend
     const loadData = async () => {
       try {
-        const response = await fetch('http://172.16.40.190:8000/data/KPISPF.csv');
+        const response = await fetch('/api/data/KPISPF.csv');
         const csvData = await response.json();
         
         if (csvData.success && csvData.data && csvData.data[0]) {
