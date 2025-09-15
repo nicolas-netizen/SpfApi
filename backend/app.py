@@ -75,7 +75,17 @@ def save_kpi_store(store):
 @app.route('/')
 def index():
     return "SPARKFOUND API - Backend funcionando"
-
+def clean_value(value):
+    if isinstance(value, str):
+        cleaned = value.replace(",", "")
+        try:
+            return int(cleaned)
+        except:
+            try:
+                return float(cleaned)
+            except:
+                return value
+    return value
 @app.route('/api/get-kpi', methods=['GET'])
 def get_kpi():
     try:
@@ -119,7 +129,7 @@ def update_kpi():
         store = load_kpi_store()
         if kpi_name not in store:
             return jsonify({'success': False, 'error': f'KPI "{kpi_name}" no encontrado'}), 404
-        store[kpi_name] = new_value
+        store[kpi_name] = clean_value(new_value)
         save_kpi_store(store)
         updated_data = store
         return jsonify({
