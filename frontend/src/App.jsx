@@ -239,11 +239,11 @@ const App = () => {
             subtitle="Dispositivos monitoreados"
           />
                     <StatCard
-            title="Clientes Activos"
+            title="Tenants activos"
             value={data.clientesActivos}
             icon={Users}
             color="from-purple-500 to-purple-600"
-            subtitle="Tenants activos"
+            subtitle="Clientes con inicio de sesión reciente"
           />
         </div>
 
@@ -369,7 +369,7 @@ const App = () => {
           <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
               <Monitor className="w-5 h-5 mr-2 text-purple-400" />
-              Infraestructura
+              Infraestructura Spark Found
             </h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
