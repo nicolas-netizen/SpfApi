@@ -322,10 +322,10 @@ const App = () => {
              </h3>
              <ResponsiveContainer width="100%" height={450}>
                <LineChart data={[
-                 { mes: 'Mayo', eps: 12500 },
-                 { mes: 'Junio', eps: 20641 },
-                 { mes: 'Julio', eps: 11894 },
-		 { mes: 'Agosto', eps: 168090 }
+                { mes: 'junio', eps: 20641 },
+                { mes: 'julio', eps: 11894 },
+                { mes: 'agosto', eps: 168090 },
+	             { mes: 'septiembre', eps: 21572 }
                ]}>
                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                  <XAxis dataKey="mes" stroke="#9CA3AF" />
